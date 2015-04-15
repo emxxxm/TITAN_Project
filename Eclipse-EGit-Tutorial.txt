@@ -10,8 +10,7 @@ Github Repository Settings Tutorial
    For local destination directory, make sure either of the followings:
       *The directory in default path is empty
       *Create new directory 
-   -- Click Next
-   Import exsiting projects -- Next -- Finish
+   -- Click Next -- Import exsiting projects -- Next -- Finish
 2. The project should show up in both Eclipse Workspace and Git 
 ------------------------Finish Get Repository from Github------------------------------
 
