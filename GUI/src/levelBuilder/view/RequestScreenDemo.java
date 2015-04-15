@@ -1,6 +1,6 @@
-package level_builder;
+package levelBuilder.view;
 
-import level_builder.RequestScreen;
+import levelBuilder.view.RequestScreen;
 
 public class RequestScreenDemo {
 		

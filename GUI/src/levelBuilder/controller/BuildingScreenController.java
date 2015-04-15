@@ -1,7 +1,10 @@
-package level_builder;
+package levelBuilder.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import levelBuilder.view.LBPanel;
+import levelBuilder.view.RequestScreen;
 
 
 public class BuildingScreenController implements ActionListener {
