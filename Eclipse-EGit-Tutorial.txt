@@ -16,4 +16,11 @@ Github Repository Settings Tutorial
 6. Wait to finish and click OK to complete
 ---------------------Finish Commit and Push Updates to Repository----------------------
 
+---------------------Pull from Github Repository to Get Updates------------------------
+1. To get the newst version in Github Repository, right click on the project
+2. Chosse Team -- Pull/Fetch from Upstream, either one should work
+3. If there's any change that is not made by you, then it should work
+4. Else you would get a message says something simalr with "up to date" in the result
+-----------------Finish Pull from Github Repository to Get Updates---------------------
+
 
