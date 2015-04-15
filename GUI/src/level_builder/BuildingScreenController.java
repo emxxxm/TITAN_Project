@@ -11,6 +11,7 @@ public class BuildingScreenController implements ActionListener {
 		this.request = rs;
 	}
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		request.setVisible(false);

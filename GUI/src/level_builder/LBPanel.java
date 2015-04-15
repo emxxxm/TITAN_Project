@@ -18,10 +18,14 @@ import java.awt.event.ActionEvent;
 
 public class LBPanel extends JFrame{
 	JLabel levelBuilder;
-	JButton done;
-	JButton preview;
-	JButton undo;
-	JButton redo;
+	JButton btnDone;
+	JButton btnPreview;
+	JButton btnUndo;
+	JButton btnRedo;
+	JButton btnEnable;
+	JButton btnDisable;
+	JButton btnSetSix;
+	JButton btnBucket;
 	private JTextField levelNumber;
 	private JTextField Mode;
 	private JTextField firstStar;
@@ -51,6 +55,8 @@ public class LBPanel extends JFrame{
 		super();
 		setSize(800, 500);
 		initialize();
+		
+		btnPreview.addActionListener(new BoardPreviewController(new PreviewScreen()));
 	}
 	
 	void initialize(){
@@ -150,9 +156,9 @@ public class LBPanel extends JFrame{
 		colFrom.setBounds(385, 87, 74, 28);
 		colFrom.setColumns(10);
 		
-		JButton btnLive = new JButton("Enable");
-		btnLive.setBounds(600, 40, 98, 29);
-		btnLive.addActionListener(new ActionListener() {
+		btnEnable = new JButton("Enable");
+		btnEnable.setBounds(600, 40, 98, 29);
+		btnEnable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -162,7 +168,7 @@ public class LBPanel extends JFrame{
 		removeLimit.setColumns(10);
 		
 		JLabel lblSetFrequencyOf = new JLabel("Set Frequency of Tiles of Each Value:");
-		lblSetFrequencyOf.setBounds(329, 137, 239, 16);
+		lblSetFrequencyOf.setBounds(329, 137, 264, 16);
 		lblSetFrequencyOf.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		
 		JLabel label = new JLabel("1 :");
@@ -211,8 +217,8 @@ public class LBPanel extends JFrame{
 		colTo.setBounds(490, 87, 74, 28);
 		colTo.setColumns(10);
 		
-		JButton btnDead = new JButton("Disable\r\n");
-		btnDead.setBounds(600, 88, 98, 29);
+		btnDisable = new JButton("Disable\r\n");
+		btnDisable.setBounds(600, 88, 98, 29);
 		
 		JLabel lblSetFrequencyOf_1 = new JLabel("Set Frequency of Bonus Tiles:");
 		lblSetFrequencyOf_1.setBounds(329, 302, 239, 16);
@@ -250,10 +256,10 @@ public class LBPanel extends JFrame{
 		bucketCol.setBounds(377, 441, 63, 28);
 		bucketCol.setColumns(10);
 		
-		JButton btnSetSix = new JButton("Set Six");
+		btnSetSix = new JButton("Set Six");
 		btnSetSix.setBounds(479, 400, 90, 30);
 		
-		JButton btnBucket = new JButton("Bucket!");
+		btnBucket = new JButton("Bucket!");
 		btnBucket.setBounds(479, 442, 90, 30);
 		getContentPane().setLayout(null);
 		getContentPane().add(lblFirstStar);
@@ -269,8 +275,8 @@ public class LBPanel extends JFrame{
 		getContentPane().add(rowTo);
 		getContentPane().add(colFrom);
 		getContentPane().add(colTo);
-		getContentPane().add(btnLive);
-		getContentPane().add(btnDead);
+		getContentPane().add(btnEnable);
+		getContentPane().add(btnDisable);
 		getContentPane().add(label_2);
 		getContentPane().add(frequecy3);
 		getContentPane().add(label_5);
@@ -313,19 +319,19 @@ public class LBPanel extends JFrame{
 		getContentPane().add(btnSetSix);
 		getContentPane().add(btnBucket);
 		
-		JButton btnUndo = new JButton("Undo");
+		btnUndo = new JButton("Undo");
 		btnUndo.setBounds(600, 309, 98, 29);
 		getContentPane().add(btnUndo);
 		
-		JButton btnRedo = new JButton("Redo");
+		btnRedo = new JButton("Redo");
 		btnRedo.setBounds(600, 353, 98, 29);
 		getContentPane().add(btnRedo);
 		
-		JButton btnPreview = new JButton("Preview");
+		btnPreview = new JButton("Preview");
 		btnPreview.setBounds(600, 394, 98, 29);
 		getContentPane().add(btnPreview);
 		
-		JButton btnDone = new JButton("DONE!");
+		btnDone = new JButton("DONE!");
 		btnDone.setBounds(600, 441, 98, 29);
 		getContentPane().add(btnDone);
 		
@@ -333,5 +339,9 @@ public class LBPanel extends JFrame{
 		lblSetLimits.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		lblSetLimits.setBounds(23, 295, 74, 30);
 		getContentPane().add(lblSetLimits);
+		
+		
 	}
+	
+	
 }
