@@ -3,9 +3,16 @@ Github Repository Settings Tutorial
 
 
 ------------------------Get Repository from Github-------------------------------------
+0. Before import the project, make sure there's not a project named "GUI" in your 
+   Eclipse Workspace
 1. In Eclipse, File -- Import -- Projects from Git -- Next -- Clone URI -- Next
-   Enter linke https://github.com/emxxxm/TITAN_Project in URL -- Next -- Next -- Next
+   Enter link https://github.com/emxxxm/TITAN_Project in URL -- Next -- Next 
+   For local destination directory, make sure either of the followings:
+      *The directory in default path is empty
+      *Create new directory 
+   -- Click Next
    Import exsiting projects -- Next -- Finish
+2. The project should show up in both Eclipse Workspace and Git 
 ------------------------Finish Get Repository from Github------------------------------
 
 ------------------------Commit and Push Updates to Repository--------------------------
