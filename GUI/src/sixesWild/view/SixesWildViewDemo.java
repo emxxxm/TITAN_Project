@@ -12,4 +12,3 @@ public class SixesWildViewDemo
 		slv.setVisible(true);
 	}
 }
- 
