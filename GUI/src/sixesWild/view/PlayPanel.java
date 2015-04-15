@@ -8,6 +8,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 
 import sixesWild.model.Model;
+import sixesWild.model.Tile;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -15,6 +16,7 @@ import java.awt.TextArea;
 import java.util.ArrayList;
 
 public class PlayPanel extends JPanel{
+	//Model should include an ArrayList of levels.
 	Model model;
 	//Can pass in an array of numbers here!
 	public PlayPanel(Model model) 
@@ -29,11 +31,12 @@ public class PlayPanel extends JPanel{
 		
 		//ArrayList<Square> square ? 
 		//ArrayList<Tile>
+		//ArrayList<Tile> tiles=model.getTile();
 		ArrayList<Integer> squareType=model.getSquareType();
 		ArrayList<Integer> squareNum=model.getSquareNum();
 		ArrayList<Integer> squareMulti=model.getSquareMulti();
 		//Put the things above in Tile.
-		ArrayList<Color> squareColor=model.getSquareColor();
+		ArrayList<Color> squareColor=model.getSquareCol();
 		//i represents row, j represents col.
 		for(int row=0;row<9;row++)
 		{

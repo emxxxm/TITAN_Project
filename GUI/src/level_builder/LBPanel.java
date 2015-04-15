@@ -49,7 +49,7 @@ public class LBPanel extends JFrame{
 	
 	public LBPanel(){
 		super();
-		setSize(750, 550);
+		setSize(800, 500);
 		initialize();
 	}
 	

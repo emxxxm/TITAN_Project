@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 
+import sixesWild.controller.DisplayHelpController;
 import sixesWild.controller.DisplayRecordController;
 import sixesWild.controller.StartLevelController;
 import sixesWild.model.Model;
@@ -293,7 +294,9 @@ public class SelectLevelView extends JFrame {
 		{
 			levelButtons.get(i).addActionListener(new StartLevelController(this,m));
 		}
-		//Is entity needed in HelpButtonController?
+		//Is entity needed in DisplayRecordController?
 		btnRecord.addActionListener(new DisplayRecordController(this));
+		btnHelp.addActionListener(new DisplayHelpController(this));
+	
 	}
 }
