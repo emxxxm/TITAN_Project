@@ -44,8 +44,8 @@ public class SplashScrn extends JFrame implements ActionListener{
 		            System.out.println("g is null");
 		            return;
 		        }
-		        for(int i=0; i<50; i++) {
-		            renderSplashFrame(g, i);
+		        for(int i=0; i<100; i++) {
+		           // renderSplashFrame(g, i);
 		            splash.update();
 		            try {
 		                Thread.sleep(10);
@@ -55,9 +55,9 @@ public class SplashScrn extends JFrame implements ActionListener{
 		        }
 		        splash.close();
 		       
-		        RequestScreen rs = new RequestScreen();
-				rs.setVisible (true);
-				
+//		        RequestScreen rs = new RequestScreen();
+//				rs.setVisible (true);
+//				
 		        toFront();
 		    
 		}
@@ -73,11 +73,11 @@ public class SplashScrn extends JFrame implements ActionListener{
 	            e.getWindow().dispose();
 	        }
 	    };
-	     
+	/*     
 	    public static void main (String args[]) {
 	        SplashScrn sixeswild = new SplashScrn();
 	    }
-
+*/
 
 
 
