@@ -1,12 +1,13 @@
 Xiaoman Xu
 Github Repository Settings Tutorial
 
-
 ------------------------Get Repository from Github-------------------------------------
 0. Before import the project, make sure there's not a project named "GUI" in your 
    Eclipse Workspace
 1. In Eclipse, File -- Import -- Projects from Git -- Next -- Clone URI -- Next
-   Enter link https://github.com/emxxxm/TITAN_Project in URL -- Next -- Next 
+   -- Enter the following link in URL
+   https://github.com/emxxxm/TITAN_Project
+   -- Next -- Next 
    For local destination directory, make sure either of the followings:
       *The directory in default path is empty
       *Create new directory 
@@ -14,7 +15,16 @@ Github Repository Settings Tutorial
 2. The project should show up in both Eclipse Workspace and Git 
 ------------------------Finish Get Repository from Github------------------------------
 
+---------------------------Merge with Remote Repository--------------------------------
+1. Everytime you make some changes that you want to keep, first merge with remote
+   Repository in Githup.
+2. Right click on the Project, choose Team -- Merge.
+3. Choose the item under Remote Tracking directory and Merge
+4. After that, you can commit and push or pull/fectch from the Upstream.
+------------------------Finish Merge with Remote Repository----------------------------
+
 ------------------------Commit and Push Updates to Repository--------------------------
+0. Make sure you do merge first.
 1. After making the changes you want, right click on the project, choose Team -- Commit
 2. Type in your commmit message, this message would show on Github project page
 3. Click Commit
@@ -24,6 +34,7 @@ Github Repository Settings Tutorial
 ---------------------Finish Commit and Push Updates to Repository----------------------
 
 ---------------------Pull from Github Repository to Get Updates------------------------
+0. Make sure you do merge first.
 1. To get the newst version in Github Repository, right click on the project
 2. Chosse Team -- Pull/Fetch from Upstream, either one should work
 3. If there's any change that is not made by you, then it should work
