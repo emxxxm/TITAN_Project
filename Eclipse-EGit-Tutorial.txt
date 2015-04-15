@@ -4,23 +4,27 @@ Github Repository Settings Tutorial
 ------------------------Get Repository from Github-------------------------------------
 0. Before import the project, make sure there's not a project named "GUI" in your 
    Eclipse Workspace
+   Import之前请检查在Eclipse Workspace里没有名字为GUI的project
 1. In Eclipse, File -- Import -- Projects from Git -- Next -- Clone URI -- Next
-   -- Enter the following link in URL
+2. Enter the following link in URL
    https://github.com/emxxxm/TITAN_Project
-   -- Next -- Next 
+3. -- Next -- Next 
    For local destination directory, make sure either of the followings:
-      *The directory in default path is empty
-      *Create new directory 
-   -- Click Next -- Import exsiting projects -- Next -- Finish
-2. The project should show up in both Eclipse Workspace and Git 
+      *The directory in default path is empty.(默认的path下的directory为空）
+      *Create new directory （直接创建新的directory，path自定）
+4. -- Click Next -- Import exsiting projects -- Next -- Finish
+5. The project should show up in both Eclipse Workspace and Git Repository
+   Project会出现在Eclipse Workspace和Git Repository里
 ------------------------Finish Get Repository from Github------------------------------
 
 ---------------------------Merge with Remote Repository--------------------------------
-1. Everytime you make some changes that you want to keep, first merge with remote
-   Repository in Githup.
+1. Everytime after you make some changes that you want to keep, first merge with remote
+   Repository in Githup.（每次update 或 fetch之前，请先做Merge)
 2. Right click on the Project, choose Team -- Merge.
 3. Choose the item under Remote Tracking directory and Merge
-4. After that, you can commit and push or pull/fectch from the Upstream.
+   选Remote Traking directory下的选项，然后点击Merge
+4. After that, you can commit and push or pull/fetch from Upstream.
+   现在可以进行commit and push 或者pull/fetch from Upstream
 ------------------------Finish Merge with Remote Repository----------------------------
 
 ------------------------Commit and Push Updates to Repository--------------------------
