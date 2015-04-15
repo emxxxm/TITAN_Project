@@ -1,5 +1,4 @@
 # TITAN_Project
-# Xiaoman Xu
 Github Repository Settings Tutorial
 
 
