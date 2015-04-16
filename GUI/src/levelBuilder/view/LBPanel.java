@@ -1,4 +1,4 @@
-package level_builder;
+package levelBuilder.view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +13,12 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import levelBuilder.controller.BoardPreviewController;
+import levelBuilder.controller.QuitScreenController;
 
 public class LBPanel extends JFrame{
 	JLabel levelBuilder;

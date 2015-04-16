@@ -1,8 +1,10 @@
-package level_builder;
+package levelBuilder.controller;
 
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import levelBuilder.view.PreviewScreen;
 
 public class BoardPreviewController implements ActionListener{
 	PreviewScreen request;

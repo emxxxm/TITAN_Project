@@ -1,9 +1,12 @@
-package level_builder;
+package levelBuilder.view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
+import levelBuilder.controller.CloseListener;
 
 public class QuitScreen extends JFrame{
 

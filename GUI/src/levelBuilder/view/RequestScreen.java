@@ -1,7 +1,9 @@
-package level_builder;
+package levelBuilder.view;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
+import levelBuilder.controller.BuildingScreenController;
 
 
 

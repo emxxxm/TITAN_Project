@@ -1,4 +1,4 @@
-package level_builder;
+package levelBuilder.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

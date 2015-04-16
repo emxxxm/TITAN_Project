@@ -1,27 +1,27 @@
-package level_builder;
+package levelBuilder.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import levelBuilder.view.QuitScreen;
 
-public class BuildingScreenController implements ActionListener {
-	RequestScreen request;
+public class QuitScreenController implements ActionListener{
+	QuitScreen request;
 	
-	public BuildingScreenController(RequestScreen rs) {
+	public QuitScreenController(QuitScreen rs) {
 		this.request = rs;
 	}
-	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		request.setVisible(false);
 		
 		// create screen
-		LBPanel panel = new LBPanel();
-		panel.setVisible(true);
-
+		QuitScreen quit = new QuitScreen();
+		quit.setVisible(true);
 		// set controller for previous button
 //		secondScreen.getPreviousButton().addActionListener(new PrevScreenController(main, secondScreen));
 		
 	}
+
 }
