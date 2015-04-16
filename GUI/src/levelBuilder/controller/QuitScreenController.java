@@ -7,7 +7,7 @@ import levelBuilder.view.QuitScreen;
 
 public class QuitScreenController implements ActionListener{
 	QuitScreen request;
-	 
+	
 	public QuitScreenController(QuitScreen rs) {
 		this.request = rs;
 	}
