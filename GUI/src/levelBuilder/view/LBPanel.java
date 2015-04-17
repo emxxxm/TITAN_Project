@@ -18,10 +18,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import levelBuilder.controller.BoardPreviewController;
+import levelBuilder.controller.QuitScreenController;
 
 public class LBPanel extends JFrame{
 	JLabel levelBuilder;
-	JButton btnDone;
+	JButton btnSave;
 	JButton btnPreview;
 	JButton btnUndo;
 	JButton btnRedo;
@@ -29,6 +30,8 @@ public class LBPanel extends JFrame{
 	JButton btnDisable;
 	JButton btnSetSix;
 	JButton btnBucket;
+	JButton btnQuit;
+	
 	private JTextField levelNumber;
 	private JTextField Mode;
 	private JTextField firstStar;
@@ -56,10 +59,11 @@ public class LBPanel extends JFrame{
 	
 	public LBPanel(){
 		super();
-		setSize(800, 500);
+		setSize(828, 568);
 		initialize();
 		
 		btnPreview.addActionListener(new BoardPreviewController(new PreviewScreen()));
+		btnQuit.addActionListener(new QuitScreenController(new QuitScreen()));
 	}
 	
 	void initialize(){
@@ -323,28 +327,34 @@ public class LBPanel extends JFrame{
 		getContentPane().add(btnBucket);
 		
 		btnUndo = new JButton("Undo");
-		btnUndo.setBounds(600, 309, 98, 29);
+		btnUndo.setBounds(600, 263, 98, 29);
 		getContentPane().add(btnUndo);
 		
 		btnRedo = new JButton("Redo");
-		btnRedo.setBounds(600, 353, 98, 29);
+		btnRedo.setBounds(600, 307, 98, 29);
 		getContentPane().add(btnRedo);
 		
 		btnPreview = new JButton("Preview");
-		btnPreview.setBounds(600, 394, 98, 29);
+		btnPreview.setBounds(600, 348, 98, 29);
 		getContentPane().add(btnPreview);
 		
-		btnDone = new JButton("DONE!");
-		btnDone.setBounds(600, 441, 98, 29);
-		getContentPane().add(btnDone);
+		btnSave = new JButton("Save");
+		btnSave.setBounds(600, 398, 98, 29);
+		getContentPane().add(btnSave);
 		
 		JLabel lblSetLimits = new JLabel("Set Limits:");
 		lblSetLimits.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		lblSetLimits.setBounds(23, 295, 74, 30);
 		getContentPane().add(lblSetLimits);
 		
+		btnQuit  = new JButton("Quit");
+		btnQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnQuit.setBounds(600, 440, 98, 29);
+		getContentPane().add(btnQuit);
+		
 		
 	}
-	
-	
 }
