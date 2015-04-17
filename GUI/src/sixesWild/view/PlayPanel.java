@@ -54,7 +54,7 @@ public class PlayPanel extends JPanel{
 				}
 				//If this is a bucket or it's a background.
 				//How to deal with this when 6 is in the bucket.
-				//Can change the type to 1.
+				//Check whether the tile in the target bucket square has number 6. If it has, draw the number, it it doesn't, don't draw. 
 				else
 				{
 					g.drawRect(57+col*47,7+row*47, 40, 40);
