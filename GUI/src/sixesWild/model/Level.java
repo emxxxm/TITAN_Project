@@ -14,7 +14,7 @@ public class Level
 	protected int timeLimit;
 	protected int swapLimit;
 	protected int removeLimit;
-	protected int[] starGoals;
+	protected ArrayList<Integer> starGoals;
 	//Represents the type of the square,
 	//0: Disable
 	//1: Normal
@@ -30,7 +30,7 @@ public class Level
 			int timeLimit, 
 			int swapLimit, 
 			int removeLimit, 
-			int[] starGoals, 
+			ArrayList<Integer> starGoals, 
 			ArrayList<Integer> squareType, 
 			ArrayList<Integer> tileNum,
 			ArrayList<Integer> tileMulti)
@@ -47,6 +47,10 @@ public class Level
 		this.tileMulti=tileMulti;
 	}
 	//Getters.
+	public int getLevelNum()
+	{
+		return this.levelNum;
+	}
 	public int getRemoveLimit()
 	{
 		return this.removeLimit;

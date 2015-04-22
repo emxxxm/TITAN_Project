@@ -286,13 +286,14 @@ public class SelectLevelView extends JFrame {
 		this.getContentPane().setLayout(groupLayout);
 		//Assume the first 5 levels are available and the others are disabled for now.
 		//Add controllers for all the buttons here.
-		for(int i=5;i<levelButtons.size();i++)
+		for(int i=0;i<levelButtons.size();i++)
 		{
-			levelButtons.get(i).setEnabled(false);
+			levelButtons.get(i).setEnabled(m.getAllLevels().getGivenLevel(i+1).isLocked());
 		}
 		for(int i=0;i<levelButtons.size();i++)
 		{
-			levelButtons.get(i).addActionListener(new StartLevelController(this,m));
+			//This may be changed later.
+			levelButtons.get(i).addActionListener(new StartLevelController(this,m,i+1));
 		}
 		//Is entity needed in DisplayRecordController?
 		btnRecord.addActionListener(new DisplayRecordController(this));

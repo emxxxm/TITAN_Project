@@ -9,9 +9,11 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.logging.Level;
 
 import javax.swing.JPanel;
 
+import sixesWild.controller.PlayPanelController;
 import sixesWild.model.Model;
 
 public class BoardView extends JFrame
@@ -35,7 +37,6 @@ public class BoardView extends JFrame
 //		bv.setVisible(true);
 //	}
 	
-	
 	public JButton getQuitButton()
 	{
 		return quitButton;
@@ -49,24 +50,28 @@ public class BoardView extends JFrame
 	{
 		return playPanel;
 	}
-	
+	//BoardView(Board b)
 	public BoardView(Model m) {
 		this.setBounds(0, 0, 900, 600);
 		this.setVisible(true);
 		this.setTitle("SixesWild");
 		
-		levelLabel = new JLabel("Level: ");
-		scoreLabel = new JLabel("Score: 100");
-		removeButton = new JButton("Remove: 3");		
-		swapButton = new JButton("Swap: 3");		
-		resetButton = new JButton("Reset");	
+		levelLabel = new JLabel("Level: "+m.getBoard().getCurrLevel());
+		scoreLabel = new JLabel("Score: "+m.getBoard().getCurrScore());
+		removeButton = new JButton("Remove: "+m.getBoard().getRemoveLeft());		
+		swapButton = new JButton("Swap: "+m.getBoard().getSwapLeft());		
+		resetButton = new JButton("Reset: "+m.getBoard().getSwapLeft());
 		quitButton = new JButton("Quit");		
 		timeLabel = new JLabel("Time: ");		
 		moveLeftLabel = new JLabel("Move Left: ");
 		
 		playPanel = new PlayPanel(m);
 		playPanel.setBounds(300, 0, 600, 600);
-
+		//Create a controller that implements MouseListener and MouseMotionListener, 
+		//register this controller to playPanel.
+		PlayPanelController ppc = new PlayPanelController(m, this);
+		ppc.register();
+		//playPanel.addMouseMotionListener(new PlayPanelController(m, this));
 //		JPanel p=new JPanel();
 //		p.setBounds(300, 0, 600, 600);
 		
