@@ -14,10 +14,10 @@ public class AllLevel
 	ArrayList<Level> levels;
 	int numLevels;
 	
-	public static void main(String[] args) throws Exception
-	{
-		AllLevel als=new AllLevel("src/input.txt", "/home/mengwen/Desktop/stateInput.txt");
-	}
+//	public static void main(String[] args) throws Exception
+//	{
+//		AllLevel als=new AllLevel("src/input.txt", "/home/mengwen/Desktop/stateInput.txt");
+//	}
 	//levelBuilderFilePath stores information gets from level builder. levelStateFilePath stores information about level lock unlock
 	//and highest score.
 	public AllLevel(String levelBuilderFilePath, String levelStateFilePath) throws Exception
