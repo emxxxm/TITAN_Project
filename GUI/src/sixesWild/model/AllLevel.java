@@ -16,7 +16,7 @@ public class AllLevel
 	
 	public static void main(String[] args) throws Exception
 	{
-		AllLevel als=new AllLevel("/home/mengwen/Desktop/input.txt", "/home/mengwen/Desktop/stateInput.txt");
+		AllLevel als=new AllLevel("src/input.txt", "/home/mengwen/Desktop/stateInput.txt");
 	}
 	//levelBuilderFilePath stores information gets from level builder. levelStateFilePath stores information about level lock unlock
 	//and highest score.
