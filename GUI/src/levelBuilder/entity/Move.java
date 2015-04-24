@@ -2,6 +2,7 @@ package levelBuilder.entity;
 
 import levelBuilder.game.LevelBuilder;
 
+
 public abstract class Move {
 	protected Move(){}
 	

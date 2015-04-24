@@ -1,12 +1,14 @@
 package levelBuilder.entity;
 
 public class NumFrequency {
-	protected double f1;
-	protected double f2;
-	protected double f3;
-	protected double f4;
-	protected double f5;
-	protected double f6;
+	protected double f1=0;
+	protected double f2=0;
+	protected double f3=0;
+	protected double f4=0;
+	protected double f5=0;
+	protected double f6=0;
+	
+	public NumFrequency(){}
 	
 	public NumFrequency(double f1,double f2,double f3,double f4,double f5,double f6){
 		this.f1 = f1;

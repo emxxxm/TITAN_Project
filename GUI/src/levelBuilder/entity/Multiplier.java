@@ -1,8 +1,10 @@
 package levelBuilder.entity;
 
 public class Multiplier {
-	protected double x2;
-	protected double x3;
+	protected double x2=0;
+	protected double x3=0;
+	
+	public Multiplier(){}
 	
 	public Multiplier(double x2, double x3){
 		this.x2 = x2;

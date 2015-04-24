@@ -19,8 +19,14 @@ import java.awt.event.ActionEvent;
 
 import levelBuilder.controller.BoardPreviewController;
 import levelBuilder.controller.QuitScreenController;
+import levelBuilder.entity.Model;
+import levelBuilder.game.LevelBuilder;
+import levelBuilder.move.controller.*;
 
 public class LBPanel extends JFrame{
+	
+	Model model;
+	
 	JLabel levelBuilder;
 	JButton btnSave;
 	JButton btnPreview;
@@ -33,18 +39,18 @@ public class LBPanel extends JFrame{
 	JButton btnQuit;
 	
 	private JTextField levelNumber;
-	private JTextField Mode;
+	private JTextField mode;
 	private JTextField firstStar;
 	private JTextField secondStar;
 	private JTextField thirdStar;
 	private JTextField moveLimit;
 	private JTextField swapLimit;
 	private JTextField timeLimit;
+	private JTextField removeLimit;
 	private JTextField textField_10;
 	private JTextField rowFrom;
 	private JTextField rowTo;
 	private JTextField colFrom;
-	private JTextField removeLimit;
 	private JTextField frequecy1;
 	private JTextField frequecy2;
 	private JTextField frequecy3;
@@ -57,8 +63,9 @@ public class LBPanel extends JFrame{
 	private JTextField bucketRow;
 	private JTextField bucketCol;
 	
-	public LBPanel(){
+	public LBPanel(Model model){
 		super();
+		this.model = model;
 		setSize(828, 568);
 		initialize();
 		
@@ -66,7 +73,7 @@ public class LBPanel extends JFrame{
 		btnQuit.addActionListener(new QuitScreenController(new QuitScreen()));
 	}
 	
-	void initialize(){
+	private void initialize(){
 		levelBuilder = new JLabel();
 		levelBuilder.setBounds(22, 0, 211, 35);
 		levelBuilder.setFont(new Font("Calibri", Font.BOLD, 19));
@@ -77,14 +84,15 @@ public class LBPanel extends JFrame{
 		
 		levelNumber = new JTextField();
 		levelNumber.setBounds(121, 47, 134, 28);
-		levelNumber.setColumns(10);
+		levelNumber.setColumns(10);	
+		levelNumber.setToolTipText("Enter level number here");
 		
 		JLabel lblMode = new JLabel("Mode :");
 		lblMode.setBounds(22, 99, 42, 16);
 		
-		Mode = new JTextField();
-		Mode.setBounds(121, 93, 134, 28);
-		Mode.setColumns(10);
+		mode = new JTextField();
+		mode.setBounds(121, 93, 134, 28);
+		mode.setColumns(10);
 		
 		JLabel lblSetStars = new JLabel("Set Stars:");
 		lblSetStars.setBounds(22, 139, 233, 16);
@@ -275,7 +283,7 @@ public class LBPanel extends JFrame{
 		getContentPane().add(lblMode);
 		getContentPane().add(lblBuilderlevel);
 		getContentPane().add(levelNumber);
-		getContentPane().add(Mode);
+		getContentPane().add(mode);
 		getContentPane().add(lblColumn);
 		getContentPane().add(lblRow);
 		getContentPane().add(rowFrom);
@@ -355,6 +363,50 @@ public class LBPanel extends JFrame{
 		btnQuit.setBounds(600, 440, 98, 29);
 		getContentPane().add(btnQuit);
 		
+		//initializeControllers();
+	}
+	
+	public void initializeControllers(LevelBuilder lb){
+		// initialize the enter level text field
+		//TODO
+		levelNumber.addActionListener(new EnterLevelController(lb));
 		
+		thirdStar.addActionListener(new SetStarGoalsController(lb));
+		
+		timeLimit.addActionListener(new SetMoveLimitController(lb));
+		
+		
+		
+		
+	}
+
+	public JTextField getLevelNumber() {
+		return levelNumber;
+	}
+
+	public JTextField getMode() {
+		return mode;
+	}
+	
+	public JTextField getFirstStar() {
+		return firstStar;
+	}
+	public JTextField getSecondStar() {
+		return secondStar;
+	}
+	public JTextField getThirdStar() {
+		return thirdStar;
+	}
+	public JTextField getTimeLimit() {
+		return timeLimit;
+	}
+	public JTextField getMoveLimit() {
+		return moveLimit;
+	}
+	public JTextField getRemoveLimit() {
+		return removeLimit;
+	}
+	public JTextField getSwapLimit() {
+		return swapLimit;
 	}
 }

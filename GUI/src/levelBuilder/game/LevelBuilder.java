@@ -2,19 +2,30 @@ package levelBuilder.game;
 
 import java.util.Enumeration;
 
-import levelBuilder.entity.Model;
-import levelBuilder.entity.Move;
+import levelBuilder.entity.*;
+import levelBuilder.view.*;
 
 public class LevelBuilder {
-	protected Model model;
+	
+	private Model model;
+	// View
+	//protected SplashScrn splashScrn;
+	//protected RequestScreen requestScrn;
+	private LBPanel lbPanel;
+	//protected PreviewScreen previewScrn;
+	//protected QuitScreen quitScrn;
 	
 	//TODO 
 	//protected Application app;
 
 	protected java.util.Stack<Move> moves = new java.util.Stack<Move>();
 	
-	protected LevelBuilder(){
-		
+	
+	// constructor
+	public LevelBuilder(Model m, LBPanel lb){
+		this.model = m;
+		this.setLbPanel(lb);
+		initialize();
 	}
 	
 	//TODO
@@ -27,16 +38,41 @@ public class LevelBuilder {
 	
 	public void initialize(){
 		//TODO
+		//initializeEntity();
+		initializeView();
+		initializeController();
 		
 	}
 	
+	private void initializeView() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initializeController() {
+		// TODO Auto-generated method stub
+		getLbPanel().initializeControllers(this);
+	}
+
+//	private void initializeEntity() {
+//		currentLevel = new CurrentLevel();
+//		bucketList = new BucketList();
+//		disableList = new DisableSquareList();
+//		limits = new Limits();
+//		multi = new Multiplier();
+//		numFrequency = new NumFrequency();
+//		previewBd = new PreviewBoard();
+//		sixList = new SixList();
+//		starGoals = new StarGoals();
+//	}
+
 	public String getName(){
 		//TODO shizheyangma?
 		return "Level Builder";
 	}
 	
 	/**
-	 * Return all moves made so far within this game.
+	 * Return all moves made so far within level builder.
 	 * <p>
 	 * 
 	 * @return Enumeration Move objects that make up the history of the game.
@@ -59,5 +95,22 @@ public class LevelBuilder {
 		return true;
 	}
 
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
+	}
+
+	public LBPanel getLbPanel() {
+		return lbPanel;
+	}
+
+	public void setLbPanel(LBPanel lbPanel) {
+		this.lbPanel = lbPanel;
+	}
+
+	
 }
 

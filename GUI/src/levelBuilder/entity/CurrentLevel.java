@@ -9,6 +9,13 @@ public class CurrentLevel {
 		levelMode = new Hashtable<Integer, String>();
 	}
 	
+	/**
+	 * Put Integer and String to hash table
+	 * 
+	 * @param key
+	 * @param value
+	 * @return String value
+	 */
 	public String put(Integer key, String value){
 		levelMode.put(key, value);		
 		return value;

@@ -1,14 +1,27 @@
 package levelBuilder.move;
 
 import levelBuilder.entity.Move;
+import levelBuilder.entity.StarGoals;
 import levelBuilder.game.LevelBuilder;
 
 public class SetStarGoalsMove extends Move{
+	protected StarGoals starGoals;
+	protected int one;
+	protected int two;
+	protected int three;
+	
+	public SetStarGoalsMove(StarGoals star, int one, int two, int three){
+		this.starGoals = star;
+		this.one = one;
+		this.two = two;
+		this.three = three;
+	}
 
 	@Override
 	public boolean execute(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(lb)) return false;
+		
+		return starGoals.setOne(one)&&starGoals.setTwo(two)&&starGoals.setThree(three);
 	}
 
 	@Override
@@ -19,8 +32,7 @@ public class SetStarGoalsMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		return one>=0&&two>=0&&three>=0;
 	}
 
 	@Override
