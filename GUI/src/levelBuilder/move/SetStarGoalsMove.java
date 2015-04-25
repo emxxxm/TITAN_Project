@@ -32,7 +32,7 @@ public class SetStarGoalsMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		return one>=0&&two>=0&&three>=0;
+		return one>=0&&two>=one&&three>=two;
 	}
 
 	@Override

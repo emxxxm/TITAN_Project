@@ -3,10 +3,12 @@ package levelBuilder.entity;
 public class Position{
 	protected int row;
 	protected int col;
+	protected boolean isDisable;
 	
 	public Position(int row,int col){
 		this.row = row;
 		this.col = col;
+		isDisable = false;
 	}
 	
 	public boolean equals(Object o){
@@ -18,5 +20,9 @@ public class Position{
 		}
 		
 		return false;
+	}
+	
+	public boolean isDisable(){
+		return this.isDisable;
 	}
 }
