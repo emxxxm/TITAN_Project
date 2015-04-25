@@ -41,4 +41,7 @@ public class Model {
 	public Limits getLimits() {
 		return limits;
 	}
+	public DisableSquareList getDisableSquareList() {
+		return disableList;
+	}
 }

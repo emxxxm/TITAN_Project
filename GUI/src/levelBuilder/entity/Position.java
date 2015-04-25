@@ -9,6 +9,7 @@ public class Position{
 		this.col = col;
 	}
 	
+	@Override
 	public boolean equals(Object o){
 		if(o==null) return false;
 		
@@ -18,5 +19,11 @@ public class Position{
 		}
 		
 		return false;
+	}
+	
+	public String toString(){
+		String str="[";
+		str = str + row +" "+ col+"]";
+		return str;
 	}
 }

@@ -375,7 +375,8 @@ public class LBPanel extends JFrame{
 		
 		timeLimit.addActionListener(new SetMoveLimitController(lb));
 		
-		
+		btnDisable.addActionListener(new DisableSquareController(lb));
+		btnEnable.addActionListener(new EnableSquareController(lb));
 		
 		
 	}
@@ -408,5 +409,17 @@ public class LBPanel extends JFrame{
 	}
 	public JTextField getSwapLimit() {
 		return swapLimit;
+	}
+	public JTextField getRowFrom(){
+		return rowFrom;
+	}
+	public JTextField getRowTo(){
+		return rowTo;
+	}
+	public JTextField getColFrom(){
+		return colFrom;
+	}
+	public JTextField getColTo(){
+		return colTo;
 	}
 }
