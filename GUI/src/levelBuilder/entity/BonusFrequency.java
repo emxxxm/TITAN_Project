@@ -17,12 +17,14 @@ public class BonusFrequency {
 	public double getx3(){
 		return x3;
 	}
-	public double setx2(double x2){
+	public boolean setx2(double x2){
 		this.x2 = x2;
-		return x2;
+		System.out.println("set x2 bonus frequency to "+x2);
+		return true;
 	}
-	public double setx3(double x3){
+	public boolean setx3(double x3){
 		this.x3 = x3;
-		return x3;
+		System.out.println("set x3 bonus frequency to "+x3);
+		return true;
 	}
 }
