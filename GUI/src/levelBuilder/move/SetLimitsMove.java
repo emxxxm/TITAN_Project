@@ -40,7 +40,7 @@ public class SetLimitsMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		return timeLimit>=0&&moveLimit>=0&&removeLimit>=0&&swapLimit>=0;
+		return timeLimit>=0 && moveLimit>0 && removeLimit>=0 && swapLimit>=0;
 	}
 
 	@Override

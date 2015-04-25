@@ -6,14 +6,13 @@ import java.awt.event.ActionListener;
 import levelBuilder.entity.Move;
 import levelBuilder.game.LevelBuilder;
 import levelBuilder.move.SetLimitsMove;
-import levelBuilder.view.LBPanel;
 
-public class SetMoveLimitController implements ActionListener{
+public class SetLimitsController implements ActionListener{
 
 	protected LevelBuilder lb;
 //	protected LBPanel panel;
 	
-	public SetMoveLimitController(LevelBuilder lb){
+	public SetLimitsController(LevelBuilder lb){
 		this.lb = lb;
 	}
 	

@@ -41,7 +41,9 @@ public class Model {
 		return limits;
 	}
 	
-	
+	public BonusFrequency getBonusFrequency() {
+		return bonusFreq;
+	}
 	
 	
 	public DisableSquareList getDisableSquareList() {
