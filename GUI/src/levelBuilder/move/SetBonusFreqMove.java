@@ -23,7 +23,6 @@ public class SetBonusFreqMove extends Move{
 	@Override
 	public boolean execute(LevelBuilder lb) {
 		if(!valid(lb)){
-			System.out.println("Bonus frequency input value is not valid");
 			return false;
 		}
 		bf.setx2(x2);
@@ -39,7 +38,16 @@ public class SetBonusFreqMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		return x2>=0 && x2<=1 && x3>=0 && x3<=1;
+		boolean returnBool;
+		if(x2>=0 && x2<=1 && x3>=0 && x3<=1){
+			System.out.println("Bonus frequency input value is valid");
+			returnBool=true;
+		}else{
+			System.out.println("Bonus frequency input value is not valid");
+			returnBool=false;
+		}
+		
+		return returnBool;
 	}
 
 	@Override
