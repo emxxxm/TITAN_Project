@@ -373,7 +373,7 @@ public class LBPanel extends JFrame{
 		
 		thirdStar.addActionListener(new SetStarGoalsController(lb));
 		
-		timeLimit.addActionListener(new SetMoveLimitController(lb));
+		timeLimit.addActionListener(new SetLimitsController(lb));
 		
 		
 		
