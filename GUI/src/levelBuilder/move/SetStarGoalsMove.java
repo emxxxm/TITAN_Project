@@ -21,7 +21,7 @@ public class SetStarGoalsMove extends Move{
 	public boolean execute(LevelBuilder lb) {
 		if(!valid(lb)) return false;
 		
-		return starGoals.setOne(one)&&starGoals.setTwo(two)&&starGoals.setThree(three);
+		return starGoals.setOne(one) && starGoals.setTwo(two) && starGoals.setThree(three);
 	}
 
 	@Override
@@ -32,7 +32,10 @@ public class SetStarGoalsMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		return one>=0&&two>=one&&three>=two;
+
+	
+		return one>=0 && two>=one && three>=two;
+
 	}
 
 	@Override

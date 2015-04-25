@@ -1,14 +1,34 @@
 package levelBuilder.move;
 
+import levelBuilder.entity.BonusFrequency;
 import levelBuilder.entity.Move;
 import levelBuilder.game.LevelBuilder;
-
+/**
+ * Set the frequencies of bonus squares.
+ * @author Ying Lu
+ *
+ */
 public class SetBonusFreqMove extends Move{
+	protected BonusFrequency bf;
+	protected double x2;
+	protected double x3;
+	
+	public SetBonusFreqMove(BonusFrequency bf, double freqx2, double freqx3){
+		this.bf=bf;
+		this.x2=freqx2;
+		this.x3=freqx3;
+	}
+	
 
 	@Override
 	public boolean execute(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(lb)){
+			System.out.println("Bonus frequency input value is not valid");
+			return false;
+		}
+		bf.setx2(x2);
+		bf.setx3(x3);
+		return true;
 	}
 
 	@Override
@@ -19,8 +39,7 @@ public class SetBonusFreqMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		return x2>=0 && x2<=1 && x3>=0 && x3<=1;
 	}
 
 	@Override

@@ -373,7 +373,9 @@ public class LBPanel extends JFrame{
 		
 		thirdStar.addActionListener(new SetStarGoalsController(lb));
 		
-		timeLimit.addActionListener(new SetMoveLimitController(lb));
+		timeLimit.addActionListener(new SetLimitsController(lb));
+		
+		x3.addActionListener(new SetBonusFreqController(lb));
 		
 		frequency6.addActionListener(new SetFreqController(lb));
 		
@@ -444,5 +446,11 @@ public class LBPanel extends JFrame{
 	}
 	public JButton getSixButton(){
 		return btnSetSix;
+	}
+	public JTextField getx2(){
+		return x2;
+	}
+	public JTextField getx3(){
+		return x3;
 	}
 }
