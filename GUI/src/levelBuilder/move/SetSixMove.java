@@ -1,14 +1,25 @@
 package levelBuilder.move;
 
+import levelBuilder.entity.BucketList;
 import levelBuilder.entity.Move;
+import levelBuilder.entity.Position;
+import levelBuilder.entity.SixList;
 import levelBuilder.game.LevelBuilder;
 
 public class SetSixMove extends Move{
-
+	protected SixList six;
+	protected Position pos;
+	
+	public SetSixMove(SixList six, Position pos){
+		this.six = six;
+		this.pos = pos;
+	}
+	
 	@Override
 	public boolean execute(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(lb)) return false;
+		
+		return six.add(pos);
 	}
 
 	@Override
@@ -19,7 +30,7 @@ public class SetSixMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		// TODO Auto-generated method stub
+		if(!pos.isDisable()) return true;
 		return false;
 	}
 
@@ -28,5 +39,6 @@ public class SetSixMove extends Move{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }

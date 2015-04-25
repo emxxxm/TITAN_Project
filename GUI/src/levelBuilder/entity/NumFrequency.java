@@ -19,6 +19,59 @@ public class NumFrequency {
 		this.f6 = f6;
 	}
 	
-	//TODO GET SET
+	public boolean setFre1(double f){
+		if(f < 0) return false;
+		this.f1 = f;
+		System.out.println("freq1 is set to " + this.f1);
+		return true;
+	}
+	public boolean setFre2(double f){
+		if(f < 0) return false;
+		this.f2 = f;
+		System.out.println("freq2 is set to " + this.f2);
+		return true;
+	}
+	public boolean setFre3(double f){
+		if(f < 0) return false;
+		this.f3 = f;
+		System.out.println("freq3 is set to " + this.f3);
+		return true;
+	}
+	public boolean setFre4(double f){
+		if(f < 0) return false;
+		this.f4 = f;
+		System.out.println("freq4 is set to " + this.f4);
+		return true;
+	}
+	public boolean setFre5(double f){
+		if(f < 0) return false;
+		this.f5 = f;
+		System.out.println("freq5 is set to " + this.f5);
+		return true;
+	}public boolean setFre6(double f){
+		if(f < 0) return false;
+		this.f6 = f;
+		System.out.println("freq6 is set to " + this.f6);
+		return true;
+	}
+	
+	public double getFre1(){
+		return this.f1;
+	}
+	public double getFre2(){
+		return this.f2;
+	}
+	public double getFre3(){
+		return this.f3;
+	}
+	public double getFre4(){
+		return this.f4;
+	}
+	public double getFre5(){
+		return this.f5;
+	}
+	public double getFre6(){
+		return this.f6;
+	}
 
 }

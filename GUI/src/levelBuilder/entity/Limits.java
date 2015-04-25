@@ -33,21 +33,21 @@ public class Limits {
 	
 	public void setMoveLimits(int moveLimits){
 		this.moveLimits = moveLimits;
-		System.out.println(this.moveLimits);
+		System.out.println("move limit "+this.moveLimits);
 	}
 	
 	public void setRemoveLimits(int removeLimit){
 		this.removeLimits = removeLimit;
-		System.out.println(this.removeLimits);
+		System.out.println("remove limit "+this.removeLimits);
 	}
 	
 	public void setTimeLimits(int timeL){
 		this.timeLimits = timeL;
-		System.out.println(this.timeLimits);
+		System.out.println("time limit "+this.timeLimits);
 	}
 	
 	public void setSwapLimits(int swapL){
 		this.swapLimits = swapL;
-		System.out.println(this.swapLimits);
+		System.out.println("swap limit "+this.swapLimits);
 	}
 }

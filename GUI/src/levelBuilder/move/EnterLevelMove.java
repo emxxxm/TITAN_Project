@@ -32,7 +32,7 @@ public class EnterLevelMove extends Move{
 				mode = "Puzzle";
 				break;
 			case 2:
-				mode = "Lightning";
+				mode = "Lightening";
 				break;
 			case 3:
 				mode = "Elimination";

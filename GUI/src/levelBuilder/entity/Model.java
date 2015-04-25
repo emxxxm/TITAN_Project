@@ -40,7 +40,24 @@ public class Model {
 	public Limits getLimits() {
 		return limits;
 	}
+	public NumFrequency getNumFrequency(){
+		return numFrequency;
+	}
+	public BucketList getBucket(){
+		return bucketList;
+		
+	}
+
+	public SixList getSix() {
+		// TODO Auto-generated method stub
+		return sixList;
+	}
 	public BonusFrequency getBonusFrequency() {
 		return bonusFreq;
+	}
+	
+	
+	public DisableSquareList getDisableSquareList() {
+		return disableList;
 	}
 }
