@@ -14,7 +14,7 @@ public class CurrentLevel {
 	}
 	
 	/**
-	 * Put level number and calculated mode to hash table.
+	 * Put Integer and String to hash table.
 	 * 
 	 * @param key
 	 * @param value

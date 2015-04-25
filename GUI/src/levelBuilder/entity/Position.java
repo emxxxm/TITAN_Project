@@ -3,7 +3,7 @@ package levelBuilder.entity;
 public class Position{
 	protected int row;
 	protected int col;
-	
+	protected boolean isDisable;
 	public Position(int row,int col){
 		this.row = row;
 		this.col = col;
@@ -20,7 +20,9 @@ public class Position{
 		
 		return false;
 	}
-	
+	public boolean isDisable(){
+		return this.isDisable;
+	}
 	public String toString(){
 		String str="[";
 		str = str + row +" "+ col+"]";
