@@ -1,12 +1,12 @@
 package levelBuilder.entity;
 
-public class Multiplier {
+public class BonusFrequency {
 	protected double x2=0;
 	protected double x3=0;
 	
-	public Multiplier(){}
+	public BonusFrequency(){}
 	
-	public Multiplier(double x2, double x3){
+	public BonusFrequency(double x2, double x3){
 		this.x2 = x2;
 		this.x3 = x3;
 	}

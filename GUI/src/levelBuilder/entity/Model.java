@@ -6,10 +6,9 @@ public class Model {
 	protected StarGoals starGoals;
 	private CurrentLevel currentLevel;
 	protected DisableSquareList disableList;
-	protected Multiplier multiplier;
+	protected BonusFrequency bonusFreq;
 	protected BucketList bucketList;
 	protected Limits limits;
-	protected Multiplier multi;
 	protected PreviewBoard previewBd;
 	protected SixList sixList;
 
@@ -22,7 +21,7 @@ public class Model {
 		bucketList = new BucketList();
 		disableList = new DisableSquareList();
 		limits = new Limits();
-		multi = new Multiplier();
+		bonusFreq = new BonusFrequency();
 		numFrequency = new NumFrequency();
 		previewBd = new PreviewBoard();
 		sixList = new SixList();
@@ -41,6 +40,10 @@ public class Model {
 	public Limits getLimits() {
 		return limits;
 	}
+	
+	
+	
+	
 	public DisableSquareList getDisableSquareList() {
 		return disableList;
 	}

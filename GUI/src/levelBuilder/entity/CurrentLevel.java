@@ -2,6 +2,10 @@ package levelBuilder.entity;
 
 import java.util.Hashtable;
 
+/**
+ * Saves the list of modes and their matching level numbers.
+ *
+ */
 public class CurrentLevel {
 	protected Hashtable<Integer, String> levelMode;
 	
@@ -10,7 +14,7 @@ public class CurrentLevel {
 	}
 	
 	/**
-	 * Put Integer and String to hash table
+	 * Put level number and calculated mode to hash table.
 	 * 
 	 * @param key
 	 * @param value
@@ -23,6 +27,10 @@ public class CurrentLevel {
 	
 	public String get(Integer key){
 		return levelMode.get(key);
+	}
+	
+	public int size(){
+		return levelMode.size();
 	}
 	
 }
