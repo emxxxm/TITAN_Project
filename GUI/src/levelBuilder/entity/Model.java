@@ -2,6 +2,8 @@ package levelBuilder.entity;
 
 public class Model {
 	// Entity
+	protected int curLevelNum;
+	
 	protected NumFrequency numFrequency;
 	protected StarGoals starGoals;
 	private CurrentLevel currentLevel;
@@ -46,6 +48,14 @@ public class Model {
 	public BucketList getBucket(){
 		return bucketList;
 		
+	}
+	
+	public int getCurLevel(){
+		return curLevelNum;
+	}
+	public boolean setCurLevel(int cur){
+		this.curLevelNum = cur;
+		return true;
 	}
 
 	public SixList getSix() {

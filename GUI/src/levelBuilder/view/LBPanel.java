@@ -69,7 +69,7 @@ public class LBPanel extends JFrame{
 		setSize(828, 568);
 		initialize();
 		
-		btnPreview.addActionListener(new BoardPreviewController(new PreviewScreen()));
+		btnPreview.addActionListener(new BoardPreviewController(model));
 		btnQuit.addActionListener(new QuitScreenController(new QuitScreen()));
 	}
 	
@@ -385,6 +385,8 @@ public class LBPanel extends JFrame{
 		
 		btnSetSix.addActionListener(new SetSixController(lb));
 		
+		btnUndo.addActionListener(new UndoController(lb));
+		btnRedo.addActionListener(new RedoController(lb));
 	}
 
 	public JTextField getLevelNumber() {
@@ -463,5 +465,11 @@ public class LBPanel extends JFrame{
 	}
 	public JTextField getx3(){
 		return x3;
+	}
+	public JButton getUndo(){
+		return btnUndo;
+	}
+	public JButton getRedo(){
+		return btnRedo;
 	}
 }

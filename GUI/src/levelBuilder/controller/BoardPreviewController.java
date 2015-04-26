@@ -4,21 +4,24 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import levelBuilder.entity.Model;
 import levelBuilder.view.PreviewScreen;
 
 public class BoardPreviewController implements ActionListener{
-	PreviewScreen request;
+	//PreviewScreen request;
+	Model model;
 	
-	public BoardPreviewController(PreviewScreen rs) {
-		this.request = rs;
+	public BoardPreviewController(Model model) {
+//		this.request = rs;
+		this.model = model;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		request.setVisible(false);
+//		request.setVisible(false);
 		
 		// create screen
-		PreviewScreen preview = new PreviewScreen();
+		PreviewScreen preview = new PreviewScreen(model);
 		preview.setVisible(true);
 		// set controller for previous button
 //		secondScreen.getPreviousButton().addActionListener(new PrevScreenController(main, secondScreen));

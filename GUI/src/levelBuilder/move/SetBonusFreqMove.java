@@ -13,10 +13,15 @@ public class SetBonusFreqMove extends Move{
 	protected double x2;
 	protected double x3;
 	
+	protected double x2_undo;
+	protected double x3_undo;
+	
 	public SetBonusFreqMove(BonusFrequency bf, double freqx2, double freqx3){
 		this.bf=bf;
 		this.x2=freqx2;
 		this.x3=freqx3;
+		this.x2_undo = bf.getx2();
+		this.x3_undo = bf.getx3();
 	}
 	
 
@@ -25,6 +30,10 @@ public class SetBonusFreqMove extends Move{
 		if(!valid(lb)){
 			return false;
 		}
+		
+		lb.getLbPanel().getx2().setText(""+x2);
+		lb.getLbPanel().getx3().setText(""+x3);
+
 		bf.setx2(x2);
 		bf.setx3(x3);
 		return true;
@@ -32,8 +41,10 @@ public class SetBonusFreqMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		lb.getLbPanel().getx2().setText(""+x2_undo);
+		lb.getLbPanel().getx3().setText(""+x3_undo);
+
+		return bf.setx2(x2_undo)&&bf.setx3(x3_undo);
 	}
 
 	@Override

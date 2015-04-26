@@ -20,6 +20,7 @@ public class LevelBuilder {
 
 	protected java.util.Stack<Move> moves = new java.util.Stack<Move>();
 	
+	protected java.util.Stack<Move> redo_moves = new java.util.Stack<Move>();
 	
 	// constructor
 	public LevelBuilder(Model m, LBPanel lb){
@@ -67,7 +68,6 @@ public class LevelBuilder {
 //	}
 
 	public String getName(){
-		//TODO shizheyangma?
 		return "Level Builder";
 	}
 	
@@ -87,11 +87,83 @@ public class LevelBuilder {
 			return null;
 
 		// pop most recent.
-		return (Move) moves.pop();
+		return moves.pop();
 	}
 	
 	public boolean pushMove(Move m) {
 		moves.push(m);
+		redo_moves.clear();
+		return true;
+	}
+	
+	protected Move popRedoMove(){
+		// Return null if the stack of moves is empty.
+		if (redo_moves.isEmpty())
+			return null;
+
+		// pop most recent.
+		return redo_moves.pop();
+	}
+	
+	public boolean pushRedoMove(Move m){
+		redo_moves.push(m);
+		return true;
+	}
+	
+	/**
+	 * undo move only the stacks is not empty
+	 * push the move to the redo stack if undo successfully 
+	 * @return boolean
+	 */
+	public boolean undoMove(){
+		Move m = popMove();
+		// unable to undo
+		if (m == null){
+			// signal our disapproval.
+			java.awt.Toolkit.getDefaultToolkit().beep();
+			return false;
+		}
+		
+		if(!m.undo(this)){
+			// if we can't undo the move, we push it back onto the stack
+			moves.push(m); //pushMove(m);
+			return false;
+		}
+		else { 
+			pushRedoMove(m);
+		}
+		return true;
+	}
+	
+//	/**
+//	 * pop out all the elements in the redo stack
+//	 */
+//	protected void clearRedoStack(){
+//		while(!redo_moves.isEmpty()){
+//			redo_moves.pop();
+//		}
+//	}
+	
+	/**
+	 * redo move only if previous one move is undo
+	 * @return boolean
+	 */
+	public boolean redoMove(){
+		Move m = popRedoMove();
+		
+		if(m== null){
+			// signal our disapproval.
+			java.awt.Toolkit.getDefaultToolkit().beep();
+			return false;
+		}
+		
+		if(!m.execute(this)){
+			pushRedoMove(m);
+			return false;
+		}
+		else {
+			moves.push(m); //pushMove(m);
+		}
 		return true;
 	}
 

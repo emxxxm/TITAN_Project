@@ -23,8 +23,7 @@ public class SetBucketMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		return bucket.remove(pos);
 	}
 
 	@Override
