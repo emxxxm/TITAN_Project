@@ -10,6 +10,8 @@ public class BucketList {
 	}
 	
 	public boolean add(Position ps){
+		if(inList(ps)) return false;
+
 		if(bList.add(ps)){
 			System.out.println("Bucket at Position (" + ps.row + " ," + ps.col +") is set!");
 			return true;
@@ -25,6 +27,14 @@ public class BucketList {
 		if(bList.remove(ps)){
 			System.out.println("Bucket at Position (" + ps.row + " ," + ps.col +") is removed!");
 			return true;
+		}
+		return false;
+	}
+
+	public boolean inList(Position ps){
+		for(Position pos:bList){
+			if(pos.equals(ps))
+				return true;
 		}
 		return false;
 	}

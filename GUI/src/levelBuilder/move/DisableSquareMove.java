@@ -23,12 +23,12 @@ public class DisableSquareMove extends Move{
 	
 	@Override
 	public boolean execute(LevelBuilder lb) {
-		// TODO Auto-generated method stub
 		if(!valid(lb)) return false;
 		
 		for(int i=rowFrom;i<=rowTo;i++){
 			for(int j=colFrom;j<=colTo;j++){
-				dsList.add(new Position(i,j));
+				if(!dsList.add(new Position(i,j))) 
+					return false; // should never reach here
 			}
 		}
 		
@@ -37,8 +37,15 @@ public class DisableSquareMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		for(int i=rowFrom;i<=rowTo;i++){
+			for(int j = colFrom;j<=colTo;j++){
+				if(!dsList.remove(new Position(i,j))){
+					System.out.println("Never should reach here");
+					return false; // never reach here
+				}
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -50,7 +57,7 @@ public class DisableSquareMove extends Move{
 				||colTo<0||colTo>=9) 
 			return false;			
 		
-		if(rowFrom>rowTo||colFrom>rowTo) 
+		if(rowFrom>rowTo||colFrom>colTo) 
 			return false;
 		
 		return true;

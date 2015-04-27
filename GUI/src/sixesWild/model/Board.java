@@ -7,6 +7,7 @@ public class Board
 	//This should be an ArrayList of square.
 	protected ArrayList<Square> squares;
 	protected ArrayList<Square> selectedSquares;
+	protected ArrayList<Integer> starScore;
 	protected int currLevel;
 	protected int removeLeft;
 	protected int swapLeft;
@@ -18,20 +19,28 @@ public class Board
 		//Then, square, then board.
 		squares = new ArrayList<Square>();
 		selectedSquares = new ArrayList<Square>();
-		System.out.println("Board: "+level.getSquareType().size());
+		//System.out.println("Board: "+level.getSquareType().size());
 		for(int i=0; i<level.getSquareType().size(); i++)
 		{
 			Tile newTile=new Tile(level.getTileNum().get(i), level.getTileMulti().get(i));
 			Square newSquare=new Square(newTile, i/9, i%9, level.getSquareType().get(i));
 			squares.add(newSquare);
 		}
+		this.starScore = level.getStarScore();
 		this.currLevel = level.getLevelNum();
 		this.removeLeft=level.getRemoveLimit();
 		this.swapLeft=level.getSwapLimit();
 		this.currScore=0;
 	}
+	
+	public ArrayList<Integer> getStarScore()
+	{
+		return this.starScore;
+	}
+	
 	public Square getSquare(int row, int col)
 	{
+		//System.out.println("In getSquare: row is "+ row);
 		return squares.get(9*row+col);
 	}
 	public ArrayList<Square> getSelectedSquares()
@@ -60,9 +69,39 @@ public class Board
 		return this.swapLeft;
 	}
 	
+	public boolean setSwapLeft(int delta)
+	{
+		if(delta > 0)
+		{
+			return false;
+		}
+		this.swapLeft+=delta;
+		return true;
+	}
+	
+	public boolean setRemoveLeft(int delta)
+	{
+		if(delta > 0)
+		{
+			return false;
+		}
+		this.removeLeft+=delta;
+		return true;
+	}
+	
 	public int getCurrScore()
 	{
 		return this.currScore;
+	}
+	
+	public boolean setCurrScore(int delta)
+	{
+		if(delta < 0)
+		{
+			return false;
+		}
+		this.currScore += delta;
+		return true;
 	}
 	
 	public ArrayList<Integer> getSquareType()

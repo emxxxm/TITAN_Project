@@ -5,7 +5,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import sixesWild.controller.moves.NormalMove;
+import sixesWild.controller.moves.UpdateTileMove;
 import sixesWild.model.Model;
+import sixesWild.model.PuzzleBoard;
+import sixesWild.model.Square;
 import sixesWild.view.BoardView;
 
 public class PlayPanelController implements MouseListener, MouseMotionListener
@@ -48,10 +51,10 @@ public class PlayPanelController implements MouseListener, MouseMotionListener
 		int newRow = this.getRow(e.getY());
 		if(newCol!=lastCol || newRow!=lastRow)
 		{
-			NormalMove nm=new NormalMove(model, newCol, newRow, lastCol, lastRow);
-			if(nm.isValid())
+			NormalMove nm=new NormalMove(model, newRow, newCol, lastRow, lastCol);
+			//If doMove is valid, update lastRow and lastCol, if it's not valid, clear the already selected squares.
+			if(nm.doMove())
 			{
-				nm.doMove();
 				lastCol=newCol;
 				lastRow=newRow;
 				//System.out.println("Here");
@@ -82,24 +85,49 @@ public class PlayPanelController implements MouseListener, MouseMotionListener
 		// TODO Auto-generated method stub
 		//Set lastRow and lastCol.
 		lastCol = this.getCol(e.getX());
-		lastRow = this.getRow(e.getX());		
+		lastRow = this.getRow(e.getY());
+		//Add the first square to selectedSquares.
+		Square firstSquare = model.getBoard().getSquare(lastRow, lastCol);
+		if(firstSquare.getType()==1)
+		{
+			model.getBoard().addSelectedSquare(model.getBoard().getSquare(lastRow, lastCol));
+			bv.getPlayPanel().repaint();
+		}
+		System.out.println("last Col is "+lastCol);
+		System.out.println("last Row is "+lastRow);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		//Initialize a move to check whether the sum is 6.
+		//Then, drop new squares.
+		//At this point, empty the selected square array and check the result.
+		//Need to update score, move left.
+		UpdateTileMove utm =new UpdateTileMove(model);
+		if(!utm.doMove())
+		{
+			model.getBoard().getSelectedSquares().clear();
+		}
+		model.getBoard().getSelectedSquares().clear();
+		bv.getPlayPanel().repaint();
+		System.out.println(model.getBoard().getCurrScore());
+		bv.getScoreLabel().setText("Score: "+model.getBoard().getCurrScore());
+		bv.getProgressBar().setValue(model.getBoard().getCurrScore());
+		if(model.getBoard() instanceof PuzzleBoard)
+		{
+			bv.getMoveLeftLabel().setText("Move Left: "+((PuzzleBoard)(model.getBoard())).getMoveLeft());
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("Here!");
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("OUT!");
 		
 	}
 	

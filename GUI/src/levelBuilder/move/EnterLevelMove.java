@@ -1,19 +1,22 @@
 package levelBuilder.move;
 
 import levelBuilder.entity.CurrentLevel;
+import levelBuilder.entity.Model;
 import levelBuilder.entity.Move;
 import levelBuilder.game.LevelBuilder;
 
 public class EnterLevelMove extends Move{
 
-	protected CurrentLevel currentLevel;
+	protected Model model;
 	protected Integer lvNum;
+	protected Integer lvNum_undo;
 	
-	public EnterLevelMove(CurrentLevel cl, Integer val){
+	public EnterLevelMove(Model model, Integer val){
 		super();
 		
-		this.currentLevel = cl;
+		this.model = model;
 		this.lvNum = val;
+		this.lvNum_undo = model.getCurLevel();
 	}
 	
 	
@@ -24,7 +27,7 @@ public class EnterLevelMove extends Move{
 		
 		boolean valid = true;
 		String mode="";
-		
+		model.setCurLevel(lvNum);
 		int remainder = lvNum % 4;
 		
 		switch(remainder){
@@ -32,7 +35,7 @@ public class EnterLevelMove extends Move{
 				mode = "Puzzle";
 				break;
 			case 2:
-				mode = "Lightening";
+				mode = "Lightning";
 				break;
 			case 3:
 				mode = "Elimination";
@@ -44,14 +47,23 @@ public class EnterLevelMove extends Move{
 				valid = false;
 				break;
 		}
-		if(valid) currentLevel.put(lvNum, mode);
+		
+		if(valid) model.getCurrentLevel().put(lvNum, mode);
+		
+		lb.getLbPanel().getLevelNumber().setText(""+lb.getModel().getCurLevel());
+		lb.getLbPanel().getMode().setText(lb.getModel().getCurrentLevel().get(lvNum));
+
 		return valid;
 	}
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		//TODO
-		return false;
+		model.setCurLevel(lvNum_undo);
+
+		lb.getLbPanel().getLevelNumber().setText(""+lb.getModel().getCurLevel());
+		
+		lb.getLbPanel().getMode().setText(lb.getModel().getCurrentLevel().get(lvNum_undo));
+		return true;
 	}
 
 	@Override

@@ -24,8 +24,7 @@ public class SetSixMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		return six.remove(pos);
 	}
 
 	@Override

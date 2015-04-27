@@ -21,14 +21,13 @@ public class EnterLevelController implements ActionListener{
 		// TODO Auto-generated method stub
 		String val = lb.getLbPanel().getLevelNumber().getText();
 		Integer i = Integer.parseInt(val);
-		Move m = new EnterLevelMove(lb.getModel().getCurrentLevel(), i);
+		Move m = new EnterLevelMove(lb.getModel(), i);
 		
 		if(m.execute(lb)){
 //			System.out.println("sssssssss: "+val);
 			lb.pushMove(m);
 		}
 		
-		lb.getLbPanel().getMode().setText(lb.getModel().getCurrentLevel().get(i));
 	}
 	
 }

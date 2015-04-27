@@ -29,7 +29,7 @@ public class EnableSquareMove extends Move{
 		for(int i=rowFrom;i<=rowTo;i++){
 			for(int j = colFrom;j<=colTo;j++){
 				if(!dsList.remove(new Position(i,j))){
-					return false;
+					return false; // never reach here
 				}
 			}
 		}
@@ -38,8 +38,13 @@ public class EnableSquareMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		for(int i=rowFrom;i<=rowTo;i++){
+			for(int j=colFrom;j<=colTo;j++){
+				if(!dsList.add(new Position(i,j))) 
+					return false; // should never reach here
+			}
+		}
+		return true;
 	}
 
 	@Override

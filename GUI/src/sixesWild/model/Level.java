@@ -15,6 +15,8 @@ public class Level
 	protected int swapLimit;
 	protected int removeLimit;
 	protected ArrayList<Integer> starGoals;
+	protected ArrayList<Integer> numFrequency;
+	protected ArrayList<Integer> multiFrequency;
 	//Represents the type of the square,
 	//0: Disable
 	//1: Normal
@@ -31,6 +33,8 @@ public class Level
 			int swapLimit, 
 			int removeLimit, 
 			ArrayList<Integer> starGoals, 
+			ArrayList<Integer> numFrequency,
+			ArrayList<Integer> multiFrequency,
 			ArrayList<Integer> squareType, 
 			ArrayList<Integer> tileNum,
 			ArrayList<Integer> tileMulti)
@@ -42,11 +46,29 @@ public class Level
 		this.swapLimit=swapLimit;
 		this.removeLimit=removeLimit;
 		this.starGoals=starGoals;
+		this.numFrequency=numFrequency;
+		this.multiFrequency=multiFrequency;
 		this.squareType=squareType;
 		this.tileNum=tileNum;
 		this.tileMulti=tileMulti;
 	}
 	//Getters.
+	
+	public ArrayList<Integer> getNumFrequency()
+	{
+		return this.numFrequency;
+	}
+	
+	public ArrayList<Integer> getMultiFrequency()
+	{
+		return this.multiFrequency;
+	}
+	
+	public ArrayList<Integer> getStarScore()
+	{
+		return this.starGoals;
+	}
+	
 	public int getLevelNum()
 	{
 		return this.levelNum;

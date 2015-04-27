@@ -12,12 +12,21 @@ public class SetLimitsMove extends Move{
 	protected int removeLimit;
 	protected int swapLimit;
 	
+	protected int timeLimit_undo;
+	protected int moveLimit_undo;
+	protected int removeLimit_undo;
+	protected int swapLimit_undo;
+	
 	public SetLimitsMove(Limits l, int time, int move, int remove, int swap){
 		this.limit = l;
 		this.timeLimit = time;
 		this.moveLimit = move;
 		this.removeLimit = remove;
 		this.swapLimit = swap;
+		this.timeLimit_undo = l.getTimeLimits();
+		this.moveLimit_undo = l.getMoveLimits();
+		this.removeLimit_undo = l.getRemoveLimits();
+		this.swapLimit_undo = l.getSwapLimits();
 	}
 
 	@Override
@@ -25,6 +34,11 @@ public class SetLimitsMove extends Move{
 
 		if(!valid(lb)) return false;
 		
+		lb.getLbPanel().getTimeLimit().setText(""+timeLimit);
+		lb.getLbPanel().getMoveLimit().setText(""+moveLimit);
+		lb.getLbPanel().getRemoveLimit().setText(""+removeLimit);
+		lb.getLbPanel().getSwapLimit().setText(""+swapLimit);
+
 		limit.setTimeLimits(timeLimit);
 		limit.setMoveLimits(moveLimit);
 		limit.setRemoveLimits(removeLimit);
@@ -34,8 +48,16 @@ public class SetLimitsMove extends Move{
 
 	@Override
 	public boolean undo(LevelBuilder lb) {
-		// TODO Auto-generated method stub
-		return false;
+		lb.getLbPanel().getTimeLimit().setText(""+timeLimit_undo);
+		lb.getLbPanel().getMoveLimit().setText(""+moveLimit_undo);
+		lb.getLbPanel().getRemoveLimit().setText(""+removeLimit_undo);
+		lb.getLbPanel().getSwapLimit().setText(""+swapLimit_undo);
+
+		
+		return limit.setTimeLimits(timeLimit_undo)
+				&& limit.setMoveLimits(moveLimit_undo)
+				&& limit.setRemoveLimits(removeLimit_undo)
+				&& limit.setSwapLimits(swapLimit_undo);
 	}
 
 	@Override
