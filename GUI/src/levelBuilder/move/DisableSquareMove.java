@@ -57,7 +57,7 @@ public class DisableSquareMove extends Move{
 				||colTo<0||colTo>=9) 
 			return false;			
 		
-		if(rowFrom>rowTo||colFrom>rowTo) 
+		if(rowFrom>rowTo||colFrom>colTo) 
 			return false;
 		
 		return true;

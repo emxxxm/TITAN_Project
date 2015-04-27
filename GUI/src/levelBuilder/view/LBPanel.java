@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import levelBuilder.controller.BoardPreviewController;
+import levelBuilder.controller.LevelSaveController;
 import levelBuilder.controller.QuitScreenController;
 import levelBuilder.entity.Model;
 import levelBuilder.game.LevelBuilder;
@@ -387,6 +388,8 @@ public class LBPanel extends JFrame{
 		
 		btnUndo.addActionListener(new UndoController(lb));
 		btnRedo.addActionListener(new RedoController(lb));
+	
+		btnSave.addActionListener(new LevelSaveController(lb.getModel()));
 	}
 
 	public JTextField getLevelNumber() {
