@@ -10,6 +10,9 @@ public class DisableSquareList {
 	}
 	
 	public boolean add(Position ps){
+		if(inList(ps)) return false;
+		
+		System.out.println("add one position "+ps.toString());
 		return dsList.add(ps);
 	}
 	
@@ -18,8 +21,19 @@ public class DisableSquareList {
 	}
 	
 	public boolean remove(Position ps){
-		return dsList.remove(ps);
+		if(dsList.remove(ps)){
+			System.out.println("remove one position "+ps.toString());
+			return true;
+		}
+		return false;
 	}
 	
+	public boolean inList(Position ps){
+		for(Position pos:dsList){
+			if(pos.equals(ps))
+				return true;
+		}
+		return false;
+	}
 	
 }

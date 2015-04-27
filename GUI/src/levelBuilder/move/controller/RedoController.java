@@ -4,17 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import levelBuilder.game.LevelBuilder;
-import levelBuilder.view.LBPanel;
 
-public class SetMoveLimitController implements ActionListener{
+public class RedoController implements ActionListener{
 
 	protected LevelBuilder lb;
-	protected LBPanel panel;
+	
+	public RedoController(LevelBuilder lb){
+		this.lb = lb;
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Redo");
+		lb.redoMove();
 	}
 
 }

@@ -10,7 +10,13 @@ public class SixList {
 	}
 	
 	public boolean add(Position ps){
-		return sList.add(ps);
+		if(inList(ps)) return false;
+
+		if(sList.add(ps)){
+			System.out.println("Six at Position (" + ps.row + " ," + ps.col +") is set!");
+			return true;
+		}
+		return false;
 	}
 	
 	public void clearAll(){
@@ -18,7 +24,19 @@ public class SixList {
 	}
 	
 	public boolean remove(Position ps){
-		return sList.remove(ps);
+		if(sList.remove(ps)){
+			System.out.println("Six at Position (" + ps.row + " ," + ps.col +") is removed!");
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean inList(Position ps){
+		for(Position pos:sList){
+			if(pos.equals(ps))
+				return true;
+		}
+		return false;
 	}
 	
 }

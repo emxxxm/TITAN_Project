@@ -18,9 +18,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import levelBuilder.controller.BoardPreviewController;
+import levelBuilder.controller.LevelSaveController;
 import levelBuilder.controller.QuitScreenController;
+import levelBuilder.entity.Model;
+import levelBuilder.game.LevelBuilder;
+import levelBuilder.move.controller.*;
 
 public class LBPanel extends JFrame{
+	
+	Model model;
+	
 	JLabel levelBuilder;
 	JButton btnSave;
 	JButton btnPreview;
@@ -33,40 +40,41 @@ public class LBPanel extends JFrame{
 	JButton btnQuit;
 	
 	private JTextField levelNumber;
-	private JTextField Mode;
+	private JTextField mode;
 	private JTextField firstStar;
 	private JTextField secondStar;
 	private JTextField thirdStar;
 	private JTextField moveLimit;
 	private JTextField swapLimit;
 	private JTextField timeLimit;
+	private JTextField removeLimit;
 	private JTextField textField_10;
 	private JTextField rowFrom;
 	private JTextField rowTo;
 	private JTextField colFrom;
-	private JTextField removeLimit;
-	private JTextField frequecy1;
-	private JTextField frequecy2;
-	private JTextField frequecy3;
-	private JTextField frequecy4;
-	private JTextField frequecy5;
-	private JTextField frequecy6;
+	private JTextField frequency1;
+	private JTextField frequency2;
+	private JTextField frequency3;
+	private JTextField frequency4;
+	private JTextField frequency5;
+	private JTextField frequency6;
 	private JTextField colTo;
 	private JTextField x2;
 	private JTextField x3;
 	private JTextField bucketRow;
 	private JTextField bucketCol;
 	
-	public LBPanel(){
+	public LBPanel(Model model){
 		super();
+		this.model = model;
 		setSize(828, 568);
 		initialize();
 		
-		btnPreview.addActionListener(new BoardPreviewController(new PreviewScreen()));
+		btnPreview.addActionListener(new BoardPreviewController(model));
 		btnQuit.addActionListener(new QuitScreenController(new QuitScreen()));
 	}
 	
-	void initialize(){
+	private void initialize(){
 		levelBuilder = new JLabel();
 		levelBuilder.setBounds(22, 0, 211, 35);
 		levelBuilder.setFont(new Font("Calibri", Font.BOLD, 19));
@@ -77,14 +85,15 @@ public class LBPanel extends JFrame{
 		
 		levelNumber = new JTextField();
 		levelNumber.setBounds(121, 47, 134, 28);
-		levelNumber.setColumns(10);
+		levelNumber.setColumns(10);	
+		levelNumber.setToolTipText("Enter level number here");
 		
 		JLabel lblMode = new JLabel("Mode :");
 		lblMode.setBounds(22, 99, 42, 16);
 		
-		Mode = new JTextField();
-		Mode.setBounds(121, 93, 134, 28);
-		Mode.setColumns(10);
+		mode = new JTextField();
+		mode.setBounds(121, 93, 134, 28);
+		mode.setColumns(10);
 		
 		JLabel lblSetStars = new JLabel("Set Stars:");
 		lblSetStars.setBounds(22, 139, 233, 16);
@@ -187,17 +196,17 @@ public class LBPanel extends JFrame{
 		JLabel label_2 = new JLabel("3 :");
 		label_2.setBounds(349, 251, 16, 16);
 		
-		frequecy1 = new JTextField();
-		frequecy1.setBounds(377, 165, 63, 28);
-		frequecy1.setColumns(10);
+		frequency1 = new JTextField();
+		frequency1.setBounds(377, 165, 63, 28);
+		frequency1.setColumns(10);
 		
-		frequecy2 = new JTextField();
-		frequecy2.setBounds(377, 205, 63, 28);
-		frequecy2.setColumns(10);
+		frequency2 = new JTextField();
+		frequency2.setBounds(377, 205, 63, 28);
+		frequency2.setColumns(10);
 		
-		frequecy3 = new JTextField();
-		frequecy3.setBounds(377, 245, 63, 28);
-		frequecy3.setColumns(10);
+		frequency3 = new JTextField();
+		frequency3.setBounds(377, 245, 63, 28);
+		frequency3.setColumns(10);
 		
 		JLabel label_3 = new JLabel("4 :");
 		label_3.setBounds(481, 171, 16, 16);
@@ -208,17 +217,17 @@ public class LBPanel extends JFrame{
 		JLabel label_5 = new JLabel("6 :");
 		label_5.setBounds(481, 251, 16, 16);
 		
-		frequecy4 = new JTextField();
-		frequecy4.setBounds(503, 165, 63, 28);
-		frequecy4.setColumns(10);
+		frequency4 = new JTextField();
+		frequency4.setBounds(503, 165, 63, 28);
+		frequency4.setColumns(10);
 		
-		frequecy5 = new JTextField();
-		frequecy5.setBounds(503, 205, 63, 28);
-		frequecy5.setColumns(10);
+		frequency5 = new JTextField();
+		frequency5.setBounds(503, 205, 63, 28);
+		frequency5.setColumns(10);
 		
-		frequecy6 = new JTextField();
-		frequecy6.setBounds(503, 245, 63, 28);
-		frequecy6.setColumns(10);
+		frequency6 = new JTextField();
+		frequency6.setBounds(503, 245, 63, 28);
+		frequency6.setColumns(10);
 		
 		colTo = new JTextField();
 		colTo.setBounds(490, 87, 74, 28);
@@ -275,7 +284,7 @@ public class LBPanel extends JFrame{
 		getContentPane().add(lblMode);
 		getContentPane().add(lblBuilderlevel);
 		getContentPane().add(levelNumber);
-		getContentPane().add(Mode);
+		getContentPane().add(mode);
 		getContentPane().add(lblColumn);
 		getContentPane().add(lblRow);
 		getContentPane().add(rowFrom);
@@ -285,17 +294,17 @@ public class LBPanel extends JFrame{
 		getContentPane().add(btnEnable);
 		getContentPane().add(btnDisable);
 		getContentPane().add(label_2);
-		getContentPane().add(frequecy3);
+		getContentPane().add(frequency3);
 		getContentPane().add(label_5);
-		getContentPane().add(frequecy6);
+		getContentPane().add(frequency6);
 		getContentPane().add(label_1);
-		getContentPane().add(frequecy2);
+		getContentPane().add(frequency2);
 		getContentPane().add(label_4);
-		getContentPane().add(frequecy5);
+		getContentPane().add(frequency5);
 		getContentPane().add(label);
-		getContentPane().add(frequecy1);
+		getContentPane().add(frequency1);
 		getContentPane().add(label_3);
-		getContentPane().add(frequecy4);
+		getContentPane().add(frequency4);
 		getContentPane().add(firstStar);
 		getContentPane().add(secondStar);
 		getContentPane().add(thirdStar);
@@ -355,6 +364,115 @@ public class LBPanel extends JFrame{
 		btnQuit.setBounds(600, 440, 98, 29);
 		getContentPane().add(btnQuit);
 		
+		//initializeControllers();
+	}
+	
+	public void initializeControllers(LevelBuilder lb){
+		// initialize the enter level text field
+		//TODO
+		levelNumber.addActionListener(new EnterLevelController(lb));
 		
+		thirdStar.addActionListener(new SetStarGoalsController(lb));
+		
+		timeLimit.addActionListener(new SetLimitsController(lb));
+		
+		x3.addActionListener(new SetBonusFreqController(lb));
+		
+		btnDisable.addActionListener(new DisableSquareController(lb));
+		btnEnable.addActionListener(new EnableSquareController(lb));
+		frequency6.addActionListener(new SetFreqController(lb));
+		
+		btnBucket.addActionListener(new SetBucketController(lb));
+		
+		btnSetSix.addActionListener(new SetSixController(lb));
+		
+		btnUndo.addActionListener(new UndoController(lb));
+		btnRedo.addActionListener(new RedoController(lb));
+	
+		btnSave.addActionListener(new LevelSaveController(lb.getModel()));
+	}
+
+	public JTextField getLevelNumber() {
+		return levelNumber;
+	}
+
+	public JTextField getMode() {
+		return mode;
+	}
+	
+	public JTextField getFirstStar() {
+		return firstStar;
+	}
+	public JTextField getSecondStar() {
+		return secondStar;
+	}
+	public JTextField getThirdStar() {
+		return thirdStar;
+	}
+	public JTextField getTimeLimit() {
+		return timeLimit;
+	}
+	public JTextField getMoveLimit() {
+		return moveLimit;
+	}
+	public JTextField getRemoveLimit() {
+		return removeLimit;
+	}
+	public JTextField getSwapLimit() {
+		return swapLimit;
+	}
+	public JTextField getRowFrom(){
+		return rowFrom;
+	}
+	public JTextField getRowTo(){
+		return rowTo;
+	}
+	public JTextField getColFrom(){
+		return colFrom;
+	}
+	public JTextField getColTo(){
+		return colTo;
+	}
+	public JTextField getFreq1(){
+		return frequency1;
+	}
+	public JTextField getFreq2(){
+		return frequency2;
+	}
+	public JTextField getFreq3(){
+		return frequency3;
+	}
+	public JTextField getFreq4(){
+		return frequency4;
+	}
+	public JTextField getFreq5(){
+		return frequency5;
+	}
+	public JTextField getFreq6(){
+		return frequency6;
+	}
+	public JTextField getBucketRow(){
+		return bucketRow;
+	}
+	public JTextField getBucketCol(){
+		return bucketCol;
+	}
+	public JButton getBucketButton(){
+		return btnBucket;
+	}
+	public JButton getSixButton(){
+		return btnSetSix;
+	}
+	public JTextField getx2(){
+		return x2;
+	}
+	public JTextField getx3(){
+		return x3;
+	}
+	public JButton getUndo(){
+		return btnUndo;
+	}
+	public JButton getRedo(){
+		return btnRedo;
 	}
 }
