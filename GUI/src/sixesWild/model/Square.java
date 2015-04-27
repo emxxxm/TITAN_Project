@@ -1,12 +1,22 @@
 package sixesWild.model;
 
-public class Square 
+import java.util.Comparator;
+
+public class Square implements Comparable
 {
 	protected Tile tile;
 	protected int row;
 	protected int col;
 	//Is this correct? 
 	protected int type;
+	
+	public Square()
+	{
+		this.tile = null;
+		this.row=0;
+		this.col=0;
+		this.type=0;
+	}
 	
 	public Square(Tile tile, int row, int col, int type)
 	{
@@ -49,5 +59,13 @@ public class Square
 		}
 		return false;
 		
+	}
+
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		int inputRow = ((Square)o).getRow();
+		return inputRow-this.row;
 	}
 }
