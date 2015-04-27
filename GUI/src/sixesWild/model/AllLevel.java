@@ -9,6 +9,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * If we drag outside the panel, we need to through an exception.
+ */
+
 public class AllLevel 
 {
 	ArrayList<Level> levels;
@@ -32,6 +36,8 @@ public class AllLevel
 		//levels[0]=new Level(0, false, numLevels, numLevels, numLevels, numLevels, null, null, null, null);
 		levels=new ArrayList<Level>();
 		ArrayList<Integer> starGoals;
+		ArrayList<Integer> numFrequency;
+		ArrayList<Integer> multiFrequency;
 		ArrayList<Integer> squareType;
 		ArrayList<Integer> tileNum;
 		ArrayList<Integer> tileMulti;
@@ -48,27 +54,40 @@ public class AllLevel
 				fileString.add(text);
 				text=reader.readLine();
 			}
+			System.out.println("Here");
+			System.out.println(fileString.get(0));
 			numLevels=Integer.parseInt(fileString.get(0));	
 			for(int cnt=0; cnt<numLevels; cnt++)
 			{
 				starGoals = new ArrayList<Integer>();
+				numFrequency = new ArrayList<Integer>();
+				multiFrequency = new ArrayList<Integer>();
 				squareType = new ArrayList<Integer>();
 				tileNum = new ArrayList<Integer>();
 				tileMulti = new ArrayList<Integer>();
 				//Assume the data block for 1 level takes 5 lines.
-				int levelNum=Integer.parseInt(fileString.get(1+9*cnt));
-				int moveLimit=Integer.parseInt(fileString.get(2+9*cnt));
-				int timeLimit=Integer.parseInt(fileString.get(3+9*cnt));
-				int swapLimit=Integer.parseInt(fileString.get(4+9*cnt));
-				int removeLimit=Integer.parseInt(fileString.get(5+9*cnt));
-				String[] starGoalsArray=fileString.get(6+9*cnt).split(" ");
-				String[] squareTypeArray=fileString.get(7+9*cnt).split(" ");
-				System.out.println(fileString.get(7+9*cnt));
-				String[] tileNumArray=fileString.get(8+9*cnt).split(" ");
-				String[] tileMultiArray=fileString.get(9+9*cnt).split(" ");
+				int levelNum=Integer.parseInt(fileString.get(1+11*cnt));
+				int moveLimit=Integer.parseInt(fileString.get(2+11*cnt));
+				int timeLimit=Integer.parseInt(fileString.get(3+11*cnt));
+				int swapLimit=Integer.parseInt(fileString.get(4+11*cnt));
+				int removeLimit=Integer.parseInt(fileString.get(5+11*cnt));
+				String[] starGoalsArray=fileString.get(6+11*cnt).split(" ");
+				String[] numFrequencyArray=fileString.get(7+11*cnt).split(" ");
+				String[] multiFrequencyArray=fileString.get(8+11*cnt).split(" ");
+				String[] squareTypeArray=fileString.get(9+11*cnt).split(" ");
+				String[] tileNumArray=fileString.get(10+11*cnt).split(" ");
+				String[] tileMultiArray=fileString.get(11+11*cnt).split(" ");
 				for(int i=0;i<starGoalsArray.length;i++)
 				{
 					starGoals.add(Integer.parseInt(starGoalsArray[i]));
+				}
+				for(int i=0;i<numFrequencyArray.length;i++)
+				{
+					numFrequency.add(Integer.parseInt(numFrequencyArray[i]));
+				}
+				for(int i=0;i<multiFrequencyArray.length;i++)
+				{
+					multiFrequency.add(Integer.parseInt(multiFrequencyArray[i]));
 				}
 				for(int i=0;i<squareTypeArray.length;i++)
 				{
@@ -84,11 +103,7 @@ public class AllLevel
 				}
 				System.out.println(squareType.size());
 				//Lock is read in from other file later. It is set to false for now.
-				levels.add(new Level(levelNum, false, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, squareType, tileNum, tileMulti));
-			}
-			for(int i=0; i<levels.size();i++)
-			{
-				System.out.println(levels.get(i).getLevelNum());
+				levels.add(new Level(levelNum, false, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, numFrequency, multiFrequency, squareType, tileNum, tileMulti));
 			}
 			System.out.println("Here");
 		}
