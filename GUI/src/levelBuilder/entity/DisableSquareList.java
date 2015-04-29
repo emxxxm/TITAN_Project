@@ -40,4 +40,8 @@ public class DisableSquareList {
 		return false;
 	}
 	
+	public int sizeof(){
+		return dsList.size();
+	}
+	
 }

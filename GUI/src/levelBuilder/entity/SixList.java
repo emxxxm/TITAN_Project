@@ -42,4 +42,20 @@ public class SixList {
 		return false;
 	}
 	
+	public int sizeof(){
+		return sList.size();
+	}
+	
+	public String printList(){
+		String str = "";
+		for(Position pos:sList){
+			str += pos.row;
+			str += " ";
+			str += pos.col;
+			str += " ";
+		}
+		
+		return str;
+	}
+	
 }
