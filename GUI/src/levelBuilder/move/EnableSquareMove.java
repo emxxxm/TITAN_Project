@@ -28,9 +28,7 @@ public class EnableSquareMove extends Move{
 		
 		for(int i=rowFrom;i<=rowTo;i++){
 			for(int j = colFrom;j<=colTo;j++){
-				if(!dsList.remove(new Position(i,j))){
-					return false; // never reach here
-				}
+				dsList.remove(new Position(i,j));
 			}
 		}
 		return true;
@@ -40,8 +38,7 @@ public class EnableSquareMove extends Move{
 	public boolean undo(LevelBuilder lb) {
 		for(int i=rowFrom;i<=rowTo;i++){
 			for(int j=colFrom;j<=colTo;j++){
-				if(!dsList.add(new Position(i,j))) 
-					return false; // should never reach here
+				dsList.add(new Position(i,j));
 			}
 		}
 		return true;
@@ -55,7 +52,7 @@ public class EnableSquareMove extends Move{
 				||colTo<0||colTo>=9) 
 			return false;			
 
-		if(rowFrom>rowTo||colFrom>rowTo) 
+		if(rowFrom>rowTo||colFrom>colTo) 
 			return false;
 		
 		for(int i=rowFrom;i<=rowTo;i++){

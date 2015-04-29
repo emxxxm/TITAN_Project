@@ -19,22 +19,28 @@ public class TestSetStarGoalsMove extends TestCase{
 	}
 	
 	public void testInvalid(){
-		StarGoals starGoals = new StarGoals();
-		SetStarGoalsMove newGoals = new SetStarGoalsMove(starGoals, -1,0,1);
+//		StarGoals starGoals = new StarGoals();
+		SetStarGoalsMove newGoals = new SetStarGoalsMove(m.getStarGoals(), -1,0,1);
 		assertFalse(newGoals.valid(lb));
 		assertFalse(newGoals.execute(lb));
 		
 
-		SetStarGoalsMove newGoals2 = new SetStarGoalsMove(starGoals, 200,10,30);
+		SetStarGoalsMove newGoals2 = new SetStarGoalsMove(m.getStarGoals(), 200,10,30);
 		assertFalse(newGoals2.valid(lb));
 		assertFalse(newGoals2.execute(lb));
 	}
 
 	public void testValid(){
-		StarGoals starGoals = new StarGoals();
-		SetStarGoalsMove newGoals = new SetStarGoalsMove(starGoals,100, 200,300);
+//		StarGoals starGoals = new StarGoals();
+		SetStarGoalsMove newGoals = new SetStarGoalsMove(m.getStarGoals(),100, 200,300);
 		assertTrue(newGoals.valid(lb));
 		assertTrue(newGoals.execute(lb));
+		
+		assertEquals(100, m.getStarGoals().getOne());
+		
+		assertTrue(newGoals.undo(lb));
+		assertEquals(0, m.getStarGoals().getOne());
+		
 		
 	}
 	

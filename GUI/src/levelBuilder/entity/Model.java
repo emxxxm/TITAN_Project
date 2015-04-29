@@ -149,6 +149,15 @@ public class Model {
 		return str;
 	}
 	
+	public String generateSixPosition(){
+		String str = "";
+		
+		
+		
+		
+		return str;
+	}
+	
 	public CurrentLevel getCurrentLevel() {
 		return currentLevel;
 	}
