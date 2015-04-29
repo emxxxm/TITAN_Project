@@ -20,10 +20,14 @@ import levelBuilder.entity.Model;
 import levelBuilder.game.LevelBuilder;
 
 
+
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+
 
 public class RequestScreen extends JFrame {
 	JButton btnStartBuildingLevels;
+
 
 
 	protected ArrayList<JButton> levelButtons = new ArrayList<JButton>();
@@ -35,7 +39,9 @@ public class RequestScreen extends JFrame {
 		initialize();
 	}
 		JButton[] level = new JButton[21];
+
 	
+
 	
 	public RequestScreen(){
 		super();
@@ -54,9 +60,8 @@ public class RequestScreen extends JFrame {
 		buttonController();
 	}
 
-	private void buttonController() {
-		
-	}
+
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -95,7 +100,6 @@ public class RequestScreen extends JFrame {
 		btnLevel_2.setOpaque(true);
 		btnLevel_2.setBorderPainted(false);
 
-		
 		JButton btnLevel_3 = new JButton("Level 4");
 		btnLevel_3.setForeground(Color.BLACK);
 		btnLevel_3.setBackground(Color.ORANGE);
@@ -405,6 +409,11 @@ public class RequestScreen extends JFrame {
 		level[20] = new JButton("level20");
 		level[20].setBounds(402, 277, 89, 23);
 		getContentPane().add(level[20]);
-
 	}
+
+	private void buttonController() {
+		
+	}
+
+	
 }
