@@ -175,9 +175,9 @@ public class Model {
 	}
 
 	public SixList getSix() {
-		// TODO Auto-generated method stub
 		return sixList;
 	}
+	
 	public BonusFrequency getBonusFrequency() {
 		return bonusFreq;
 	}

@@ -48,6 +48,7 @@ public class LoadLevelController implements ActionListener{
 			model.getLimits().setSwapLimits(sLimit);
 			model.getLimits().setTimeLimits(tLimit);
 			model.setCurLevel(currentLevel);
+			
 			String curLevel = Integer.toString(currentLevel);
 			String moveLimit = Integer.toString(mLimit);
 			String timeLimit = Integer.toString(tLimit);
@@ -94,6 +95,8 @@ public class LoadLevelController implements ActionListener{
 			
 			x2Freq = x2Freq/100;
 			x3Freq = x3Freq/100;
+			model.getBonusFrequency().setx2(x2Freq);
+			model.getBonusFrequency().setx3(x3Freq);
 			
 			LBPanel panel = lb.getLbPanel();
 			panel.getLevelNumber().setText(curLevel);
