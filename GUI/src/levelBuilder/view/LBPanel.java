@@ -67,6 +67,7 @@ public class LBPanel extends JFrame{
 	public LBPanel(Model model){
 		super();
 		this.model = model;
+		setTitle("Level Builder");
 		setSize(828, 568);
 		initialize();
 		
@@ -372,14 +373,25 @@ public class LBPanel extends JFrame{
 		//TODO
 		levelNumber.addActionListener(new EnterLevelController(lb));
 		
+		firstStar.addActionListener(new SetStarGoalsController(lb));
+		secondStar.addActionListener(new SetStarGoalsController(lb));
 		thirdStar.addActionListener(new SetStarGoalsController(lb));
 		
 		timeLimit.addActionListener(new SetLimitsController(lb));
+		moveLimit.addActionListener(new SetLimitsController(lb));
+		removeLimit.addActionListener(new SetLimitsController(lb));
+		swapLimit.addActionListener(new SetLimitsController(lb));
 		
+		x2.addActionListener(new SetBonusFreqController(lb));
 		x3.addActionListener(new SetBonusFreqController(lb));
 		
 		btnDisable.addActionListener(new DisableSquareController(lb));
 		btnEnable.addActionListener(new EnableSquareController(lb));
+		frequency1.addActionListener(new SetFreqController(lb));
+		frequency2.addActionListener(new SetFreqController(lb));
+		frequency3.addActionListener(new SetFreqController(lb));
+		frequency4.addActionListener(new SetFreqController(lb));
+		frequency5.addActionListener(new SetFreqController(lb));
 		frequency6.addActionListener(new SetFreqController(lb));
 		
 		btnBucket.addActionListener(new SetBucketController(lb));

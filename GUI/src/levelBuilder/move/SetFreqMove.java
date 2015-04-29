@@ -77,7 +77,8 @@ public class SetFreqMove extends Move{
 	@Override
 	public boolean valid(LevelBuilder lb) {
 		// TODO Auto-generated method stub
-		return (f1+f2+f3+f4+f5+f6) == 1;
+		System.out.println((f1+f2+f3+f4+f5+f6)+"sss");
+		return Math.floor(f1+f2+f3+f4+f5+f6) == 1;
 	}
 
 	@Override

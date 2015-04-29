@@ -38,4 +38,8 @@ public class BucketList {
 		}
 		return false;
 	}
+
+	public int sizeof(){
+		return bList.size();
+	}
 }
