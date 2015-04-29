@@ -183,6 +183,8 @@ public class LevelBuilder {
 		this.lbPanel = lbPanel;
 	}
 
-	
+	public String getMode(){
+		return getModel().getCurrentLevel().get(getModel().getCurLevel());
+	}
 }
 
