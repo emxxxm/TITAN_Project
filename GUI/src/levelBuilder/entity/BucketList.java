@@ -9,6 +9,9 @@ public class BucketList {
 		bList = new ArrayList<Position>();
 	}
 	
+	public ArrayList<Position> getBucketList() {
+		return bList;
+	}
 	public boolean add(Position ps){
 		if(inList(ps)) return false;
 

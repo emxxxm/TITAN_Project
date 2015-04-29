@@ -18,13 +18,11 @@ public class BoardPreviewController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		request.setVisible(false);
+
 		
 		// create screen
 		PreviewScreen preview = new PreviewScreen(model);
 		preview.setVisible(true);
-		// set controller for previous button
-//		secondScreen.getPreviousButton().addActionListener(new PrevScreenController(main, secondScreen));
 		
 	}
 }

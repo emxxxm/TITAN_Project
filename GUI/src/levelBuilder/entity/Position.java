@@ -1,6 +1,7 @@
 package levelBuilder.entity;
 
 public class Position{
+
 	protected int row;
 	protected int col;
 	protected boolean isDisable;
@@ -8,7 +9,13 @@ public class Position{
 		this.row = row;
 		this.col = col;
 	}
-	
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
+	}
 	@Override
 	public boolean equals(Object o){
 		if(o==null) return false;

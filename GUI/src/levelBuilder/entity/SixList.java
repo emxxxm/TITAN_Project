@@ -9,6 +9,9 @@ public class SixList {
 		sList = new ArrayList<Position>();
 	}
 	
+	public ArrayList<Position> getSixList() {
+		return sList;
+	}
 	public boolean add(Position ps){
 		if(inList(ps)) return false;
 

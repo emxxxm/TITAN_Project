@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class DisableSquareList {
 	protected ArrayList<Position> dsList;
 	
+	public ArrayList<Position> getDisableSquareList() {
+		return dsList;
+	}
+
 	public DisableSquareList(){
 		dsList = new ArrayList<Position>();
 	}
