@@ -7,7 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import levelBuilder.entity.CurrentLevel;
 import levelBuilder.entity.Model;
+import levelBuilder.entity.Position;
 import levelBuilder.game.LevelBuilder;
 import levelBuilder.view.LBPanel;
 import levelBuilder.view.RequestScreen;
@@ -43,11 +45,39 @@ public class LoadLevelController implements ActionListener{
 			int tLimit = Integer.parseInt(buffer.get(3));
 			int sLimit = Integer.parseInt(buffer.get(4));
 			int rLimit = Integer.parseInt(buffer.get(5));
+			
 			model.getLimits().setMoveLimits(mLimit);
 			model.getLimits().setRemoveLimits(rLimit);
 			model.getLimits().setSwapLimits(sLimit);
 			model.getLimits().setTimeLimits(tLimit);
 			model.setCurLevel(currentLevel);
+			
+			LBPanel panel = lb.getLbPanel();
+			CurrentLevel LevelMode = new CurrentLevel();
+			int r = currentLevel % 4;
+			String mode;
+			
+			if(r == 1){
+				mode = "Puzzle";
+				LevelMode.put(currentLevel, mode);
+				panel.getMode().setText(mode);
+			}
+			else if( r == 2){
+				mode = "Lightning";
+				LevelMode.put(currentLevel, mode);
+			}
+			else if(r == 3){
+				mode = "Elimination";
+				LevelMode.put(currentLevel, mode);
+			}
+			else if(r == 4){
+				mode = "Release";
+				LevelMode.put(currentLevel, mode);
+			}
+			else{
+				System.err.println("Mode: Cannot compute mode");
+			}
+			model.setCurrentLevel(LevelMode);
 			
 			String curLevel = Integer.toString(currentLevel);
 			String moveLimit = Integer.toString(mLimit);
@@ -63,6 +93,9 @@ public class LoadLevelController implements ActionListener{
 			String[] starGoalsArray = buffer.get(6).split(" ");
 			String[] numFreqArray = buffer.get(7).split(" ");
 			String[] multiFreqArray = buffer.get(8).split(" ");
+			String[] squareTypeInput = buffer.get(9).split(" ");
+			String[] sixListInput = buffer.get(10).split(" ");
+			
 			System.out.println(numFreqArray[0]);
 			double freq1 = Integer.parseInt(numFreqArray[0]);
 			double freq2 = Integer.parseInt(numFreqArray[1]);
@@ -88,6 +121,9 @@ public class LoadLevelController implements ActionListener{
 			int star1 = Integer.parseInt(starGoalsArray[0]);
 			int star2 = Integer.parseInt(starGoalsArray[1]);
 			int star3 = Integer.parseInt(starGoalsArray[2]);
+			model.getStarGoals().setOne(star1);
+			model.getStarGoals().setTwo(star2);
+			model.getStarGoals().setThree(star3);
 			
 			
 			double x2Freq = Integer.parseInt(multiFreqArray[1]);
@@ -98,8 +134,38 @@ public class LoadLevelController implements ActionListener{
 			model.getBonusFrequency().setx2(x2Freq);
 			model.getBonusFrequency().setx3(x3Freq);
 			
-			LBPanel panel = lb.getLbPanel();
+			ArrayList<Position> disableList = new ArrayList<Position>();
+			ArrayList<Position> bucketList = new ArrayList<Position>();
+			ArrayList<Position> sixList = new ArrayList<Position>();
+			for(int i = 0; i < squareTypeInput.length; i++){
+				if(squareTypeInput[i] == "0"){
+					int row = i / 9 ; // 0-8 or 1-9????????
+					int col = i % 9 ;// 0-8 or 1-9????????
+					
+					Position pos = new Position(row, col);
+					disableList.add(pos);
+				}
+				
+				if(squareTypeInput[i] == "2"){
+					int row = i / 9;// 0-8 or 1-9????????
+					int col = i % 9;// 0-8 or 1-9????????
+					
+					Position pos = new Position(row, col);
+					bucketList.add(pos);
+					
+				}
+			}
+			
+			for(int i = 0; i < sixListInput.length - 1; i=i+2){
+				int row = Integer.parseInt(sixListInput[i]);
+				int col = Integer.parseInt(sixListInput[i+1]);
+				Position pos = new Position(row,col);
+				sixList.add(pos);
+				
+			}
+			
 			panel.getLevelNumber().setText(curLevel);
+			
 			panel.getMoveLimit().setText(moveLimit);
 			panel.getTimeLimit().setText(timeLimit);
 			panel.getSwapLimit().setText(swapLimit);

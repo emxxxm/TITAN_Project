@@ -186,4 +186,7 @@ public class Model {
 	public DisableSquareList getDisableSquareList() {
 		return disableList;
 	}
+	public void setCurrentLevel(CurrentLevel levelMode){
+		this.currentLevel = levelMode;
+	}
 }
