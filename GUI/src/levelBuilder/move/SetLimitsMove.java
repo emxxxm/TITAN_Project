@@ -34,18 +34,22 @@ public class SetLimitsMove extends Move {
 
 		if (!valid(lb))
 			return false;
+		
 		if (lb.getMode() == "Lightning") {
 			lb.getLbPanel().getTimeLimit().setText("" + timeLimit);
-			limit.setTimeLimits(timeLimit);
+			lb.getLbPanel().getMoveLimit().setText("" + 0);
+			System.out.println("Time limit is not available in current mode");
+			
 		} else {
-			lb.getLbPanel().getTimeLimit().setText("");
+			lb.getLbPanel().getMoveLimit().setText("" + moveLimit);
+			lb.getLbPanel().getTimeLimit().setText(""+ 0);
 			System.out.println("Time limit is not available in current mode");
 		}
 		
-		lb.getLbPanel().getMoveLimit().setText("" + moveLimit);
 		lb.getLbPanel().getRemoveLimit().setText("" + removeLimit);
 		lb.getLbPanel().getSwapLimit().setText("" + swapLimit);
-
+		
+		limit.setTimeLimits(timeLimit);
 		limit.setMoveLimits(moveLimit);
 		limit.setRemoveLimits(removeLimit);
 		limit.setSwapLimits(swapLimit);

@@ -36,7 +36,7 @@ public class SetBucketController implements ActionListener {
 
 		}
 		else{
-			System.out.println("Set bucket function is not available in current mode");
+			System.out.println("Set bucket is not available in current mode");
 		}
 	}
 }
