@@ -5,7 +5,6 @@ import java.util.Random;
 public class Model {
 	// Entity
 	protected int curLevelNum;
-	
 	protected NumFrequency numFrequency;
 	protected StarGoals starGoals;
 	private CurrentLevel currentLevel;
