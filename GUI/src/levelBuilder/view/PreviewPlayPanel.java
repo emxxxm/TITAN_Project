@@ -127,6 +127,10 @@ public class PreviewPlayPanel extends JPanel {
 			graph.setColor(Color.yellow);
 			graph.drawRect(57 + y* 47, 7 + x * 47, 40, 40);
 			graph.fillRect(57 + y* 47, 7 + x * 47, 40, 40);
+			graph.setColor(Color.black);
+			graph.drawString("6", (int)(57
+					+ y * 47 + 57 + y * 47 + 40) / 2, (int) (7
+					+ x * 47 + 7 + x * 47 + 40) / 2);
 			if (9 * x + y >= 0) {
 				squares[9 * x + y] = 0;
 			}
