@@ -28,7 +28,7 @@ public class SetBucketMove extends Move{
 
 	@Override
 	public boolean valid(LevelBuilder lb) {
-		if(!lb.getModel().getDisableSquareList().inList(pos)) return true;
+		if((!lb.getModel().getDisableSquareList().inList(pos)) && pos.isValid()) return true;
 		return false;
 	}
 
