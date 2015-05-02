@@ -1,11 +1,11 @@
 package levelBuilder.entity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Model {
 	// Entity
 	protected int curLevelNum;
-	
 	protected NumFrequency numFrequency;
 	protected StarGoals starGoals;
 	private CurrentLevel currentLevel;
@@ -158,6 +158,17 @@ public class Model {
 		
 		return str;
 	}
+	public void setBucketList(ArrayList<Position> bucket){
+		this.bucketList.setList(bucket);
+	}
+	
+	public void setSixList(ArrayList<Position> six){
+		this.sixList.setList(six);
+	}
+	
+	public void setDisableList(ArrayList<Position> disable){
+		this.disableList.setList(disable);
+	}
 	
 	public CurrentLevel getCurrentLevel() {
 		return currentLevel;
@@ -195,5 +206,8 @@ public class Model {
 	
 	public DisableSquareList getDisableSquareList() {
 		return disableList;
+	}
+	public void setCurrentLevel(CurrentLevel levelMode){
+		this.currentLevel = levelMode;
 	}
 }

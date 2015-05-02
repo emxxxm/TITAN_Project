@@ -72,6 +72,11 @@ public class LevelSaveController implements ActionListener {
 //			level.write(model.generateTileBonus());
 //			level.newLine();
 			
+//			level.write(model.generateTileNum());
+//			level.newLine();
+//			level.write(model.generateTileBonus());
+//			level.newLine();
+			
 			
 			
 			System.out.println("write to file");

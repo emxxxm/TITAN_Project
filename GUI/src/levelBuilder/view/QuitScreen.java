@@ -1,12 +1,12 @@
 package levelBuilder.view;
 
 import javax.swing.JButton;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Font;
-
-import levelBuilder.controller.CloseListener;
+import levelBuilder.controller.CloseWindowController;
 
 public class QuitScreen extends JFrame{
 
@@ -32,8 +32,8 @@ public class QuitScreen extends JFrame{
 		lblQuitWithoutSaving.setBounds(65, 26, 160, 25);
 		getContentPane().add(lblQuitWithoutSaving);
 		
-		btnSave.addActionListener(new CloseListener());
-		btnQuit.addActionListener(new CloseListener());
+		btnSave.addActionListener(new CloseWindowController(this));
+		btnQuit.addActionListener(new CloseWindowController(this));
 	}
 	
 	
