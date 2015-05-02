@@ -84,6 +84,7 @@ public class PlayPanel extends JPanel
 			c.add(new Color(r,g,b));
 		}
 		return;
+		
 	}
 	
 	@Override
