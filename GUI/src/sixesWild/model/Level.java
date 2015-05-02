@@ -123,18 +123,13 @@ public class Level
 		return this.locked;
 	}
 	
-	//Store the unlock state in a seperate file.
+	//Store the unlock state in a separate file.
 	public void setLocked(Integer locked)
 	{
 		this.locked=locked;
 		return;
 	}
 	
-	public boolean changeBucketType(int row, int col)
-	{
-		
-		return true;
-	}
 	
 	
 }

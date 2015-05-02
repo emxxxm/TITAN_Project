@@ -9,7 +9,7 @@ public class LightningBoard extends Board
 		this.timeLimit = level.getTimeLimit();
 		this.timeLeft = level.getTimeLimit();
 	}
-	
+	 
 	public int getTimeLimit()
 	{
 		return this.timeLimit;
