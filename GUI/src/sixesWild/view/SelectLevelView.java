@@ -62,8 +62,8 @@ public class SelectLevelView extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNewLabel = new JLabel("Sixes Wild");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 40));
-		lblNewLabel.setForeground(Color.BLUE);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD,  40));
+		lblNewLabel.setForeground(Color.white);
 		
 		btnRecord.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		btnRecord.setBackground(Color.YELLOW);

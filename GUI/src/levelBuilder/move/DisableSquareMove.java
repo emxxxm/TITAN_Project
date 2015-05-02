@@ -39,10 +39,8 @@ public class DisableSquareMove extends Move{
 	public boolean undo(LevelBuilder lb) {
 		for(int i=rowFrom;i<=rowTo;i++){
 			for(int j = colFrom;j<=colTo;j++){
-				if(!dsList.remove(new Position(i,j))){
-					System.out.println("Never should reach here");
-					return false; // never reach here
-				}
+				dsList.remove(new Position(i,j));
+				
 			}
 		}
 		return true;

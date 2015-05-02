@@ -8,14 +8,15 @@ import levelBuilder.game.LevelBuilder;
 import levelBuilder.move.SetFreqMove;
 import levelBuilder.view.LBPanel;
 
-public class SetFreqController implements ActionListener{
+public class SetFreqController implements ActionListener {
 
 	protected LevelBuilder lb;
 	protected LBPanel panel;
-	
-	public SetFreqController(LevelBuilder lb){
+
+	public SetFreqController(LevelBuilder lb) {
 		this.lb = lb;
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -24,11 +25,17 @@ public class SetFreqController implements ActionListener{
 		Double f3 = Double.parseDouble(lb.getLbPanel().getFreq3().getText());
 		Double f4 = Double.parseDouble(lb.getLbPanel().getFreq4().getText());
 		Double f5 = Double.parseDouble(lb.getLbPanel().getFreq5().getText());
-		Double f6 = Double.parseDouble(lb.getLbPanel().getFreq6().getText());
+		Double f6;
 		
-		Move m = new SetFreqMove(lb.getModel().getNumFrequency(), f1, f2, f3, f4, f5, f6);
-		
-		if(m.execute(lb)){
+		if (lb.getMode() == "Release") {
+			f6 = Double.parseDouble("0");
+		} else {
+			f6 = Double.parseDouble(lb.getLbPanel().getFreq6().getText());
+		}
+		Move m = new SetFreqMove(lb.getModel().getNumFrequency(), f1, f2, f3,
+				f4, f5, f6);
+
+		if (m.execute(lb)) {
 			lb.pushMove(m);
 		}
 	}

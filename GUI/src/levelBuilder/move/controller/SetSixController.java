@@ -10,28 +10,34 @@ import levelBuilder.move.SetBucketMove;
 import levelBuilder.move.SetSixMove;
 import levelBuilder.view.LBPanel;
 
-public class SetSixController implements ActionListener{
+public class SetSixController implements ActionListener {
 
 	protected LevelBuilder lb;
 	protected LBPanel panel;
-	public SetSixController(LevelBuilder lb){
+
+	public SetSixController(LevelBuilder lb) {
 		this.lb = lb;
-		
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Integer x = Integer.parseInt(lb.getLbPanel().getBucketRow().getText());
-		Integer y = Integer.parseInt(lb.getLbPanel().getBucketCol().getText());
-		
-		Position pos = new Position(x,y);
-		Move m = new SetSixMove(lb.getModel().getSix(), pos);
-		
-		if(m.execute(lb)){
-			lb.pushMove(m);
-		}
-		
+
 	}
 
-	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (lb.getMode() == "Release") {
+			Integer x = Integer.parseInt(lb.getLbPanel().getBucketRow()
+					.getText());
+			Integer y = Integer.parseInt(lb.getLbPanel().getBucketCol()
+					.getText());
+
+			Position pos = new Position(x, y);
+			Move m = new SetSixMove(lb.getModel().getSix(), pos);
+
+			if (m.execute(lb)) {
+				lb.pushMove(m);
+			}
+		} else {
+			System.out.println("Set six is not available in current mode");
+		}
+
+	}
+
 }

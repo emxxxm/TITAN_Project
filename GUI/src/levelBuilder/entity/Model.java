@@ -150,6 +150,15 @@ public class Model {
 		return str;
 	}
 	
+	public String generateSixPosition(){
+		String str = "";
+		
+		
+		
+		
+		return str;
+	}
+	
 	public CurrentLevel getCurrentLevel() {
 		return currentLevel;
 	}
@@ -176,9 +185,9 @@ public class Model {
 	}
 
 	public SixList getSix() {
-		// TODO Auto-generated method stub
 		return sixList;
 	}
+	
 	public BonusFrequency getBonusFrequency() {
 		return bonusFreq;
 	}
