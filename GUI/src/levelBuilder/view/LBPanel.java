@@ -20,7 +20,6 @@ import java.awt.event.ActionEvent;
 import levelBuilder.controller.BoardPreviewController;
 import levelBuilder.controller.CloseWindowController;
 import levelBuilder.controller.LevelSaveController;
-import levelBuilder.controller.QuitScreenController;
 import levelBuilder.entity.Model;
 import levelBuilder.game.LevelBuilder;
 import levelBuilder.move.controller.*;
