@@ -67,11 +67,13 @@ public class NormalMove extends AbsMove
 			{
 				model.getBoard().addSelectedSquare(model.getBoard().getSquare(newRow, newCol));
 			}
-			if(this.isValid())
-			{
-				return true;
-			}
-			return false;
+//			if(this.isValid())
+//			{
+//				return true;
+//			}
+//			return false;
+			
+			return true;
 		}
 		else
 		{

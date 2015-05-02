@@ -81,10 +81,10 @@ public class SetFreqMove extends Move{
 		return Math.floor(f1+f2+f3+f4+f5+f6) == 1;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }
