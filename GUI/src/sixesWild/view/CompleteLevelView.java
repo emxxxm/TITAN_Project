@@ -39,6 +39,11 @@ public class CompleteLevelView extends JFrame
 		return this.scoreLabel;
 	}
 	
+	public JButton getQuitButton()
+	{
+		return this.quitButton;
+	}
+	
 	public CompleteLevelView(Model m) 
 	{
 		this.model = m;
@@ -54,30 +59,33 @@ public class CompleteLevelView extends JFrame
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(181, Short.MAX_VALUE)
-					.addComponent(quitButton))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(134, Short.MAX_VALUE)
-					.addComponent(starLabel)
-					.addGap(128))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(94, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scoreLabel)
-						.addComponent(levelLabel))
-					.addGap(101))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(131)
+							.addComponent(starLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(110)
+							.addComponent(scoreLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(103)
+							.addComponent(levelLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(91)
+							.addComponent(quitButton)))
+					.addContainerGap(90, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(48, Short.MAX_VALUE)
+					.addContainerGap(60, Short.MAX_VALUE)
 					.addComponent(levelLabel)
-					.addGap(30)
+					.addGap(18)
 					.addComponent(starLabel)
 					.addGap(18)
 					.addComponent(scoreLabel)
 					.addGap(34)
-					.addComponent(quitButton))
+					.addComponent(quitButton)
+					.addContainerGap())
 		);
 		getContentPane().setLayout(groupLayout);
 	}

@@ -2,6 +2,7 @@ package sixesWild.controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import sixesWild.controller.moves.NormalMove;
 import sixesWild.controller.moves.RemoveMove;
@@ -114,6 +115,13 @@ public class RemoveController extends MouseAdapter
 		bv.getProgressBar().setValue(model.getBoard().getCurrScore());
 		PlayPanelController ppc = new PlayPanelController(model, bv);
 		ppc.register();
+		CompleteLevelController clc = new CompleteLevelController(model, bv);
+		try {
+			clc.process();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	@Override

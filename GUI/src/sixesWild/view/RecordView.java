@@ -1,5 +1,9 @@
 package sixesWild.view;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -8,32 +12,74 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JTextPane;
+
+import sixesWild.model.Model;
 
 public class RecordView extends JFrame
 {
 	//How to represent stars?
 	protected JButton quitButton;
+	protected Model model;
 	protected ArrayList<JLabel> highScoreLabel;
+	protected ArrayList<Integer> highScore;
+	protected ArrayList<Integer> starCount;
+	protected final String scoreFile = "src/highScore.txt";
 	
 	public JButton getQuitButton()
 	{
-		return quitButton;
+		return quitButton;		
 	}
 	
-	public RecordView() {
-		
+	public RecordView(Model m) 
+	{
+		this.model = m;
 		this.setSize(900, 600);
-		
+		//Read in the highscore file.
+		try
+		{
+			highScore = new ArrayList<Integer>();
+			starCount = new ArrayList<Integer>();
+			ArrayList<String> recordString = new ArrayList<String>();
+			BufferedReader r = new BufferedReader(new FileReader(scoreFile));
+			String text=null;
+			text=r.readLine();
+			while(text!=null)
+			{
+				recordString.add(text);
+				text=r.readLine();
+			}
+			System.out.println(recordString.get(0));
+			System.out.println(recordString.get(1));
+			String[] scoreArray=recordString.get(0).split(" ");
+			String[] starArray=recordString.get(1).split(" ");
+			for(int i=0;i<m.getAllLevels().getNumLevels();i++)
+			{
+				highScore.add(Integer.parseInt(scoreArray[i]));
+				starCount.add(Integer.parseInt(starArray[i]));
+			}
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			System.out.println("IOException!");
+			e.printStackTrace();
+		}
 		quitButton = new JButton("Return");
 		
 		JLabel lblNewLabel = new JLabel("SixesWild Highest Score");
 		lblNewLabel.setForeground(new Color(30, 144, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		
-		JLabel label = new JLabel("<html>Level 1   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label = new JLabel("<html>Level 1   <br>Highest Score:" + highScore.get(0)+" <br>Stars achieved:" + starCount.get(0) + "</html>");
 		
 		JLabel label_0 = new JLabel("<html>Level 2   <br>Highest Score: <br>Stars achieved: </html>");
 		

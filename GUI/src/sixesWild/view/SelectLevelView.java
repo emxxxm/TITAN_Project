@@ -288,7 +288,7 @@ public class SelectLevelView extends JFrame {
 		//Add controllers for all the buttons here.
 		for(int i=0;i<levelButtons.size();i++)
 		{
-			levelButtons.get(i).setEnabled(m.getAllLevels().getGivenLevel(i+1).isLocked());
+			levelButtons.get(i).setEnabled(!(m.getAllLevels().getGivenLevel(i+1).isLocked()));
 		}
 		for(int i=0;i<levelButtons.size();i++)
 		{
@@ -296,7 +296,7 @@ public class SelectLevelView extends JFrame {
 			levelButtons.get(i).addActionListener(new StartLevelController(this,m,i+1));
 		}
 		//Is entity needed in DisplayRecordController?
-		btnRecord.addActionListener(new DisplayRecordController(this));
+		btnRecord.addActionListener(new DisplayRecordController(this,m));
 		btnHelp.addActionListener(new DisplayHelpController(this));
 	
 	}

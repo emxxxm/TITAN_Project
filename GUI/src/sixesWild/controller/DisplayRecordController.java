@@ -11,11 +11,12 @@ import sixesWild.view.SelectLevelView;
 public class DisplayRecordController implements ActionListener
 {
 	SelectLevelView start;
-	//Model m;
+	Model m;
 	
-	public DisplayRecordController(SelectLevelView start)
+	public DisplayRecordController(SelectLevelView start, Model m)
 	{
 		this.start=start;
+		this.m = m;
 	}
 	
 	@Override
@@ -24,7 +25,7 @@ public class DisplayRecordController implements ActionListener
 		start.setVisible(false);
 		
 		//Create BoardView.
-		RecordView rv=new RecordView();
+		RecordView rv=new RecordView(m);
 		rv.setVisible(true);
 		
 		rv.getQuitButton().addActionListener(new QuitRecordController(start,rv));

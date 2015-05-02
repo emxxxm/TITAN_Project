@@ -8,7 +8,7 @@ import sixesWild.view.SelectLevelView;
 public class LaunchSixesWild 
 {
 	final static String inputLevels = "src/input.txt";
-	final static String inputStates = "/home/mengwen/Desktop/stateInput.txt";
+	final static String inputStates = "src/stateInput.txt";
 	public static AllLevel initializeLevels() throws Exception
 	{
 		AllLevel allLevels = new AllLevel(inputLevels, inputStates);

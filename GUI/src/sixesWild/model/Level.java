@@ -9,7 +9,7 @@ public class Level
 	protected int levelNum;
 	//Mode can be calculated by levelNum.
 	//true represents locked.
-	protected boolean locked;
+	protected int locked;
 	protected int moveLimit;
 	protected int timeLimit;
 	protected int swapLimit;
@@ -27,7 +27,7 @@ public class Level
 	protected ArrayList<Integer> tileMulti;
 	
 	public Level(int levelNum, 
-			boolean locked, 
+			int locked, 
 			int moveLimit, 
 			int timeLimit, 
 			int swapLimit, 
@@ -111,13 +111,22 @@ public class Level
 	
 	public boolean isLocked()
 	{
-		return !locked;
+		if(locked == 0)
+		{
+			return true;
+		}
+		return false;
 	}
 
-	//Store the unlock state in a seperate file.
-	public void setLocked(boolean newState)
+	public int getLockState()
 	{
-		this.locked=newState;
+		return this.locked;
+	}
+	
+	//Store the unlock state in a seperate file.
+	public void setLocked(Integer locked)
+	{
+		this.locked=locked;
 		return;
 	}
 	

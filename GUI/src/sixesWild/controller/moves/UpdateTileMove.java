@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
+import sixesWild.model.EliminationBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.model.Square;
 
 public class UpdateTileMove extends AbsMove
@@ -30,6 +32,15 @@ public class UpdateTileMove extends AbsMove
 				return false;
 			}
 		}
+		if(model.getBoard() instanceof EliminationBoard)
+		{
+			if(((EliminationBoard)(model.getBoard())).getMoveLeft() <= 0)
+			{
+				return false;
+			}
+		}
+		
+		
 		for(int i=0;i<selectedSquares.size();i++)
 		{
 			if(selectedSquares.get(i).getTile().getNum()==6)
@@ -70,11 +81,18 @@ public class UpdateTileMove extends AbsMove
 			//Search all the squares in selected square.
 			for(int i=0; i<selectedSquares.size(); i++)
 			{
+				//handle the bucket case here!
 				int col = selectedSquares.get(i).getCol();
 				System.out.println("Col is "+col);
 				//Search all the squares in the same column with the current selected square.
 				for(int j = selectedSquares.get(i).getRow(); j>=0; j--)
 				{
+					//Can the bucket contain numbers other than 6?
+					if(model.getBoard() instanceof ReleaseBoard)
+					{
+						ReleaseBoard rb = (ReleaseBoard)(model.getBoard());
+						rb.updateBucket(col);
+					}
 					if(j==0)
 					{
 						System.out.println("In j == 0");
@@ -120,6 +138,13 @@ public class UpdateTileMove extends AbsMove
 					((PuzzleBoard)(model.getBoard())).updateMoveLeft(-1);
 				}
 			}
+			if(model.getBoard() instanceof EliminationBoard)
+			{
+				if(((EliminationBoard)(model.getBoard())).getMoveLeft() > 0)
+				{
+					((EliminationBoard)(model.getBoard())).updateMoveLeft(-1);
+				}
+			}
 			return true;
 		}
 		else
@@ -129,6 +154,13 @@ public class UpdateTileMove extends AbsMove
 				if(((PuzzleBoard)(model.getBoard())).getMoveLeft() > 0)
 				{
 					((PuzzleBoard)(model.getBoard())).updateMoveLeft(-1);
+				}
+			}
+			if(model.getBoard() instanceof EliminationBoard)
+			{
+				if(((EliminationBoard)(model.getBoard())).getMoveLeft() > 0)
+				{
+					((EliminationBoard)(model.getBoard())).updateMoveLeft(-1);
 				}
 			}
 			return false;
