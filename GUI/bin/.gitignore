@@ -3,6 +3,11 @@
 /sixesWild/
 /sixesWildPlayer/
 /test/
+<<<<<<< HEAD
+<<<<<<< HEAD
+/levelBuilder/
+/sixesWild/
+=======
 /sixesWild/
 /sixesWildPlayer/
 <<<<<<< HEAD
@@ -10,4 +15,13 @@
 /highScore.txt
 =======
 /levelBuilder/
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
+/sixesWild/
+/sixesWildPlayer/
+/levelBuilder/
+>>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project
 >>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project

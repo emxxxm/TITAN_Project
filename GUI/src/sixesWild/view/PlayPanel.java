@@ -46,7 +46,7 @@ public class PlayPanel extends JPanel
 	public PlayPanel(Model model) 
 	{
 		this.model=model;
-		//this.setSquareColor();
+		this.setSquareColor();
 	}
 	
 	public void setActiveListener(MouseListener ml)
@@ -71,47 +71,20 @@ public class PlayPanel extends JPanel
 		return;
 	}
 	
-//	public void setSquareColor()
-//	{
-//		//Put the things above in Tile.
-//		Random rand=new Random();
-//		for(int i=0;i<9;i++)
-//		{
-//			float r=rand.nextFloat();
-//			float g=rand.nextFloat();
-//			float b=rand.nextFloat();
-//			
-//			c.add(new Color(r,g,b));
-//		}
-//		return;
-//	}
-	
-	public Color setSquareColor(int num)
+	public void setSquareColor()
 	{
 		//Put the things above in Tile.
-		Color color = null;
-		switch(num){
-			case 1:
-				color=new Color(192,80,77);
-				break;
-			case 2:
-				color=new Color(155,187,89);
-				break;
-			case 3:
-				color=new Color(254,0,133);
-				break;
-			case 4:
-				color=new Color(247,150,70);
-				break;
-			case 5:
-				color=new Color(128,100,162);
-				break;
-			case 6:
-				color=new Color(75,172,198);
-				break;	
+		Random rand=new Random();
+		for(int i=0;i<9;i++)
+		{
+			float r=rand.nextFloat();
+			float g=rand.nextFloat();
+			float b=rand.nextFloat();
+			
+			c.add(new Color(r,g,b));
 		}
-		return color;
-
+		return;
+		
 	}
 	
 	@Override
@@ -167,11 +140,9 @@ public class PlayPanel extends JPanel
 				if(squareType.get(row*9+col)==1)
 				{
 					graph.drawRect(57+col*47,7+row*47, 40, 40);
-					graph.setColor(setSquareColor(squareNum.get(row*9+col)));
-					//graph.setColor(c.get(squareNum.get(row*9+col)-1));
+					graph.setColor(c.get(squareNum.get(row*9+col)-1));
 					graph.fillRect(57+col*47,7+row*47, 40, 40);
-					//graph.setColor(Color.BLACK);
-					graph.setColor(Color.white);
+					graph.setColor(Color.BLACK);
 					graph.drawString((squareNum.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2, (int)(7+row*47+7+row*47+40)/2);
 					graph.drawString("X"+(squareMulti.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2+5, (int)(7+row*47+7+row*47+40)/2+18);
 				}
@@ -180,9 +151,8 @@ public class PlayPanel extends JPanel
 				//Check whether the tile in the target bucket square has number 6. If it has, draw the number, it it doesn't, don't draw. 
 				else if(squareType.get(row*9+col)==2)
 				{
-					graph.setColor(Color.red);
 					graph.drawRect(57+col*47,7+row*47, 40, 40);
-					//graph.setColor(c.get(6));
+					graph.setColor(c.get(6));
 					graph.fillRect(57+col*47,7+row*47, 40, 40);
 					graph.setColor(Color.WHITE);
 					if(squareNum.get(row*9+col)==6)
@@ -193,9 +163,8 @@ public class PlayPanel extends JPanel
 				}
 				else
 				{
-					graph.setColor(Color.white);
 					graph.drawRect(57+col*47,7+row*47, 40, 40);
-					//graph.setColor(c.get(7));
+					graph.setColor(c.get(7));
 					graph.fillRect(57+col*47,7+row*47, 40, 40);
 				}
 				if(model.getBoard() instanceof EliminationBoard)
@@ -232,7 +201,7 @@ public class PlayPanel extends JPanel
 					//System.out.println();
 					graph.setColor(c.get(8));
 					graph.fillRect(57+tCol*47, 7+tRow*47, 40, 40);
-					graph.setColor(Color.white);
+					graph.setColor(Color.BLACK);
 					graph.drawString((squareNum.get(tRow*9+tCol)).toString(), (int)(57+tCol*47+57+tCol*47+40)/2, (int)(7+tRow*47+7+tRow*47+40)/2);
 					graph.drawString("X"+(squareMulti.get(tRow*9+tCol)).toString(), (int)(57+tCol*47+57+tCol*47+40)/2+5, (int)(7+tRow*47+7+tRow*47+40)/2+18);
 				}
