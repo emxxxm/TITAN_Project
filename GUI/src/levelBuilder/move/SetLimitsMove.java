@@ -38,7 +38,7 @@ public class SetLimitsMove extends Move {
 		if (lb.getMode() == "Lightning") {
 			lb.getLbPanel().getTimeLimit().setText("" + timeLimit);
 			lb.getLbPanel().getMoveLimit().setText("" + 0);
-			System.out.println("Time limit is not available in current mode");
+			System.out.println("Move limit is not available in current mode");
 			
 		} else {
 			lb.getLbPanel().getMoveLimit().setText("" + moveLimit);
