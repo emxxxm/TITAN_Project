@@ -3,9 +3,11 @@ package sixesWild.controller.moves;
 import java.util.ArrayList;
 import java.util.Random;
 
+import sixesWild.model.EliminationBoard;
 import sixesWild.model.LightningBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.model.Square;
 
 public class ResetMove extends AbsMove
@@ -27,9 +29,17 @@ public class ResetMove extends AbsMove
 				return true;
 			}
 		}
-		else if(model.getBoard() instanceof LightningBoard)
+		else if(model.getBoard() instanceof LightningBoard || model.getBoard() instanceof ReleaseBoard)
 		{
 			return true;
+		}
+		else if(model.getBoard() instanceof EliminationBoard)
+		{
+			EliminationBoard eb = (EliminationBoard)model.getBoard();
+			if(eb.getMoveLeft() > 0)
+			{
+				return true;
+			}
 		}
 		return false;
 	}
@@ -48,12 +58,33 @@ public class ResetMove extends AbsMove
 					((PuzzleBoard)(model.getBoard())).updateMoveLeft(-1);
 				}
 			}
-			for(int i=0; i<model.getBoard().getSquareType().size(); i++)
+			if(model.getBoard() instanceof EliminationBoard)
 			{
-				if(model.getBoard().getSquareType().get(i)==1)
+				if(((EliminationBoard)(model.getBoard())).getMoveLeft() > 0)
 				{
-					model.getBoard().getSquare(i/9, i%9).getTile().setNum(getNewNum());
-					model.getBoard().getSquare(i/9, i%9).getTile().setMulti(getNewMulti());
+					((EliminationBoard)(model.getBoard())).updateMoveLeft(-1);
+				}
+			}
+			if(model.getBoard() instanceof ReleaseBoard)
+			{
+				for(int i=0; i<model.getBoard().getSquareType().size(); i++)
+				{
+					if(model.getBoard().getSquareType().get(i)==1 && model.getBoard().getSquare(i/9, i%9).getTile().getNum()!=6)
+					{
+						model.getBoard().getSquare(i/9, i%9).getTile().setNum(getNewNum());
+						model.getBoard().getSquare(i/9, i%9).getTile().setMulti(getNewMulti());
+					}
+				}
+			}
+			else
+			{
+				for(int i=0; i<model.getBoard().getSquareType().size(); i++)
+				{
+					if(model.getBoard().getSquareType().get(i)==1)
+					{
+						model.getBoard().getSquare(i/9, i%9).getTile().setNum(getNewNum());
+						model.getBoard().getSquare(i/9, i%9).getTile().setMulti(getNewMulti());
+					}
 				}
 			}
 			return true;

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.model.Square;
 
 public class RemoveMove extends AbsMove
@@ -47,6 +48,9 @@ public class RemoveMove extends AbsMove
 			}
 			System.out.println(addScore);
 			model.getBoard().setCurrScore(addScore);
+			Square s = selectedSquares.get(0);
+			//If remove, mark the square.
+			model.getBoard().getSquare(s.getRow(), s.getCol()).setMarked(1);
 			//Search all the squares in selected square.
 			for(int i=0; i<selectedSquares.size(); i++)
 			{
@@ -89,7 +93,15 @@ public class RemoveMove extends AbsMove
 						}
 					}					
 				}
+				//If it is a release board, do the release first.
+				if(model.getBoard() instanceof ReleaseBoard)
+				{
+					System.out.println("IN REMOVEMOVE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+					ReleaseBoard rb = (ReleaseBoard)(model.getBoard());
+					rb.updateBucket(col);
+				}
 			}
+			
 			//Update remove move count here!
 			if(model.getBoard().getRemoveLeft()>0)
 			{

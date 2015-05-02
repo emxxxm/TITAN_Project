@@ -1,5 +1,6 @@
 package levelBuilder.entity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Model {
@@ -156,6 +157,17 @@ public class Model {
 		
 		
 		return str;
+	}
+	public void setBucketList(ArrayList<Position> bucket){
+		this.bucketList.setList(bucket);
+	}
+	
+	public void setSixList(ArrayList<Position> six){
+		this.sixList.setList(six);
+	}
+	
+	public void setDisableList(ArrayList<Position> disable){
+		this.disableList.setList(disable);
 	}
 	
 	public CurrentLevel getCurrentLevel() {

@@ -26,53 +26,23 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class RequestScreen extends JFrame {
-	JButton btnStartBuildingLevels;
-
-
-
+	
 	protected ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	Model m;
 	public RequestScreen(Model m){
 		super();
 		this.m = m;		
-		
-		initialize();
-	}
-		JButton[] level = new JButton[21];
-
-	
-
-	
-	public RequestScreen(){
-		super();
-		setTitle("Start Building Levels");
-		setSize(600, 400);
-		getContentPane().setLayout(null);
-		
-		btnStartBuildingLevels = new JButton("Start building levels!");
-		btnStartBuildingLevels.setBounds(33, 21, 175, 25);
-		getContentPane().add(btnStartBuildingLevels);
-		
-		btnStartBuildingLevels.addActionListener(new BuildingScreenController(this));
-
-	
-		buttonInitialize();
-		buttonController();
-	}
-
-
-	
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		setTitle("Start Building Levels");
 		setSize(800, 600);
 		getContentPane().setLayout(null);
 		
-		
-		
+		initialize();
+		//buttonInitialize();
+	}
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
 		this.getContentPane().setBackground(Color.BLACK);
 		this.getContentPane().setForeground(Color.BLACK);
 		this.setBounds(100, 100, 750, 500);
@@ -253,8 +223,7 @@ public class RequestScreen extends JFrame {
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnCreateNew)
-							.addGap(25))))
-		);
+							.addGap(25)))));
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -296,8 +265,7 @@ public class RequestScreen extends JFrame {
 						.addComponent(btnLevel_17, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnLevel_18, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnLevel_19, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(77, Short.MAX_VALUE))
-		);
+					.addContainerGap(77, Short.MAX_VALUE)));
 		this.getContentPane().setLayout(groupLayout);
 		//Assume the first 5 levels are available and the others are disabled for now.
 		//Add controllers for all the buttons here.
@@ -308,7 +276,7 @@ public class RequestScreen extends JFrame {
 			String file = "level" + levelNum;
 			try {
 				BufferedReader reader = new BufferedReader(new FileReader(file));
-				levelButtons.get(i).addActionListener(new LoadLevelController(m, lb, file));
+				levelButtons.get(i).addActionListener(new LoadLevelController(m, lb, file, this));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
@@ -329,91 +297,4 @@ public class RequestScreen extends JFrame {
 		btnCreateNew.addActionListener(new BuildingScreenController(this));
 	}
 
-	private void buttonInitialize() {
-		level[1] = new JButton("level1");
-		level[1].setBounds(33, 83, 89, 23);
-		getContentPane().add(level[1]);
-		
-		level[2] = new JButton("level2");
-		level[2].setBounds(152, 83, 89, 23);
-		getContentPane().add(level[2]);
-		
-		level[3] = new JButton("level3");
-		level[3].setBounds(273, 83, 89, 23);
-		getContentPane().add(level[3]);
-		
-		level[4] = new JButton("level4");
-		level[4].setBounds(402, 83, 89, 23);
-		getContentPane().add(level[4]);
-		
-		level[5] = new JButton("level5");
-		level[5].setBounds(33, 129, 89, 23);
-		getContentPane().add(level[5]);
-		
-		level[6] = new JButton("level6");
-		level[6].setBounds(152, 129, 89, 23);
-		getContentPane().add(level[6]);
-		
-		level[7] = new JButton("level7");
-		level[7].setBounds(273, 129, 89, 23);
-		getContentPane().add(level[7]);
-		
-		level[8] = new JButton("level8");
-		level[8].setBounds(402, 129, 89, 23);
-		getContentPane().add(level[8]);
-		
-		level[9] = new JButton("level9");
-		level[9].setBounds(33, 177, 89, 23);
-		getContentPane().add(level[9]);
-		
-		level[10] = new JButton("level10");
-		level[10].setBounds(152, 177, 89, 23);
-		getContentPane().add(level[10]);
-		
-		level[11] = new JButton("level11");
-		level[11].setBounds(273, 177, 89, 23);
-		getContentPane().add(level[11]);
-		
-		level[12] = new JButton("level12");
-		level[12].setBounds(402, 177, 89, 23);
-		getContentPane().add(level[12]);
-		
-		level[13] = new JButton("level13");
-		level[13].setBounds(33, 227, 89, 23);
-		getContentPane().add(level[13]);
-		
-		level[14] = new JButton("level14");
-		level[14].setBounds(152, 227, 89, 23);
-		getContentPane().add(level[14]);
-		
-		level[15] = new JButton("level15");
-		level[15].setBounds(273, 227, 89, 23);
-		getContentPane().add(level[15]);
-		
-		level[16] = new JButton("level16");
-		level[16].setBounds(402, 227, 89, 23);
-		getContentPane().add(level[16]);
-		
-		level[17] = new JButton("level17");
-		level[17].setBounds(33, 277, 89, 23);
-		getContentPane().add(level[17]);
-		
-		level[18] = new JButton("level18");
-		level[18].setBounds(152, 277, 89, 23);
-		getContentPane().add(level[18]);
-		
-		level[19] = new JButton("level19");
-		level[19].setBounds(273, 277, 89, 23);
-		getContentPane().add(level[19]);
-		
-		level[20] = new JButton("level20");
-		level[20].setBounds(402, 277, 89, 23);
-		getContentPane().add(level[20]);
-	}
-
-	private void buttonController() {
-		
-	}
-
-	
 }

@@ -2,22 +2,28 @@ package sixesWild.view;
 
 import java.awt.Graphics;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 
 import sixesWild.controller.moves.NormalMove;
+import sixesWild.model.EliminationBoard;
 import sixesWild.model.Model;
 import sixesWild.model.Square;
 import sixesWild.model.Tile;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.TextArea;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -112,6 +118,28 @@ public class PlayPanel extends JPanel
 	protected void paintComponent(Graphics graph)
 	{
 		super.paintComponent(graph);
+		BufferedImage image;
+		try {
+			int num = model.getBoard().getCurrLevel()%4;
+			if(num==0)
+			{
+				image = ImageIO.read(new File("/home/mengwen/Desktop/images/2.png"));
+			}
+			else if(num==1)
+			{
+				image = ImageIO.read(new File("/home/mengwen/Desktop/images/b_111.jpg"));
+			}
+			else
+				{image = ImageIO.read(new File("/home/mengwen/Desktop/images/stripe_2.jpg"));
+				
+				}
+			//This is the limit of the panel.
+			//graph.drawImage(image, 57,7,417,417,null);
+			graph.drawImage(image, 0, 0, 550,430, null);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Use 0, 1, 2 to represent disable, enable and bucket.
 		
 		//ArrayList<Square> square ? 
@@ -121,6 +149,15 @@ public class PlayPanel extends JPanel
 		ArrayList<Integer> squareNum=model.getBoard().getTileNum();
 		ArrayList<Integer> squareMulti=model.getBoard().getTileMulti();
 		ArrayList<Square> selectedSquare=model.getBoard().getSelectedSquares();
+		ArrayList<Integer> squareMark=model.getBoard().getSquareMarked();
+//		try {
+//			Image shade = ImageIO.read(getClass().getResource("/home/mengwen/Desktop/images/stripe_4.jpg"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
 		//i represents row, j represents col.
 		for(int row=0;row<9;row++)
 		{
@@ -147,6 +184,12 @@ public class PlayPanel extends JPanel
 					graph.drawRect(57+col*47,7+row*47, 40, 40);
 					//graph.setColor(c.get(6));
 					graph.fillRect(57+col*47,7+row*47, 40, 40);
+					graph.setColor(Color.WHITE);
+					if(squareNum.get(row*9+col)==6)
+					{
+						graph.drawString((squareNum.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2, (int)(7+row*47+7+row*47+40)/2);
+						//graph.drawString("X"+(squareMulti.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2+5, (int)(7+row*47+7+row*47+40)/2+18);
+					}
 				}
 				else
 				{
@@ -154,6 +197,27 @@ public class PlayPanel extends JPanel
 					graph.drawRect(57+col*47,7+row*47, 40, 40);
 					//graph.setColor(c.get(7));
 					graph.fillRect(57+col*47,7+row*47, 40, 40);
+				}
+				if(model.getBoard() instanceof EliminationBoard)
+				{	
+					
+					if(squareMark.get(row*9+col)==1)
+					{
+//						graph.drawRect(57+col*47,7+row*47, 40, 40);
+//						graph.setColor(c.get(squareNum.get(row*9+col)-1));
+//						graph.fillRect(57+col*47,7+row*47, 40, 40);
+						BufferedImage shade;
+						try {
+							shade = ImageIO.read(new File("/home/mengwen/Desktop/images/stripe_1.jpg"));
+							graph.drawImage(shade, 57+col*47, 7+row*47, 40, 40, null);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}						
+						graph.setColor(Color.BLACK);
+						graph.drawString((squareNum.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2, (int)(7+row*47+7+row*47+40)/2);
+						graph.drawString("X"+(squareMulti.get(row*9+col)).toString(), (int)(57+col*47+57+col*47+40)/2+5, (int)(7+row*47+7+row*47+40)/2+18);
+					}
 				}
 			}
 			if(selectedSquare.size()!=0)

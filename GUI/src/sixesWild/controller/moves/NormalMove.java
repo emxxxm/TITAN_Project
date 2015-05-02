@@ -28,6 +28,11 @@ public class NormalMove extends AbsMove
 	@Override
 	public boolean isValid() 
 	{
+		//Handle the condition that the mouse moves out of bound.
+		if(newCol == -1 || newRow == -1)
+		{
+			return false;
+		}
 		//If the new square is on the same col with the last col, return true.
 		if(newRow==lastRow || newCol==lastCol)
 		{

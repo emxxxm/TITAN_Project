@@ -18,11 +18,14 @@ public class LoadLevelController implements ActionListener{
 	Model model;
 	String file;
 	LevelBuilder lb;
+	RequestScreen rs;
 	
-	public LoadLevelController(Model m, LevelBuilder lb, String file){
+	public LoadLevelController(Model m, LevelBuilder lb, String file, RequestScreen rs){
 		this.model = m;
 		this.lb = lb;
 		this.file = file;
+		this.rs = rs;
+		
 		
 	}
 	
@@ -31,6 +34,7 @@ public class LoadLevelController implements ActionListener{
 		try{
 			System.out.println(file);
 			BufferedReader reader = new BufferedReader(new FileReader(file));
+			rs.dispose();
 			ArrayList<String> buffer = new ArrayList<String>();
 			String line = reader.readLine();
 			while(line!=null){
@@ -65,14 +69,17 @@ public class LoadLevelController implements ActionListener{
 			else if( r == 2){
 				mode = "Lightning";
 				LevelMode.put(currentLevel, mode);
+				panel.getMode().setText(mode);
 			}
 			else if(r == 3){
 				mode = "Elimination";
 				LevelMode.put(currentLevel, mode);
+				panel.getMode().setText(mode);
 			}
 			else if(r == 4){
 				mode = "Release";
 				LevelMode.put(currentLevel, mode);
+				panel.getMode().setText(mode);
 			}
 			else{
 				System.err.println("Mode: Cannot compute mode");
@@ -94,6 +101,7 @@ public class LoadLevelController implements ActionListener{
 			String[] numFreqArray = buffer.get(7).split(" ");
 			String[] multiFreqArray = buffer.get(8).split(" ");
 			String[] squareTypeInput = buffer.get(9).split(" ");
+			
 			String[] sixListInput = buffer.get(10).split(" ");
 			
 			System.out.println(numFreqArray[0]);
@@ -138,23 +146,29 @@ public class LoadLevelController implements ActionListener{
 			ArrayList<Position> bucketList = new ArrayList<Position>();
 			ArrayList<Position> sixList = new ArrayList<Position>();
 			for(int i = 0; i < squareTypeInput.length; i++){
-				if(squareTypeInput[i] == "0"){
-					int row = i / 9 ; // 0-8 or 1-9????????
-					int col = i % 9 ;// 0-8 or 1-9????????
+				System.out.println(squareTypeInput[i]);
+				if(squareTypeInput[i].compareTo("0") == 0){
+					System.out.println("Find background");
+					int row = i / 9 + 1; // 0-8 or 1-9????????
+					int col = i % 9 + 1;// 0-8 or 1-9????????
 					
 					Position pos = new Position(row, col);
 					disableList.add(pos);
 				}
 				
-				if(squareTypeInput[i] == "2"){
-					int row = i / 9;// 0-8 or 1-9????????
-					int col = i % 9;// 0-8 or 1-9????????
+				if(squareTypeInput[i].compareTo("2") == 0){
+					int row = i / 9 + 1;// 0-8 or 1-9????????
+					int col = i % 9 + 1;// 0-8 or 1-9????????
 					
 					Position pos = new Position(row, col);
 					bucketList.add(pos);
 					
 				}
 			}
+			model.setBucketList(bucketList);
+			model.setDisableList(disableList);
+			model.setSixList(sixList);
+			
 			
 			for(int i = 0; i < sixListInput.length - 1; i=i+2){
 				int row = Integer.parseInt(sixListInput[i]);

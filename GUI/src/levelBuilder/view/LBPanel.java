@@ -18,11 +18,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import levelBuilder.controller.BoardPreviewController;
+import levelBuilder.controller.CloseWindowController;
 import levelBuilder.controller.LevelSaveController;
 import levelBuilder.controller.QuitScreenController;
 import levelBuilder.entity.Model;
 import levelBuilder.game.LevelBuilder;
 import levelBuilder.move.controller.*;
+import levelBuilder.view.RequestScreen;
 
 public class LBPanel extends JFrame{
 	
@@ -72,7 +74,7 @@ public class LBPanel extends JFrame{
 		initialize();
 		
 		btnPreview.addActionListener(new BoardPreviewController(model));
-		btnQuit.addActionListener(new QuitScreenController(new QuitScreen()));
+		btnQuit.addActionListener(new CloseWindowController(this, model));
 	}
 	
 	private void initialize(){

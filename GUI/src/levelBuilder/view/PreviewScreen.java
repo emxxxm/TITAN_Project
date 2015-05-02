@@ -1,11 +1,15 @@
 package levelBuilder.view;
 
+
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 import sixesWild.view.PlayPanel;
+import levelBuilder.controller.CloseWindowController;
 import levelBuilder.entity.Model;
 
 public class PreviewScreen extends JFrame{
@@ -33,8 +37,6 @@ public class PreviewScreen extends JFrame{
 	protected PreviewPlayPanel previewPlayPanel;
 
 
-	
-
 	public PreviewScreen(Model m){
 		super();
 		this.model=m;
@@ -46,6 +48,7 @@ public class PreviewScreen extends JFrame{
 		initialize();
 		addToPanel();
 		getContentPane().setLayout(null);
+		quitButton.addActionListener(new CloseWindowController(this));
 	}
 	
 	void initialize(){

@@ -25,6 +25,9 @@ public class SixList {
 	public void clearAll(){
 		sList.clear();
 	}
+	public void setList(ArrayList<Position> six){
+		this.sList = six;
+	}
 	
 	public boolean remove(Position ps){
 		if(sList.remove(ps)){
