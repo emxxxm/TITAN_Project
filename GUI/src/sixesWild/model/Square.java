@@ -9,6 +9,7 @@ public class Square implements Comparable
 	protected int col;
 	//Is this correct? 
 	protected int type;
+	protected int isMarked = 0;
 	
 	public Square()
 	{
@@ -24,6 +25,37 @@ public class Square implements Comparable
 		this.row=row;
 		this.col=col;
 		this.type=type;
+	}
+	
+	public boolean isFilled()
+	{
+		if(this.type!=2)
+		{
+			return false;
+		}
+		if(this.getTile().getNum()==6)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean setMarked(int mark)
+	{
+		if(mark < 0)
+		{
+			return false;
+		}
+		this.isMarked = mark;
+		return true;
+	}
+	
+	public int getIsMarked()
+	{
+		return this.isMarked;
 	}
 	
 	public int getType()

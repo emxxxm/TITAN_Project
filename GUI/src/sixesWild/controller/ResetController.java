@@ -1,5 +1,7 @@
 package sixesWild.controller;
 
+import java.io.IOException;
+
 import sixesWild.controller.moves.ResetMove;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
@@ -24,6 +26,13 @@ public class ResetController
 			if(model.getBoard() instanceof PuzzleBoard)
 			{
 				bv.getMoveLeftLabel().setText("Move Left: "+((PuzzleBoard)(model.getBoard())).getMoveLeft());
+			}
+			CompleteLevelController clc = new CompleteLevelController(model, bv);
+			try {
+				clc.process();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return true;
 		}

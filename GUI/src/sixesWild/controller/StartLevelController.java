@@ -2,14 +2,17 @@ package sixesWild.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.TimerTask;
 import java.util.logging.Level;
 
 import sixesWild.model.Board;
+import sixesWild.model.EliminationBoard;
 import sixesWild.model.LightningBoard;
 import sixesWild.model.Model;
 import sixesWild.model.MyTimer;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.view.BoardView;
 import sixesWild.view.SelectLevelView;
 
@@ -45,9 +48,11 @@ public class StartLevelController implements ActionListener
 				break;
 			//Level 3, elimination.
 			case 3:
+				b = new EliminationBoard(m.getAllLevels().getGivenLevel(currLevel));
+				break;
 			//Level 4, release.
 			default:
-				b = new Board(m.getAllLevels().getGivenLevel(currLevel));
+				b = new ReleaseBoard(m.getAllLevels().getGivenLevel(currLevel));
 		}
 		m.setBoard(b);
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -69,12 +74,17 @@ public class StartLevelController implements ActionListener
 						System.out.println(val);
 						newBoardView.getTimeLabel().setText("Time Left: " + val);
 						if(val == 0)
-						{
+						{			
 							t.cancel();
-							CompleteLevelController clc = new CompleteLevelController(m, newBoardView);
-							clc.process();
 						}
 						((LightningBoard)(m.getBoard())).setTimeLeft(-1);
+						CompleteLevelController clc = new CompleteLevelController(m, newBoardView);
+						try {
+							clc.process();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					
 				};
@@ -84,6 +94,6 @@ public class StartLevelController implements ActionListener
 
 		}
 		
-		newBoardView.getQuitButton().addActionListener(new QuitLevelController(start,newBoardView,m,t));
+		newBoardView.getQuitButton().addActionListener(new QuitLevelController(newBoardView,m,t));
 	}
 }

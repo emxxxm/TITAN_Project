@@ -35,12 +35,16 @@ public class AllLevel
 		//First read in the number of levels, then, use a for loop to create all the levels and store them in an array.
 		//levels[0]=new Level(0, false, numLevels, numLevels, numLevels, numLevels, null, null, null, null);
 		levels=new ArrayList<Level>();
+		ArrayList<Integer> locked;
 		ArrayList<Integer> starGoals;
 		ArrayList<Integer> numFrequency;
 		ArrayList<Integer> multiFrequency;
 		ArrayList<Integer> squareType;
 		ArrayList<Integer> tileNum;
 		ArrayList<Integer> tileMulti;
+		ArrayList<String> stateString = new ArrayList<String>();
+		File lockFile = new File(levelStateFilePath);
+		BufferedReader r = null;
 		ArrayList<String> fileString = new ArrayList<String>();
 		File file=new File(levelBuilderFilePath);
 		BufferedReader reader=null;
@@ -54,7 +58,6 @@ public class AllLevel
 				fileString.add(text);
 				text=reader.readLine();
 			}
-			System.out.println("Here");
 			System.out.println(fileString.get(0));
 			numLevels=Integer.parseInt(fileString.get(0));	
 			for(int cnt=0; cnt<numLevels; cnt++)
@@ -103,9 +106,38 @@ public class AllLevel
 				}
 				System.out.println(squareType.size());
 				//Lock is read in from other file later. It is set to false for now.
-				levels.add(new Level(levelNum, false, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, numFrequency, multiFrequency, squareType, tileNum, tileMulti));
+				levels.add(new Level(levelNum, 0, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, numFrequency, multiFrequency, squareType, tileNum, tileMulti));
 			}
 			System.out.println("Here");
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			System.out.println("IOException!");
+			e.printStackTrace();
+		}
+		//Read lock or unlock.
+		try
+		{
+			locked = new ArrayList<Integer>();
+			r = new BufferedReader(new FileReader(lockFile));
+			String text=null;
+			text=r.readLine();
+			stateString.add(text);
+			System.out.println(stateString.get(0));
+			String[] lockArray=stateString.get(0).split(" ");
+			for(int i=0;i<numLevels;i++)
+			{
+				locked.add(Integer.parseInt(lockArray[i]));
+			}
+			for(int i=0;i<numLevels;i++)
+			{
+				levels.get(i).setLocked(locked.get(i));
+			}
 		}
 		catch(FileNotFoundException e)
 		{
@@ -121,15 +153,21 @@ public class AllLevel
 		{
 			try
 			{
-				if(reader!=null)
+				if(reader!=null && r!=null)
 				{
 					reader.close();
+					r.close();
 				}
 			}
 			catch(IOException e)
 			{
 			}
 		}	
+	}
+	
+	public int getNumLevels()
+	{
+		return this.numLevels;
 	}
 	
 	public Level getGivenLevel(int levelNum)

@@ -23,6 +23,9 @@ public class DisableSquareList {
 	public void clearAll(){
 		dsList.clear();
 	}
+	public void setList(ArrayList<Position> disable){
+		this.dsList = disable;
+	}
 	
 	public boolean remove(Position ps){
 		if(dsList.remove(ps)){

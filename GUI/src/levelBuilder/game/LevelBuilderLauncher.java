@@ -10,10 +10,10 @@ public class LevelBuilderLauncher {
 	public static void main (String args[]) {
 		
 		// create a model first
-		//Model m = new Model();
+		Model m = new Model();
 		
 		SplashScrn sixeswild = new SplashScrn();
-		RequestScreen rs = new RequestScreen();
+		RequestScreen rs = new RequestScreen(m);
 		
 		// launch everything and go!
 		rs.setVisible (true);

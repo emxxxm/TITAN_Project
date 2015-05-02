@@ -104,6 +104,16 @@ public class Board
 		return true;
 	}
 	
+	public ArrayList<Integer> getSquareMarked()
+	{
+		ArrayList<Integer> squareMarked = new ArrayList<Integer>();
+		for(int i=0;i<squares.size();i++)
+		{
+			squareMarked.add(squares.get(i).getIsMarked());
+		}
+		return squareMarked;
+	}
+	
 	public ArrayList<Integer> getSquareType()
 	{
 		ArrayList<Integer> squareType = new ArrayList<Integer>();

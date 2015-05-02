@@ -9,17 +9,24 @@ import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.logging.Level;
 
 import javax.swing.JPanel;
 
+import sixesWild.controller.CompleteLevelController;
 import sixesWild.controller.PlayPanelController;
 import sixesWild.controller.RemoveController;
 import sixesWild.controller.ResetController;
 import sixesWild.controller.SwapController;
+import sixesWild.model.EliminationBoard;
 import sixesWild.model.LightningBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
@@ -91,6 +98,34 @@ public class BoardView extends JFrame
 		this.setBounds(0, 0, 900, 600);
 		this.setVisible(true);
 		this.setTitle("SixesWild");
+//		System.out.println("BEFORE JLABEL!!!");
+//		ImageIcon background = new ImageIcon("/home/mengwen/Desktop/images/b_5.jpg");
+//		JLabel label = new JLabel(background);
+//		label.setBounds(0, 0, background.getIconWidth(),background.getIconHeight());
+//		//label.setOpaque(true);
+//		//this.add(label);
+//		
+////		imagePanel.setLayout(new FlowLayout());
+//
+//		//this.getLayeredPane().setLayout(null);
+//		this.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
+//		this.setResizable(false);
+		//this.add(panel);
+//		panel.setBackground(new Color(0,0,0,65));
+		//this.getContentPane().setBackground(Color.GREEN);
+		CompleteLevelController clc =  new CompleteLevelController(m, this);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+			   public void windowClosing(WindowEvent evt) {
+			     try {
+					clc.processQuitClose();
+					System.exit(0);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			   }
+			  });
 		
 		levelLabel = new JLabel("Level: "+m.getBoard().getCurrLevel());
 		scoreLabel = new JLabel("Score: "+m.getBoard().getCurrScore());
@@ -100,10 +135,11 @@ public class BoardView extends JFrame
 		quitButton = new JButton("Quit");
 		
 		progressBar = new JProgressBar();
-//		ImageIcon star = new ImageIcon("/home/mengwen/Desktop/star.png");
-//		oneStar = new JLabel("", star, JLabel.CENTER);
-		oneStar = new JLabel("1");
-		twoStar = new JLabel("2");
+		ImageIcon star = new ImageIcon("/home/mengwen/Desktop/oneStar.png");
+		oneStar = new JLabel("", star, JLabel.CENTER);
+		//oneStar = new JLabel("1");
+		ImageIcon twoStars = new ImageIcon("/home/mengwen/Desktop/twoStars.png");
+		twoStar = new JLabel("", twoStars, JLabel.CENTER);
 		threeStar = new JLabel("3");
 		System.out.println(progressBar.getMaximumSize());
 		System.out.println(m.getBoard().getStarScore().get(2));
@@ -111,15 +147,10 @@ public class BoardView extends JFrame
 		double score_1=m.getBoard().getStarScore().get(0);
 		double score_2=m.getBoard().getStarScore().get(1);
 		double score_3=m.getBoard().getStarScore().get(2);
-		System.out.println(score_1);
-		System.out.println(score_2);
-		System.out.println(score_3);
-		
-		System.out.println(score_1/score_3);
 		int gap_1=(int)Math.floor(530*(score_1/score_3));
 		int gap_2=(int)Math.floor(530*(score_2/score_3))-gap_1;
 		int gap_3=530-gap_2-gap_1;
-		String s = "HERE";
+		String s = " ";
 		timeLabel = new JLabel("Time: ");
 		moveLeftLabel = new JLabel("Move Left: ");
 		//if board is instance of lighting:
@@ -138,14 +169,23 @@ public class BoardView extends JFrame
 			timeLabel.setVisible(false);
 			s = "Puzzle";
 		}
+		else if(m.getBoard() instanceof EliminationBoard)
+		{
+			moveLeftLabel = new JLabel("Move Left: "+ ((EliminationBoard)(m.getBoard())).getMoveLimit());
+			timeLabel.setVisible(false);
+			s = "Elimination";
+		}
 		else
 		{
-			moveLeftLabel = new JLabel("Move Left: ");
 			moveLeftLabel.setVisible(false);
+			timeLabel.setVisible(false);
+			s = "Release";
 		}
 		
 		playPanel = new PlayPanel(m);
 		playPanel.setBounds(300, 0, 600, 600);
+		
+		
 		SwapController sc = new SwapController(m, this);
 		RemoveController rc = new RemoveController(m, this);
 		ResetController rec = new ResetController(m, this);

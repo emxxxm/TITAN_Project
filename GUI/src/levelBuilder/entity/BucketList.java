@@ -25,7 +25,9 @@ public class BucketList {
 	public void clearAll(){
 		bList.clear();
 	}
-	
+	public void setList(ArrayList<Position> bucket){
+		this.bList = bucket;
+	}
 	public boolean remove(Position ps){
 		if(bList.remove(ps)){
 			System.out.println("Bucket at Position (" + ps.row + " ," + ps.col +") is removed!");

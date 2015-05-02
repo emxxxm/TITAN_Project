@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.model.Square;
 
 public class SwapMove extends AbsMove
@@ -50,6 +51,12 @@ public class SwapMove extends AbsMove
 			if(model.getBoard().getSwapLeft()>0)
 			{
 				model.getBoard().setSwapLeft(-1);
+			}
+			if(model.getBoard() instanceof ReleaseBoard)
+			{
+				ReleaseBoard rb = (ReleaseBoard)model.getBoard();
+				rb.updateBucket(s1.getCol());
+				rb.updateBucket(s2.getCol());
 			}
 			return true;
 		}
