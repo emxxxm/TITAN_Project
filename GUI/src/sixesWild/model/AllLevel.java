@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * If we drag outside the panel, we need to through an exception.
@@ -46,10 +47,23 @@ public class AllLevel
 		File lockFile = new File(levelStateFilePath);
 		BufferedReader r = null;
 		ArrayList<String> fileString = new ArrayList<String>();
-		File file=new File(levelBuilderFilePath);
 		BufferedReader reader=null;
 		try
 		{
+			//Initialize ArrayList and int here.
+			starGoals = new ArrayList<Integer>();
+			numFrequency = new ArrayList<Integer>();
+			multiFrequency = new ArrayList<Integer>();
+			squareType = new ArrayList<Integer>();
+			tileNum = new ArrayList<Integer>();
+			tileMulti = new ArrayList<Integer>();
+			int levelNum;
+			int moveLimit;
+			int timeLimit;
+			int swapLimit;
+			int removeLimit;
+			//First read in the first level to determine the number of levels.
+			File file = new File(levelBuilderFilePath + "level" + 1);
 			reader=new BufferedReader(new FileReader(file));
 			String text=null;
 			text=reader.readLine();
@@ -58,9 +72,57 @@ public class AllLevel
 				fileString.add(text);
 				text=reader.readLine();
 			}
-			System.out.println(fileString.get(0));
-			numLevels=Integer.parseInt(fileString.get(0));	
-			for(int cnt=0; cnt<numLevels; cnt++)
+			numLevels=Integer.parseInt(fileString.get(0));
+			System.out.println("numLevels is "+numLevels);
+			levelNum=Integer.parseInt(fileString.get(1));
+			moveLimit=Integer.parseInt(fileString.get(2));
+			timeLimit=Integer.parseInt(fileString.get(3));
+			swapLimit=Integer.parseInt(fileString.get(4));
+			removeLimit=Integer.parseInt(fileString.get(5));
+			String[] starGoalsArray=fileString.get(6).split(" ");
+			String[] numFrequencyArray=fileString.get(7).split(" ");
+			String[] multiFrequencyArray=fileString.get(8).split(" ");
+			String[] squareTypeArray=fileString.get(9).split(" ");
+			for(int i=0;i<starGoalsArray.length;i++)
+			{
+				starGoals.add(Integer.parseInt(starGoalsArray[i]));
+			}
+			for(int i=0;i<numFrequencyArray.length;i++)
+			{
+				numFrequency.add(Integer.parseInt(numFrequencyArray[i]));
+			}
+			for(int i=0;i<multiFrequencyArray.length;i++)
+			{
+				multiFrequency.add(Integer.parseInt(multiFrequencyArray[i]));
+			}
+			for(int i=0;i<squareTypeArray.length;i++)
+			{
+				squareType.add(Integer.parseInt(squareTypeArray[i]));
+			}
+			for(int i=0;i<squareTypeArray.length;i++)
+			{				
+				if(squareType.get(i)==1)
+				{
+					tileNum.add(this.getNewNum(numFrequency));
+				}
+				else
+				{
+					tileNum.add(0);
+				}
+			}
+			for(int i=0;i<squareTypeArray.length;i++)
+			{
+				if(squareType.get(i)==1)
+				{
+					tileMulti.add(this.getNewMulti(multiFrequency));
+				}
+				else
+				{
+					tileMulti.add(0);
+				}
+			}
+			levels.add(new Level(levelNum, 0, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, numFrequency, multiFrequency, squareType, tileNum, tileMulti));
+			for(int cnt=2; cnt<=numLevels; cnt++)
 			{
 				starGoals = new ArrayList<Integer>();
 				numFrequency = new ArrayList<Integer>();
@@ -68,18 +130,32 @@ public class AllLevel
 				squareType = new ArrayList<Integer>();
 				tileNum = new ArrayList<Integer>();
 				tileMulti = new ArrayList<Integer>();
-				//Assume the data block for 1 level takes 5 lines.
-				int levelNum=Integer.parseInt(fileString.get(1+11*cnt));
-				int moveLimit=Integer.parseInt(fileString.get(2+11*cnt));
-				int timeLimit=Integer.parseInt(fileString.get(3+11*cnt));
-				int swapLimit=Integer.parseInt(fileString.get(4+11*cnt));
-				int removeLimit=Integer.parseInt(fileString.get(5+11*cnt));
-				String[] starGoalsArray=fileString.get(6+11*cnt).split(" ");
-				String[] numFrequencyArray=fileString.get(7+11*cnt).split(" ");
-				String[] multiFrequencyArray=fileString.get(8+11*cnt).split(" ");
-				String[] squareTypeArray=fileString.get(9+11*cnt).split(" ");
-				String[] tileNumArray=fileString.get(10+11*cnt).split(" ");
-				String[] tileMultiArray=fileString.get(11+11*cnt).split(" ");
+				System.out.println("cnt is "+cnt);
+				System.out.println("In for loop");
+				file = new File(levelBuilderFilePath + "level" + cnt);
+				System.out.println(file);
+				reader=new BufferedReader(new FileReader(file));
+				fileString.clear();
+				text=reader.readLine();
+				while(text!=null)
+				{
+					fileString.add(text);
+					text=reader.readLine();
+				}
+				levelNum=Integer.parseInt(fileString.get(1));
+				System.out.println(levelNum+"~~~~~~~~~~~~~~~~");
+				moveLimit=Integer.parseInt(fileString.get(2));
+				System.out.println("moveLimit "+moveLimit);
+				timeLimit=Integer.parseInt(fileString.get(3));
+				swapLimit=Integer.parseInt(fileString.get(4));
+				removeLimit=Integer.parseInt(fileString.get(5));
+				starGoalsArray=fileString.get(6).split(" ");
+				numFrequencyArray=fileString.get(7).split(" ");
+				multiFrequencyArray=fileString.get(8).split(" ");
+				System.out.println(fileString.get(9));
+				squareTypeArray=fileString.get(9).split(" ");
+				
+				
 				for(int i=0;i<starGoalsArray.length;i++)
 				{
 					starGoals.add(Integer.parseInt(starGoalsArray[i]));
@@ -94,21 +170,54 @@ public class AllLevel
 				}
 				for(int i=0;i<squareTypeArray.length;i++)
 				{
+					//System.out.println(squareTypeArray[i]);
 					squareType.add(Integer.parseInt(squareTypeArray[i]));
 				}
-				for(int i=0;i<tileNumArray.length;i++)
+				for(int i=0;i<squareTypeArray.length;i++)
 				{				
-					tileNum.add(Integer.parseInt(tileNumArray[i]));
+					if(squareType.get(i)==1)
+					{
+						tileNum.add(this.getNewNum(numFrequency));
+					}
+					else
+					{
+						tileNum.add(0);
+					}
 				}
-				for(int i=0;i<tileMultiArray.length;i++)
+				for(int i=0;i<squareTypeArray.length;i++)
 				{
-					tileMulti.add(Integer.parseInt(tileMultiArray[i]));
+					if(squareType.get(i)==1)
+					{
+						tileMulti.add(this.getNewMulti(multiFrequency));
+					}
+					else
+					{
+						tileMulti.add(0);
+					}
 				}
-				System.out.println(squareType.size());
-				//Lock is read in from other file later. It is set to false for now.
+				System.out.println(fileString.get(9));
+				System.out.println(levelNum);
+				if(levelNum%4==0)
+				{
+					String[] sixPositionArray = fileString.get(10).split(" ");
+					ArrayList<Integer> row = new ArrayList();
+					ArrayList<Integer> col = new ArrayList();
+					
+					for(int i=0; i<sixPositionArray.length;i+=2)
+					{
+						row.add(Integer.parseInt(sixPositionArray[i]));
+						col.add(Integer.parseInt(sixPositionArray[i+1]));
+					}
+					
+					for(int i=0; i<row.size(); i++)
+					{
+						tileNum.set(row.get(i)*9+col.get(i), 6);
+					}
+				}
 				levels.add(new Level(levelNum, 0, moveLimit, timeLimit, swapLimit, removeLimit, starGoals, numFrequency, multiFrequency, squareType, tileNum, tileMulti));
+				System.out.println(cnt);
+				
 			}
-			System.out.println("Here");
 		}
 		catch(FileNotFoundException e)
 		{
@@ -162,16 +271,80 @@ public class AllLevel
 			catch(IOException e)
 			{
 			}
-		}	
+		}
+		Level l = levels.get(1);
+		System.out.println("**********************************************************************");
+		System.out.println(l.getLevelNum());
+		for(int i=0; i<l.getSquareType().size();i++)
+		{
+			System.out.println(l.getSquareType().get(i));
+		}
 	}
-	
 	public int getNumLevels()
 	{
 		return this.numLevels;
 	}
 	
 	public Level getGivenLevel(int levelNum)
-	{
+	{		
 		return levels.get(levelNum-1);
+	}
+	
+	public int getNewNum(ArrayList<Integer> numFrequency)
+	{
+		Random random = new Random();
+		int num = random.nextInt(100)+1;
+		int numSet=0;
+		if(num<=numFrequency.get(0))
+		{
+			numSet=1;
+		}
+		else if(num <= numFrequency.get(0)+numFrequency.get(1))
+		{
+			numSet=2;
+		}
+		else if(num <= numFrequency.get(0)+numFrequency.get(1)+numFrequency.get(2))
+		{
+			numSet=3;
+		}
+		else if(num <= numFrequency.get(0)+numFrequency.get(1)+numFrequency.get(2)+numFrequency.get(3))
+		{
+			numSet=4;
+		}
+		else if(num <= numFrequency.get(0)+numFrequency.get(1)+numFrequency.get(2)+numFrequency.get(3)+numFrequency.get(4))
+		{
+			numSet=5;
+		}
+		else
+		{
+			numSet=6;
+		}
+		return numSet;
+	}
+	
+	/**
+	 * Get the falling multi according to the multiFrequency.
+	 * @author Mengwen Li, Yihong Zhou
+	 * @param numFrequency
+	 * @return
+	 */
+	public int getNewMulti(ArrayList<Integer> multiFrequency)
+	{
+		Random random = new Random();
+		int multi = random.nextInt(100)+1;
+		int multiSet=0;
+		if(multi<=multiFrequency.get(0))
+		{
+			multiSet=1;
+		}
+		else if(multi <= multiFrequency.get(0)+multiFrequency.get(1))
+		{
+			multiSet=2;
+		}
+		else if(multi <= multiFrequency.get(0)+multiFrequency.get(1)+multiFrequency.get(2))
+		{
+			multiSet=3;
+		}
+		return multiSet;
 	}
 }

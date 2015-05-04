@@ -1,10 +1,13 @@
 package sixesWild.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.WindowConstants;
 
@@ -20,6 +23,7 @@ public class CompleteLevelController
 {
 	Model m;
 	BoardView bv;
+	protected final String scoreFile = "src/highScore.txt";
 	
 	public CompleteLevelController(Model m, BoardView bv)
 	{
@@ -47,6 +51,7 @@ public class CompleteLevelController
 			else
 			{
 				this.handleWinCondition(clv);
+				this.recordScore();
 			}
 		}
 		else if(m.getBoard() instanceof LightningBoard)
@@ -65,6 +70,7 @@ public class CompleteLevelController
 			else
 			{
 				this.handleWinCondition(clv);
+				this.recordScore();
 			}
 		}
 		else if(m.getBoard() instanceof EliminationBoard)
@@ -82,6 +88,7 @@ public class CompleteLevelController
 			else
 			{
 				this.handleWinCondition(clv);
+				this.recordScore();
 			}
 		}
 		SelectLevelView slv = new SelectLevelView(m);
@@ -110,6 +117,7 @@ public class CompleteLevelController
 				else
 				{
 					this.handleWinCondition(clv);
+					this.recordScore();
 				}
 			}
 		}
@@ -131,11 +139,13 @@ public class CompleteLevelController
 				else
 				{
 					this.handleWinCondition(clv);
+					this.recordScore();
 				}
 			}
 		}
 		else if(m.getBoard() instanceof EliminationBoard)
 		{
+			System.out.println("IN ELIMINATIONBOARD");
 			EliminationBoard eb = (EliminationBoard)(m.getBoard());
 			//If there is not move left.
 			if(eb.getMoveLeft() == 0)
@@ -151,6 +161,8 @@ public class CompleteLevelController
 				else
 				{
 					this.handleWinCondition(clv);
+					System.out.println("BEFORE RECORDSCORE!!||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+					this.recordScore();
 				}
 			}
 		}
@@ -201,5 +213,80 @@ public class CompleteLevelController
 			clv.getStarLabel().setText("1 star");
 		}
 		clv.getScoreLabel().setText("Score: "+m.getBoard().getCurrScore());
+	}
+	
+	private void recordScore() throws IOException
+	{
+		ArrayList<Integer> highScore = new ArrayList<Integer>();
+		ArrayList<Integer> starCount = new ArrayList<Integer>();
+		try
+		{
+			highScore = new ArrayList<Integer>();
+			starCount = new ArrayList<Integer>();
+			ArrayList<String> recordString = new ArrayList<String>();
+			BufferedReader r = new BufferedReader(new FileReader(scoreFile));
+			String text=null;
+			text=r.readLine();
+			while(text!=null)
+			{
+				recordString.add(text);
+				text=r.readLine();
+			}
+			System.out.println(recordString.get(0));
+			System.out.println(recordString.get(1));
+			String[] scoreArray=recordString.get(0).split(" ");
+			String[] starArray=recordString.get(1).split(" ");
+			for(int i=0;i<m.getAllLevels().getNumLevels();i++)
+			{
+				highScore.add(Integer.parseInt(scoreArray[i]));
+				starCount.add(Integer.parseInt(starArray[i]));
+			}
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("File not found!");
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			System.out.println("IOException!");
+			e.printStackTrace();
+		}
+		int currScore = m.getBoard().getCurrScore();
+		int currStar;
+		
+		//Set the new high score.
+		if(currScore > highScore.get(m.getBoard().getCurrLevel()-1))
+		{
+			System.out.println("##############################");
+			System.out.println(currScore);
+			highScore.set(m.getBoard().getCurrLevel()-1, currScore);
+			if(currScore > m.getBoard().getStarScore().get(2))
+			{
+				currStar = 3;
+			}
+			else if(currScore > m.getBoard().getStarScore().get(1))
+			{
+				currStar = 2;
+			}
+			else
+			{
+				currStar = 1;
+			}
+			starCount.set(m.getBoard().getCurrLevel()-1, currStar);			
+			File file = new File("src/highScore.txt");
+			FileWriter fStream = new FileWriter(file,false);
+			for(int i=0; i<m.getAllLevels().getNumLevels(); i++)
+			{
+				System.out.println(highScore.get(i));
+				fStream.write(highScore.get(i)+" ");
+			}
+			fStream.write("\n");
+			for(int i=0; i<m.getAllLevels().getNumLevels(); i++)
+			{
+				fStream.write(starCount.get(i)+" ");
+			}
+			fStream.close();
+		}
 	}
 }
