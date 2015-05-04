@@ -26,18 +26,27 @@ public class EliminationBoard extends Board
 	 * Updates the number of moves left in Puzzle mode with input delta representing the move change.
 	 * @author Mengwen Li, Yihong Zhou.
 	 * @param delta
-	 * @return
+	 * @return boolean
 	 */
 	public boolean updateMoveLeft(int delta)
 	{
-		this.moveLeft = moveLeft + delta;
-		if(this.moveLeft < 0 || delta > 0)
+		int newValue = this.moveLeft + delta;
+		if(newValue < 0 || delta > 0)
 		{
 			return false;
+		}
+		else{
+			this.moveLeft=newValue;
 		}
 		return true;
 	}
 	
+	
+	/**
+	 * check if the board is all marked
+	 * @author Mengwen Li, Yihong Zhou
+	 * @return boolean
+	 */
 	public boolean allMarked()
 	{
 		int i=0;

@@ -71,10 +71,10 @@ public class EnterLevelMove extends Move{
 		return lvNum>0 && lvNum<=20;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }

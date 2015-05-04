@@ -61,10 +61,10 @@ public class SetBonusFreqMove extends Move{
 		return returnBool;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }

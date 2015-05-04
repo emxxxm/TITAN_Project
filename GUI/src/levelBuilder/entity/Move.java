@@ -12,11 +12,11 @@ public abstract class Move {
 	
 	public abstract boolean valid(LevelBuilder lb);
 	
-	public abstract boolean updateBoard();
+//	public abstract boolean updateBoard();
 	
-	public String toString() {
-		return "[Move " + this.getClass().getName() + "]";
-	}
+//	public String toString() {
+//		return "[Move " + this.getClass().getName() + "]";
+//	}
 	
 
 }

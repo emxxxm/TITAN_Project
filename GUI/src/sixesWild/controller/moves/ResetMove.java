@@ -53,10 +53,10 @@ public class ResetMove extends AbsMove
 		{
 			if(model.getBoard() instanceof PuzzleBoard)
 			{
-				if(((PuzzleBoard)(model.getBoard())).getMoveLeft() > 0)
-				{
+//				if(((PuzzleBoard)(model.getBoard())).getMoveLeft() > 0)
+//				{
 					((PuzzleBoard)(model.getBoard())).updateMoveLeft(-1);
-				}
+//				}
 			}
 			if(model.getBoard() instanceof EliminationBoard)
 			{
