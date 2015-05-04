@@ -22,7 +22,7 @@ public class testPanel extends TestCase {
 		
 		panel = new LBPanel(m);
 		lb = new LevelBuilder(m, panel);	
-	}
+	} 
 	
 	public void testPreivew(){		
 		m.getNumFrequency().setFre1(0.2);
