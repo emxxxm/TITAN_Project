@@ -30,6 +30,7 @@ import sixesWild.model.EliminationBoard;
 import sixesWild.model.LightningBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 
 public class BoardView extends JFrame
 {
@@ -175,9 +176,11 @@ public class BoardView extends JFrame
 			timeLabel.setVisible(false);
 			s = "Elimination";
 		}
+		//if board is a release board
 		else
 		{
-			moveLeftLabel.setVisible(false);
+//			moveLeftLabel.setVisible(false);
+			moveLeftLabel = new JLabel("Move Left: "+ ((ReleaseBoard)(m.getBoard())).getMoveLimit());
 			timeLabel.setVisible(false);
 			s = "Release";
 		}

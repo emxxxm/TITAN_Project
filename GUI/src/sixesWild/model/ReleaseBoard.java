@@ -7,12 +7,42 @@ public class ReleaseBoard extends Board
 {	
 	protected ArrayList<Integer> numFrequency;
 	protected ArrayList<Integer> multiFrequency;
+	protected int moveLimit;
+	protected int moveLeft;
 	
 	public ReleaseBoard(Level l)
 	{
 		super(l);
 		this.numFrequency = l.getNumFrequency();
 		this.multiFrequency = l.getMultiFrequency();
+		this.moveLimit = l.getMoveLimit();
+		this.moveLeft = l.getMoveLimit();
+	}	
+	
+	public int getMoveLimit()
+	{
+		return this.moveLimit;
+	}
+	
+	public int getMoveLeft()
+	{
+		return this.moveLeft;
+	}
+	
+	/**
+	 * Updates the number of moves left in Puzzle mode with input delta representing the move change.
+	 * @author Mengwen Li, Yihong Zhou.
+	 * @param delta
+	 * @return
+	 */
+	public boolean updateMoveLeft(int delta)
+	{
+		this.moveLeft = moveLeft + delta;
+		if(this.moveLeft < 0 || delta > 0)
+		{
+			return false;
+		}
+		return true;
 	}
 	
 	public void updateBucket(int col)
@@ -33,8 +63,7 @@ public class ReleaseBoard extends Board
 		{
 			return;
 		}
-		System.out.println(i);
-		//Check whether the first avaluable square above the bucket is 6, if not, return.
+		//Check whether the first avaliable square above the bucket is 6, if not, return.
 		//First, find the location of the first valid square.
 		for(i=bRow; i>=0; i--)
 		{
@@ -43,7 +72,6 @@ public class ReleaseBoard extends Board
 				break;
 			}
 		}
-		System.out.println("IN HERE!!!    "+i);
 		//If there is no valid square above, return.
 		if(i==-1)
 		{
@@ -101,11 +129,8 @@ public class ReleaseBoard extends Board
 						}
 					}					
 				}
-				return;
 			}
 		}
-		
-		
 	}
 	
 	public int getBucketRow(int col)

@@ -12,6 +12,7 @@ import sixesWild.model.EliminationBoard;
 import sixesWild.model.LightningBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.view.BoardView;
 import sixesWild.view.CompleteLevelView;
 import sixesWild.view.SelectLevelView;
@@ -53,7 +54,6 @@ public class CompleteLevelController
 		{
 			LightningBoard lb = (LightningBoard)(m.getBoard());
 			System.out.println(lb.getTimeLeft());
-			System.out.println("HERE!!!");
 			clv.setVisible(true);
 			bv.setVisible(false);
 			//If the score is less than 1-star score.
@@ -75,6 +75,22 @@ public class CompleteLevelController
 			bv.setVisible(false);
 			//If the score is less than 1-star score.
 			if(eb.getCurrScore() < eb.getStarScore().get(0) || !eb.allMarked())
+			{
+				//handle the loose condition.
+				this.handleLoseCondition(clv);
+			}
+			else
+			{
+				this.handleWinCondition(clv);
+			}
+		}
+		else if(m.getBoard() instanceof ReleaseBoard)
+		{
+			ReleaseBoard rb = (ReleaseBoard)(m.getBoard());
+			clv.setVisible(true);
+			bv.setVisible(false);
+			//If the score is less than 1-star score.
+			if(rb.getCurrScore() < rb.getStarScore().get(0) || !rb.allBucketFilled() )
 			{
 				//handle the loose condition.
 				this.handleLoseCondition(clv);
@@ -119,7 +135,6 @@ public class CompleteLevelController
 			System.out.println(lb.getTimeLeft());
 			if(lb.getTimeLeft()==0)
 			{
-				System.out.println("HERE!!!");
 				clv.setVisible(true);
 				bv.setVisible(false);
 				//If the score is less than 1-star score.
@@ -144,6 +159,25 @@ public class CompleteLevelController
 				bv.setVisible(false);
 				//If the score is less than 1-star score.
 				if(eb.getCurrScore() < eb.getStarScore().get(0) || !eb.allMarked())
+				{
+					//handle the loose condition.
+					this.handleLoseCondition(clv);
+				}
+				else
+				{
+					this.handleWinCondition(clv);
+				}
+			}
+		}
+		else if(m.getBoard() instanceof ReleaseBoard)
+		{
+			ReleaseBoard rb = (ReleaseBoard)(m.getBoard());
+			//If there is not move left.
+			if(rb.getMoveLeft() == 0){
+				clv.setVisible(true);
+				bv.setVisible(false);
+				//If the score is less than 1-star score.
+				if(rb.getCurrScore() < rb.getStarScore().get(0) || !rb.allBucketFilled() )
 				{
 					//handle the loose condition.
 					this.handleLoseCondition(clv);
@@ -202,4 +236,5 @@ public class CompleteLevelController
 		}
 		clv.getScoreLabel().setText("Score: "+m.getBoard().getCurrScore());
 	}
+
 }

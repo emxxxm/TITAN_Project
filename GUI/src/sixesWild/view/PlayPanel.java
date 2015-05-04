@@ -92,27 +92,27 @@ public class PlayPanel extends JPanel
 	{
 		super.paintComponent(graph);
 		BufferedImage image;
-		try {
-			int num = model.getBoard().getCurrLevel()%4;
-			if(num==0)
-			{
-				image = ImageIO.read(new File("/home/mengwen/Desktop/images/2.png"));
-			}
-			else if(num==1)
-			{
-				image = ImageIO.read(new File("/home/mengwen/Desktop/images/b_111.jpg"));
-			}
-			else
-				{image = ImageIO.read(new File("/home/mengwen/Desktop/images/stripe_2.jpg"));
-				
-				}
-			//This is the limit of the panel.
-			//graph.drawImage(image, 57,7,417,417,null);
-			graph.drawImage(image, 0, 0, 550,430, null);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			int num = model.getBoard().getCurrLevel()%4;
+//			if(num==0)
+//			{
+//				image = ImageIO.read(new File("/home/mengwen/Desktop/images/2.png"));
+//			}
+//			else if(num==1)
+//			{
+//				image = ImageIO.read(new File("/home/mengwen/Desktop/images/b_111.jpg"));
+//			}
+//			else
+//				{image = ImageIO.read(new File("/home/mengwen/Desktop/images/stripe_2.jpg"));
+//				
+//				}
+//			//This is the limit of the panel.
+//			//graph.drawImage(image, 57,7,417,417,null);
+//			graph.drawImage(image, 0, 0, 550,430, null);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		//Use 0, 1, 2 to represent disable, enable and bucket.
 		
 		//ArrayList<Square> square ? 

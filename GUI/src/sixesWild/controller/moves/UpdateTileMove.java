@@ -145,6 +145,13 @@ public class UpdateTileMove extends AbsMove
 					((EliminationBoard)(model.getBoard())).updateMoveLeft(-1);
 				}
 			}
+			if(model.getBoard() instanceof ReleaseBoard)
+			{
+				if(((ReleaseBoard)(model.getBoard())).getMoveLeft() > 0)
+				{
+					((ReleaseBoard)(model.getBoard())).updateMoveLeft(-1);
+				}
+			}
 			return true;
 		}
 		else
