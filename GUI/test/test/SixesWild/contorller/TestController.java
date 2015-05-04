@@ -13,7 +13,7 @@ import sixesWild.view.SelectLevelView;
 import sixesWildPlayer.LaunchSixesWild;
 
 public class TestController extends SWTestCase {
-	final String inputLevels = "src/input.txt";
+	final String inputLevels = "src/";
 	final String inputStates = "src/stateInput.txt";
 	Board startingBoard;
 	Model m;

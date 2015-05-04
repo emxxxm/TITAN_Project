@@ -32,7 +32,7 @@ public class testSixWildView extends TestCase {
 //		ArrayList<Integer> tileNum = new ArrayList<Integer>();
 //		ArrayList<Integer> tileMulti = new ArrayList<Integer>();
 //		Level l = new Level(1, 0, 0, 0, 0, 0, starGoals,numFrequency, multiFrequency, squareType, tileNum, tileMulti);
-		allLevel = new AllLevel("src/input.txt", "src/stateInput.txt");
+		allLevel = new AllLevel("src/", "src/stateInput.txt");
 		bd = new Board(allLevel.getGivenLevel(1));
 		m = new Model(allLevel, bd);
 		
