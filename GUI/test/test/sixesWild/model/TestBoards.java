@@ -1,4 +1,4 @@
-package test.SixesWild.model;
+package test.sixesWild.model;
 
 import java.util.ArrayList;
 
