@@ -1,12 +1,6 @@
-/input.txt
-/levelBuilder/
-/sixesWild/
-/sixesWildPlayer/
 /test/
-<<<<<<< HEAD
-<<<<<<< HEAD
-/levelBuilder/
 /sixesWild/
+<<<<<<< HEAD
 =======
 /sixesWild/
 /sixesWildPlayer/
@@ -45,3 +39,5 @@
 /level7
 /level8
 /level9
+=======
+>>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project

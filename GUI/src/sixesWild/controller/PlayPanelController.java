@@ -11,6 +11,7 @@ import sixesWild.controller.moves.UpdateTileMove;
 import sixesWild.model.EliminationBoard;
 import sixesWild.model.Model;
 import sixesWild.model.PuzzleBoard;
+import sixesWild.model.ReleaseBoard;
 import sixesWild.model.Square;
 import sixesWild.view.BoardView;
 
@@ -115,14 +116,14 @@ public class PlayPanelController implements MouseListener, MouseMotionListener
 		//Initialize a move to check whether the sum is 6.
 		//Then, drop new squares.
 		//At this point, empty the selected square array and check the result.
-		//Need to update score, move left.
+		//Need to update score, move left.c
 		UpdateTileMove utm =new UpdateTileMove(model);
 		if(!utm.doMove())
 		{
 			model.getBoard().getSelectedSquares().clear();
 		}
 		else
-		{
+		{	//set mark for elimination
 			if(model.getBoard() instanceof EliminationBoard)
 			{
 				ArrayList<Square> selectedSquares = model.getBoard().getSelectedSquares();
@@ -144,6 +145,10 @@ public class PlayPanelController implements MouseListener, MouseMotionListener
 		if(model.getBoard() instanceof EliminationBoard)
 		{
 			bv.getMoveLeftLabel().setText("Move Left: "+((EliminationBoard)(model.getBoard())).getMoveLeft());
+		}
+		if(model.getBoard() instanceof ReleaseBoard)
+		{
+			bv.getMoveLeftLabel().setText("Move Left: "+((ReleaseBoard)(model.getBoard())).getMoveLeft());
 		}
 		//Handle completeing level.
 		CompleteLevelController clc = new CompleteLevelController(model, bv);

@@ -1,6 +1,7 @@
 package test.levelBuilder.move;
 
 import junit.framework.TestCase;
+import levelBuilder.entity.CurrentLevel;
 import levelBuilder.entity.Limits;
 import levelBuilder.entity.Model;
 import levelBuilder.game.LevelBuilder;
@@ -37,9 +38,20 @@ public class TestSetLimitsMove extends TestCase{
 		assertEquals(100, m.getLimits().getTimeLimits());
 		
 		assertTrue(setMove.undo(lb));
-		assertEquals(0, m.getLimits().getTimeLimits());
+		assertEquals(0, m.getLimits().getTimeLimits());		
+	}
+	public void testLigntning(){
+		setUp();
+		lb.setModel(m);
+		CurrentLevel levelMode = new CurrentLevel();
 		
+		m.setCurLevel(2);
+		levelMode.put(2, "Lightning");
+		m.setCurrentLevel(levelMode);
+		SetLimitsMove setMove = new SetLimitsMove(m.getLimits(),100, 20, 2,3);
 		
+		assertTrue(setMove.valid(lb));
+		assertTrue(setMove.execute(lb));
 		
 	}
 	

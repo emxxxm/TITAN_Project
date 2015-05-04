@@ -59,9 +59,7 @@ public class StartLevelController implements ActionListener
 				b = new ReleaseBoard(m.getAllLevels().getGivenLevel(currLevel));
 		}
 		m.setBoard(b);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		BoardView newBoardView=new BoardView(m);
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		newBoardView.setVisible(true);
 		MyTimer t = MyTimer.getInstance();	
 		if(b instanceof LightningBoard)
@@ -75,7 +73,6 @@ public class StartLevelController implements ActionListener
 						// HACK. Should be in a model someplace
 						int val = ((LightningBoard)(m.getBoard())).getTimeLeft();
 						val -= 1;
-						System.out.println(val);
 						newBoardView.getTimeLabel().setText("Time Left: " + val);
 						if(val == 0)
 						{			

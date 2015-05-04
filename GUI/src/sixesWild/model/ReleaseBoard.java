@@ -7,12 +7,42 @@ public class ReleaseBoard extends Board
 {	
 	protected ArrayList<Integer> numFrequency;
 	protected ArrayList<Integer> multiFrequency;
+	protected int moveLimit;
+	protected int moveLeft;
 	
 	public ReleaseBoard(Level l)
 	{
 		super(l);
 		this.numFrequency = l.getNumFrequency();
 		this.multiFrequency = l.getMultiFrequency();
+		this.moveLimit = l.getMoveLimit();
+		this.moveLeft = l.getMoveLimit();
+	}	
+	
+	public int getMoveLimit()
+	{
+		return this.moveLimit;
+	}
+	
+	public int getMoveLeft()
+	{
+		return this.moveLeft;
+	}
+	
+	/**
+	 * Updates the number of moves left in Puzzle mode with input delta representing the move change.
+	 * @author Mengwen Li, Yihong Zhou.
+	 * @param delta
+	 * @return
+	 */
+	public boolean updateMoveLeft(int delta)
+	{
+		this.moveLeft = moveLeft + delta;
+		if(this.moveLeft < 0 || delta > 0)
+		{
+			return false;
+		}
+		return true;
 	}
 	
 	public void updateBucket(int col)
@@ -25,7 +55,7 @@ public class ReleaseBoard extends Board
 			if(this.getSquare(i, col).getType()==2)
 			{
 				bRow = i;
-				break;
+				break; 
 			}
 		}
 		//If bucket not found, return.
@@ -33,8 +63,12 @@ public class ReleaseBoard extends Board
 		{
 			return;
 		}
-		System.out.println(i);
+
+		//Check whether the first avaliable square above the bucket is 6, if not, return.
+
+		//System.out.println(i);
 		//Check whether the first avaluable square above the bucket is 6, if not, return.
+
 		//First, find the location of the first valid square.
 		for(i=bRow; i>=0; i--)
 		{
@@ -43,7 +77,10 @@ public class ReleaseBoard extends Board
 				break;
 			}
 		}
-		System.out.println("IN HERE!!!    "+i);
+
+
+		//System.out.println("IN HERE!!!    "+i);
+
 		//If there is no valid square above, return.
 		if(i==-1)
 		{
@@ -57,7 +94,7 @@ public class ReleaseBoard extends Board
 			if(this.getSquare(i, col).getTile().getNum()!=6)
 			{
 				
-				System.out.println("NOT 6");
+			//	System.out.println("NOT 6");
 				return;
 			}
 			//If it is 6, do a normal move.
@@ -69,7 +106,7 @@ public class ReleaseBoard extends Board
 					//Can the bucket contain numbers other than 6?
 					if(j==0)
 					{
-						System.out.println("In j == 0");
+						//System.out.println("In j == 0");
 						this.getSquare(j,col).getTile().setNum(this.getNewNum());
 						this.getSquare(j,col).getTile().setMulti(this.getNewMulti());
 					}
@@ -101,11 +138,8 @@ public class ReleaseBoard extends Board
 						}
 					}					
 				}
-				return;
 			}
 		}
-		
-		
 	}
 	
 	public int getBucketRow(int col)
@@ -169,7 +203,7 @@ public class ReleaseBoard extends Board
 			numSet=2;
 		}
 		else if(num <= numFrequency.get(0)+numFrequency.get(1)+numFrequency.get(2))
-		{
+		{ 
 			numSet=3;
 		}
 		else if(num <= numFrequency.get(0)+numFrequency.get(1)+numFrequency.get(2)+numFrequency.get(3))

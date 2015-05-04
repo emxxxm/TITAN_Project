@@ -72,6 +72,8 @@ public class NormalMove extends AbsMove
 				return true;
 			}
 			return false;
+			
+			
 		}
 		else
 		{
