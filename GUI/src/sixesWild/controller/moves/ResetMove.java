@@ -33,7 +33,7 @@ public class ResetMove extends AbsMove
 		{
 			return true;
 		}
-		else if(model.getBoard() instanceof EliminationBoard)
+		else
 		{
 			EliminationBoard eb = (EliminationBoard)model.getBoard();
 			if(eb.getMoveLeft() > 0)
@@ -53,17 +53,17 @@ public class ResetMove extends AbsMove
 		{
 			if(model.getBoard() instanceof PuzzleBoard)
 			{
-				if(((PuzzleBoard)(model.getBoard())).getMoveLeft() > 0)
-				{
+//				if(((PuzzleBoard)(model.getBoard())).getMoveLeft() > 0)
+//				{
 					((PuzzleBoard)(model.getBoard())).updateMoveLeft(-1);
-				}
+//				}
 			}
 			if(model.getBoard() instanceof EliminationBoard)
 			{
-				if(((EliminationBoard)(model.getBoard())).getMoveLeft() > 0)
-				{
+//				if(((EliminationBoard)(model.getBoard())).getMoveLeft() > 0)
+//				{
 					((EliminationBoard)(model.getBoard())).updateMoveLeft(-1);
-				}
+//				}
 			}
 			if(model.getBoard() instanceof ReleaseBoard)
 			{

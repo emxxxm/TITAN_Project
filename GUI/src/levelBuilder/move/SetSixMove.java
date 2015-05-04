@@ -33,11 +33,11 @@ public class SetSixMove extends Move{
 		return false;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 
 }

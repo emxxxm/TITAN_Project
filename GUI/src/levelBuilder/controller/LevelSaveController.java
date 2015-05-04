@@ -24,7 +24,7 @@ public class LevelSaveController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0){
 
-		String curLevel = "level"+model.getCurLevel();
+		String curLevel = "src/level"+model.getCurLevel();
 		
 //		File f = new File
 		

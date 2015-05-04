@@ -65,10 +65,10 @@ public class EnableSquareMove extends Move{
 		return true;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }

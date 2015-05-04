@@ -63,6 +63,10 @@ public class Square implements Comparable
 		return this.type;
 	}
 	
+	public void setType(int i){
+		this.type = i;
+	}
+	
 	public Tile getTile()
 	{
 		return this.tile;

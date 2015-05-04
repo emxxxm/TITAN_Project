@@ -75,10 +75,10 @@ public class SetLimitsMove extends Move {
 				&& swapLimit >= 0;
 	}
 
-	@Override
-	public boolean updateBoard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean updateBoard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }
