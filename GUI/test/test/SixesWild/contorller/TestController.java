@@ -38,7 +38,7 @@ public class TestController extends SWTestCase {
 		}
 	}
 	protected void setUp() throws Exception {
-		AllLevel al = new AllLevel("src/input.txt", "src/stateInput.txt");
+		AllLevel al = new AllLevel("src/", "src/stateInput.txt");
 		//Initialize the board with the first level.
 		startingBoard = new PuzzleBoard(al.getGivenLevel(1));
 		LightningBoard lb = new LightningBoard(al.getGivenLevel(2));

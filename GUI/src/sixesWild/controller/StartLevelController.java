@@ -36,6 +36,10 @@ public class StartLevelController implements ActionListener
 		
 		Board b;
 		System.out.println("CURRENTLEVEL is "+currLevel);
+		for(int i=0; i<m.getAllLevels().getGivenLevel(currLevel).getSquareType().size(); i++)
+		{
+			System.out.println(m.getAllLevels().getGivenLevel(currLevel).getSquareType().get(i));
+		}
 		//Create BoardView.
 		switch(this.currLevel%4){
 			//Level 1, puzzle.

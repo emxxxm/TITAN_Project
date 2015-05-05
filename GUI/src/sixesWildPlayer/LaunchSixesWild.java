@@ -4,10 +4,10 @@ import sixesWild.model.AllLevel;
 import sixesWild.model.Board;
 import sixesWild.model.Model;
 import sixesWild.view.SelectLevelView;
-
+//In elimination mode, reset didn't take move limit. Fix this later!!
 public class LaunchSixesWild 
 {
-	final static String inputLevels = "src/input.txt";
+	final static String inputLevels = "src/";
 	final static String inputStates = "src/stateInput.txt";
 	public static AllLevel initializeLevels() throws Exception
 	{

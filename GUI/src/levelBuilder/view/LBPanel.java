@@ -488,4 +488,22 @@ public class LBPanel extends JFrame{
 	public JButton getRedo(){
 		return btnRedo;
 	}
+
+	
+	public JButton getBtnDisable(){
+		return btnDisable;
+	}
+	public JButton getBtnEnable(){
+		return btnEnable;
+	}
+	public JButton getBtnBucket(){
+		return btnBucket;
+	}
+	public JButton getBtnSix(){
+		return btnSetSix;
+	}
+	public JButton getSave(){
+		return btnSave;
+
+	}
 }

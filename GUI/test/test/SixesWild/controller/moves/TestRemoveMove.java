@@ -15,7 +15,7 @@ public class TestRemoveMove extends TestCase {
 	
 	@Override
 	protected void setUp() throws Exception{
-		allLevel = new AllLevel("src/input.txt", "src/stateInput.txt");
+		allLevel = new AllLevel("src/", "src/stateInput.txt");
 		m = new Model(allLevel, new Board(allLevel.getGivenLevel(1)));
 	}
 	

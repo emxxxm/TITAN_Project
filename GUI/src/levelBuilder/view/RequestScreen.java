@@ -29,6 +29,28 @@ public class RequestScreen extends JFrame {
 	
 	protected ArrayList<JButton> levelButtons = new ArrayList<JButton>();
 	Model m;
+	JLabel lblNewLabel;
+	JButton btnLevel;
+	JButton btnLevel_1;
+	JButton btnLevel_2;
+	JButton btnLevel_3;
+	JButton btnLevel_4;
+	JButton btnLevel_5;
+	JButton btnLevel_6;
+	JButton btnLevel_7;
+	JButton btnLevel_8;
+	JButton btnLevel_9;
+	JButton btnLevel_10;
+	JButton btnLevel_11;
+	JButton btnLevel_12;
+	JButton btnLevel_13;
+	JButton btnLevel_14;
+	JButton btnLevel_15;
+	JButton btnLevel_16;
+	JButton btnLevel_17;
+	JButton btnLevel_18;
+	JButton btnLevel_19;
+	
 	public RequestScreen(Model m){
 		super();
 		this.m = m;		
@@ -48,110 +70,110 @@ public class RequestScreen extends JFrame {
 		this.setBounds(100, 100, 750, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblNewLabel = new JLabel("Level Builder");
+		lblNewLabel = new JLabel("Level Builder");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD, 40));
 		lblNewLabel.setForeground(Color.white);
 		
-		JButton btnLevel = new JButton("Level 1");
+		btnLevel = new JButton("Level 1");
 		btnLevel.setBackground(Color.RED);
 		btnLevel.setOpaque(true);
 		btnLevel.setBorderPainted(false);
 		
-		JButton btnLevel_1 = new JButton("Level 2");
+		btnLevel_1 = new JButton("Level 2");
 		btnLevel_1.setForeground(Color.BLACK);
 		btnLevel_1.setBackground(Color.CYAN);
 		btnLevel_1.setOpaque(true);
 		btnLevel_1.setBorderPainted(false);
 		
 		
-		JButton btnLevel_2 = new JButton("Level 3");
+		btnLevel_2 = new JButton("Level 3");
 		btnLevel_2.setForeground(Color.BLACK);
 		btnLevel_2.setBackground(Color.GREEN);
 		btnLevel_2.setOpaque(true);
 		btnLevel_2.setBorderPainted(false);
 
-		JButton btnLevel_3 = new JButton("Level 4");
+		btnLevel_3 = new JButton("Level 4");
 		btnLevel_3.setForeground(Color.BLACK);
 		btnLevel_3.setBackground(Color.ORANGE);
 		btnLevel_3.setOpaque(true);
 		btnLevel_3.setBorderPainted(false);
 		
-		JButton btnLevel_4 = new JButton("Level 5");
+		btnLevel_4 = new JButton("Level 5");
 		btnLevel_4.setBackground(Color.RED);
 		btnLevel_4.setOpaque(true);
 		btnLevel_4.setBorderPainted(false);
 		
-		JButton btnLevel_5 = new JButton("Level 6");
+		btnLevel_5 = new JButton("Level 6");
 		btnLevel_5.setBackground(Color.CYAN);
 		btnLevel_5.setOpaque(true);
 		btnLevel_5.setBorderPainted(false);
 		
-		JButton btnLevel_6 = new JButton("Level 7");
+		btnLevel_6 = new JButton("Level 7");
 		btnLevel_6.setBackground(Color.GREEN);
 		btnLevel_6.setOpaque(true);
 		btnLevel_6.setBorderPainted(false);
 		
-		JButton btnLevel_7 = new JButton("Level 8");
+		btnLevel_7 = new JButton("Level 8");
 		btnLevel_7.setBackground(Color.ORANGE);
 		btnLevel_7.setOpaque(true);
 		btnLevel_7.setBorderPainted(false);
 		
-		JButton btnLevel_8 = new JButton("Level 9");
+		btnLevel_8 = new JButton("Level 9");
 		btnLevel_8.setBackground(Color.RED);
 		btnLevel_8.setOpaque(true);
 		btnLevel_8.setBorderPainted(false);
 		
-		JButton btnLevel_9 = new JButton("Level 10");
+		btnLevel_9 = new JButton("Level 10");
 		btnLevel_9.setBackground(Color.CYAN);
 		btnLevel_9.setOpaque(true);
 		btnLevel_9.setBorderPainted(false);
 		
-		JButton btnLevel_10 = new JButton("Level 11");
+		btnLevel_10 = new JButton("Level 11");
 		btnLevel_10.setBackground(Color.GREEN);
 		btnLevel_10.setOpaque(true);
 		btnLevel_10.setBorderPainted(false);
 		
-		JButton btnLevel_11 = new JButton("Level 12");
+		btnLevel_11 = new JButton("Level 12");
 		btnLevel_11.setBackground(Color.ORANGE);
 		btnLevel_11.setOpaque(true);
 		btnLevel_11.setBorderPainted(false);
 		
-		JButton btnLevel_12 = new JButton("Level 13");
+		btnLevel_12 = new JButton("Level 13");
 		btnLevel_12.setBackground(Color.RED);
 		btnLevel_12.setOpaque(true);
 		btnLevel_12.setBorderPainted(false);
 		
-		JButton btnLevel_13 = new JButton("Level 14");
+		btnLevel_13 = new JButton("Level 14");
 		btnLevel_13.setBackground(Color.CYAN);
 		btnLevel_13.setOpaque(true);
 		btnLevel_13.setBorderPainted(false);
 		
-		JButton btnLevel_14 = new JButton("Level 15");
+		btnLevel_14 = new JButton("Level 15");
 		btnLevel_14.setBackground(Color.GREEN);
 		btnLevel_14.setOpaque(true);
 		btnLevel_14.setBorderPainted(false);
 		
-		JButton btnLevel_15 = new JButton("Level 16");
+		btnLevel_15 = new JButton("Level 16");
 		btnLevel_15.setBackground(Color.ORANGE);
 		btnLevel_15.setOpaque(true);
 		btnLevel_15.setBorderPainted(false);
 		
-		JButton btnLevel_16 = new JButton("Level 17");
+		btnLevel_16 = new JButton("Level 17");
 		btnLevel_16.setBackground(Color.RED);
 		btnLevel_16.setOpaque(true);
 		btnLevel_16.setBorderPainted(false);
 		
-		JButton btnLevel_17 = new JButton("Level 18");
+		btnLevel_17 = new JButton("Level 18");
 		btnLevel_17.setBackground(Color.CYAN);
 		btnLevel_17.setOpaque(true);
 		btnLevel_17.setBorderPainted(false);
 		
-		JButton btnLevel_18 = new JButton("Level 19");
+		btnLevel_18 = new JButton("Level 19");
 		btnLevel_18.setBackground(Color.GREEN);
 		btnLevel_18.setOpaque(true);
 		btnLevel_18.setBorderPainted(false);
 		
-		JButton btnLevel_19 = new JButton("Level 20");
+		btnLevel_19 = new JButton("Level 20");
 		btnLevel_19.setBackground(Color.ORANGE);
 		btnLevel_19.setOpaque(true);
 		btnLevel_19.setBorderPainted(false);
@@ -273,7 +295,7 @@ public class RequestScreen extends JFrame {
 		LevelBuilder lb = new LevelBuilder(m, panel);
 		for(int i=0;i<levelButtons.size();i++)
 		{	int levelNum = i + 1;
-			String file = "level" + levelNum;
+			String file = "src/level" + levelNum;
 			try {
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 				levelButtons.get(i).addActionListener(new LoadLevelController(m, lb, file, this));
@@ -296,5 +318,19 @@ public class RequestScreen extends JFrame {
 	*/
 		btnCreateNew.addActionListener(new BuildingScreenController(this));
 	}
+	
+	public JButton getLevel(){
+		return btnLevel;
+	}
+	public JButton getLeve2(){
+		return btnLevel_1;
+	}
+	public JButton getLeve3(){
+		return btnLevel_2;
+	}
+	public JButton getLeve4(){
+		return btnLevel_3;
+	}
+	
 
 }

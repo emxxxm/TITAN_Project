@@ -79,45 +79,45 @@ public class RecordView extends JFrame
 		lblNewLabel.setForeground(new Color(30, 144, 255));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 		
-		JLabel label = new JLabel("<html>Level 1   <br>Highest Score:" + highScore.get(0)+" <br>Stars achieved:" + starCount.get(0) + "</html>");
+		JLabel label = new JLabel("<html>Level 1   <br>Highest Score: " + highScore.get(0)+" <br>Stars achieved: " + starCount.get(0) + "</html>");
 		
-		JLabel label_0 = new JLabel("<html>Level 2   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_0 = new JLabel("<html>Level 2   <br>Highest Score: " + highScore.get(1) + " <br>Stars achieved: " + starCount.get(1) + " </html>");
 		
-		JLabel label_1 = new JLabel("<html>Level 3   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_1 = new JLabel("<html>Level 3   <br>Highest Score: " + highScore.get(2) + "<br>Stars achieved: " + starCount.get(2) + "</html>");
 	
-		JLabel label_2 = new JLabel("<html>Level 4   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_2 = new JLabel("<html>Level 4   <br>Highest Score: " + highScore.get(3) + "<br>Stars achieved: " + starCount.get(3) + "</html>");
 		
-		JLabel label_3 = new JLabel("<html>Level 5   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_3 = new JLabel("<html>Level 5   <br>Highest Score: " + highScore.get(4) + "<br>Stars achieved: " + starCount.get(4) + "</html>");
 		
-		JLabel label_4 = new JLabel("<html>Level 6   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_4 = new JLabel("<html>Level 6   <br>Highest Score: " + highScore.get(5) + "<br>Stars achieved: " + starCount.get(5) + "</html>");
 		
-		JLabel label_5 = new JLabel("<html>Level 7   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_5 = new JLabel("<html>Level 7   <br>Highest Score: " + highScore.get(6) + "<br>Stars achieved: " + starCount.get(6) + "</html>");
 		
-		JLabel label_6 = new JLabel("<html>Level 8   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_6 = new JLabel("<html>Level 8   <br>Highest Score: " + highScore.get(7) + "<br>Stars achieved: " + starCount.get(7) + "</html>");
 		
-		JLabel label_7 = new JLabel("<html>Level 9   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_7 = new JLabel("<html>Level 9   <br>Highest Score: " + highScore.get(8) + "<br>Stars achieved: " + starCount.get(8) + "</html>");
 		
-		JLabel label_8 = new JLabel("<html>Level 10   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_8 = new JLabel("<html>Level 10   <br>Highest Score: " + highScore.get(9) + "<br>Stars achieved: " + starCount.get(9) + "</html>");
 		
-		JLabel label_9 = new JLabel("<html>Level 11   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_9 = new JLabel("<html>Level 11   <br>Highest Score: " + highScore.get(10) + "<br>Stars achieved: " + starCount.get(10) + "</html>");
 		
-		JLabel label_10 = new JLabel("<html>Level 12   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_10 = new JLabel("<html>Level 12   <br>Highest Score: " + highScore.get(11) + "<br>Stars achieved: " + starCount.get(11) + "</html>");
 		
-		JLabel label_11 = new JLabel("<html>Level 13   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_11 = new JLabel("<html>Level 13   <br>Highest Score: " + highScore.get(12) + "<br>Stars achieved: " + starCount.get(12) + "</html>");
 		
-		JLabel label_12 = new JLabel("<html>Level 14   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_12 = new JLabel("<html>Level 14   <br>Highest Score: " + highScore.get(13) + "<br>Stars achieved: " + starCount.get(13) + "</html>");
 		
-		JLabel label_13 = new JLabel("<html>Level 15   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_13 = new JLabel("<html>Level 15   <br>Highest Score: " + highScore.get(14) + "<br>Stars achieved: " + starCount.get(14) + "</html>");
 		
-		JLabel label_14 = new JLabel("<html>Level 16   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_14 = new JLabel("<html>Level 16   <br>Highest Score: " + highScore.get(15) + "<br>Stars achieved: " + starCount.get(15) + "</html>");
 		
-		JLabel label_15 = new JLabel("<html>Level 17   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_15 = new JLabel("<html>Level 17   <br>Highest Score: " + highScore.get(16) + "<br>Stars achieved: " + starCount.get(16) + "</html>");
 		
-		JLabel label_16 = new JLabel("<html>Level 18   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_16 = new JLabel("<html>Level 18   <br>Highest Score: " + highScore.get(17) + "<br>Stars achieved: " + starCount.get(17) + "</html>");
 		
-		JLabel label_17 = new JLabel("<html>Level 19   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_17 = new JLabel("<html>Level 19   <br>Highest Score: " + highScore.get(18) + "<br>Stars achieved: " + starCount.get(18) + "</html>");
 		
-		JLabel label_18 = new JLabel("<html>Level 20   <br>Highest Score: <br>Stars achieved: </html>");
+		JLabel label_18 = new JLabel("<html>Level 20   <br>Highest Score: " + highScore.get(19) + "<br>Stars achieved: " + starCount.get(19) + "</html>");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
