@@ -91,7 +91,7 @@ public class TestUpdateTileMove extends TestCase {
 	}
 	
 	public void testUpdateTileValidRelease(){
-		m = new Model(allLevel, new ReleaseBoard(allLevel.getGivenLevel(3)));
+		m = new Model(allLevel, new ReleaseBoard(allLevel.getGivenLevel(4)));
 		m.getBoard().getSquare(0, 1).getTile().setNum(6);
 		m.getBoard().getSquare(1, 1).getTile().setNum(3);
 		m.getBoard().getSquare(1, 2).getTile().setNum(3);

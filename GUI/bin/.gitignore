@@ -1,30 +1,5 @@
-/test/
-/sixesWild/
-<<<<<<< HEAD
-=======
-/sixesWild/
-/sixesWildPlayer/
-<<<<<<< HEAD
-/stateInput.txt
-/highScore.txt
-=======
-/levelBuilder/
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
-=======
-/sixesWild/
-/sixesWildPlayer/
-/levelBuilder/
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project
->>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project
+/input.txt
 /level1
-/level2
-/level3
-/level4
-/level5
-/level6
 /level10
 /level11
 /level12
@@ -35,9 +10,18 @@
 /level17
 /level18
 /level19
+/level2
 /level20
+/level3
+/level4
+/level5
+/level6
 /level7
 /level8
 /level9
-=======
->>>>>>> branch 'master' of https://github.com/emxxxm/TITAN_Project
+/stateInput.txt
+/levelBuilder/
+/sixesWild/
+/sixesWildPlayer/
+/test/
+/highScore.txt
