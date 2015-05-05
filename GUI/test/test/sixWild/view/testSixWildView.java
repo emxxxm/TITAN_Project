@@ -6,6 +6,7 @@ import sixesWild.model.AllLevel;
 import sixesWild.model.Board;
 import sixesWild.model.Level;
 import sixesWild.model.Model;
+import sixesWild.model.PuzzleBoard;
 import sixesWild.view.BoardView;
 import sixesWild.view.CompleteLevelView;
 import sixesWild.view.HelpView;
@@ -17,7 +18,7 @@ import junit.framework.TestCase;
 public class testSixWildView extends TestCase {
 	Model m;
 	AllLevel allLevel;
-	Board bd;
+	PuzzleBoard pb;
 	
 	public void setUp() throws Exception{
 //		ArrayList<Integer> starGoals = new ArrayList<Integer>();
@@ -29,8 +30,8 @@ public class testSixWildView extends TestCase {
 //		ArrayList<Integer> tileMulti = new ArrayList<Integer>();
 //		Level l = new Level(1, 0, 0, 0, 0, 0, starGoals,numFrequency, multiFrequency, squareType, tileNum, tileMulti);
 		allLevel = new AllLevel("src/input.txt", "src/stateInput.txt");
-		bd = new Board(allLevel.getGivenLevel(1));
-		m = new Model(allLevel, bd);
+		pb = new PuzzleBoard(allLevel.getGivenLevel(1));
+		m = new Model(allLevel, pb);
 		
 		
 	}
