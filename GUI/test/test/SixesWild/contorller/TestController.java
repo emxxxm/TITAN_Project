@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
+import junit.framework.TestCase;
 import sixesWild.controller.DisplayHelpController;
 import sixesWild.controller.DisplayRecordController;
 import sixesWild.controller.QuitHelpController;
@@ -13,6 +14,7 @@ import sixesWild.controller.QuitRecordController;
 import sixesWild.controller.ResetController;
 import sixesWild.controller.ReturnMenuController;
 import sixesWild.controller.StartLevelController;
+import sixesWild.controller.SwapController;
 import sixesWild.model.AllLevel;
 import sixesWild.model.Board;
 import sixesWild.model.LightningBoard;
@@ -25,7 +27,7 @@ import sixesWild.view.HelpView;
 import sixesWild.view.RecordView;
 import sixesWild.view.SelectLevelView;
 
-public class TestController extends SWTestCase {
+public class TestController extends TestCase {
 	Board startingBoard;
 	Model m;
 	SelectLevelView slv;
@@ -45,15 +47,7 @@ public class TestController extends SWTestCase {
 		m = new Model(al, startingBoard);
 		slv=new SelectLevelView(m);
 	}
-	public int getButtonX(JButton button){
-		System.out.println("X:"+button.getLocation().x);
-		return button.getLocation().x;
-	}
-	public int getButtonY(JButton button){
-		System.out.println("Y:"+button.getLocation().y);
-		return button.getLocation().y;
-	}
-
+	
 	protected void tearDown() {
 		slv.setVisible(false);
 		slv.dispose();
@@ -77,14 +71,9 @@ public class TestController extends SWTestCase {
 		rmc.actionPerformed(e);
 	}
 	public void testDiaplayHelpController(){
-//		MouseEvent me = createClicked(slv.getHelpButton());
-//		System.out.println("button:"+slv.getHelpButton());
-//		System.out.println("I am here!!hahahahah");
-//		System.out.println("screen:"+slv);
 		JButton helpButton = slv.getHelpButton();
 		String s = "";
 		ActionEvent e = new ActionEvent(helpButton, MouseEvent.MOUSE_CLICKED, s);
-		//MouseEvent me2 = createClicked(slv.getHelpButton(),slv,getButtonX(slv.getHelpButton())+5 ,getButtonY(slv.getHelpButton())+5 );
 		DisplayHelpController dhc = new DisplayHelpController(slv);
 		dhc.actionPerformed(e);
 	}
@@ -106,12 +95,9 @@ public class TestController extends SWTestCase {
 	}
 	public void testQuitLevelController()
 	{
-		System.out.println("!");
 		BoardView bv = new BoardView(m);
-		System.out.println("~");
 		MyTimer mt = MyTimer.getInstance();
 		JButton quitButton = bv.getQuitButton();
-		System.out.println("HERE!!!!");
 		QuitLevelController qlc = new QuitLevelController(bv, m, mt);
 		String s = " ";
 		ActionEvent e = new ActionEvent(quitButton, MouseEvent.MOUSE_CLICKED, s);
@@ -119,16 +105,14 @@ public class TestController extends SWTestCase {
 	}
 	public void testQuitLevelControllerLightning() throws Exception
 	{
-		AllLevel al = new AllLevel("src/input.txt", "src/stateInput.txt");
+		AllLevel al = new AllLevel("src/", "src/stateInput.txt");
 		//Initialize the board with the first level.
 		startingBoard = new PuzzleBoard(al.getGivenLevel(1));
 		LightningBoard lb = new LightningBoard(al.getGivenLevel(2));
 		Model lm = new Model(al, lb);
 		BoardView bv = new BoardView(lm);
-		System.out.println("~");
 		MyTimer mt = MyTimer.getInstance();
 		JButton quitButton = bv.getQuitButton();
-		System.out.println("HERE!!!!");
 		QuitLevelController qlc = new QuitLevelController(bv, lm, mt);
 		String s = " ";
 		ActionEvent e = new ActionEvent(quitButton, MouseEvent.MOUSE_CLICKED, s);
@@ -136,7 +120,7 @@ public class TestController extends SWTestCase {
 	}
 	public void testResetController() throws Exception
 	{
-		AllLevel al = new AllLevel("src/input.txt", "src/stateInput.txt");
+		AllLevel al = new AllLevel("src/", "src/stateInput.txt");
 		//Initialize the board with the first level.
 		PuzzleBoard pb = new PuzzleBoard(al.getGivenLevel(1));
 		Model lm = new Model(al, pb);
@@ -146,7 +130,7 @@ public class TestController extends SWTestCase {
 	}
 	public void testStartLevelController() throws Exception
 	{
-		AllLevel al = new AllLevel("src/input.txt", "src/stateInput.txt");
+		AllLevel al = new AllLevel("src/", "src/stateInput.txt");
 		//Initialize the board with the first level.
 		PuzzleBoard pb = new PuzzleBoard(al.getGivenLevel(1));
 		LightningBoard lb = new LightningBoard(al.getGivenLevel(2));
@@ -161,5 +145,15 @@ public class TestController extends SWTestCase {
 		ActionEvent e1 = new ActionEvent(levelButton1, MouseEvent.MOUSE_CLICKED, s);
 		slc.actionPerformed(e);
 		slcl.actionPerformed(e1);	
+	}
+	public void testSwapController() throws Exception
+	{
+		AllLevel al = new AllLevel("src/", "src/stateInput.txt");
+		PuzzleBoard pb = new PuzzleBoard(al.getGivenLevel(1));
+		Model pm = new Model(al, pb);
+		BoardView bv = new BoardView(pm);
+		SwapController sc = new SwapController(pm, bv);
+		sc.register();
+		MouseEvent e = new MouseEvent(bv, MouseEvent.MOUSE_DRAGGED, 0, 20, 20, 0, 0, false);
 	}
 }
